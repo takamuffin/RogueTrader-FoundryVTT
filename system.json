@@ -1,12 +1,12 @@
 {
-  "name": "dark-heresy",
-  "title": "Dark Heresy 2E",
-  "description": "Innocence proves nothing",
+  "name": "rogue-trader",
+  "title": "Rogue Trader 2E",
+  "description": "Wealth provides everything",
   "version": "3.2.0",
   "minimumCoreVersion": "0.8.4",
   "compatibleCoreVersion": "9",
   "templateVersion": 2,
-  "author": "JeansenVaars, Moo Man, fredthedeadhead, Perfectro, Vendare, Silver292",
+  "author": "JeansenVaars, Moo Man, fredthedeadhead, Perfectro, Vendare, Silver292, Updated for RT2 by MortarionUA",
   "scripts": [],
   "esmodules": [
     "script/common/hooks.js"
@@ -73,7 +73,7 @@
       "name": "Français",
       "path": "lang/fr.json"
     },
-	  {
+    {
       "lang": "pl",
       "name": "Polski",
       "path": "lang/pl.json"
@@ -83,9 +83,9 @@
   "gridUnits": "m",
   "primaryTokenAttribute": null,
   "secondaryTokenAttribute": null,
-  "url": "https://github.com/moo-man/DarkHeresy2E-FoundryVTT",
+  "url": "https://github.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT",
   "socket": true,
-  "manifest": "https://raw.githubusercontent.com/moo-man/DarkHeresy2E-FoundryVTT/master/system.json",
-  "download": "https://github.com/moo-man/DarkHeresy2E-FoundryVTT/releases/download/3.2.0/dark-heresy.zip",
+  "manifest": "https://raw.githubusercontent.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT/master/system.json",
+  "download": "https://github.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT/archive/refs/tags/RogueTrader2.zip",
   "license": "LICENSE.txt"
 }
