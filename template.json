@@ -287,6 +287,16 @@
             "specialities": {},
             "cost": 0
           },
+          "demolitions": {
+            "label": "SKILL.DEMOLITIONS",
+            "characteristics": [
+              "Int"
+            ],
+            "advance": -20,
+            "isSpecialist": false,
+            "specialities": {},
+            "cost": 0
+          },
           "dodge": {
             "label": "SKILL.DODGE",
             "characteristics": [
@@ -562,6 +572,18 @@
             "label": "SKILL.PARRY",
             "characteristics": [
               "WS"
+            ],
+            "advance": -20,
+            "isSpecialist": false,
+            "specialities": {},
+            "cost": 0
+          },
+          "performance": {
+            "label": "SKILL.PERFORMANCE",
+            "characteristics": [
+              "Int",
+              "Ag",
+              "Fel"
             ],
             "advance": -20,
             "isSpecialist": false,
