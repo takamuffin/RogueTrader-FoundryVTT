@@ -199,8 +199,8 @@
                 "advance": -20,
                 "cost": 0
               },
-              "askellonSector": {
-                "label": "Askellon Sector",
+              "calixisSector": {
+                "label": "Calixis Sector",
                 "advance": -20,
                 "cost": 0
               },
@@ -236,6 +236,11 @@
               },
               "imperium": {
                 "label": "Imperium",
+                "advance": -20,
+                "cost": 0
+              },
+              "koronusExpanse": {
+                "label": "Koronus Expanse",
                 "advance": -20,
                 "cost": 0
               },
@@ -378,6 +383,11 @@
               },
               "xenos": {
                 "label": "Xenos",
+                "advance": -20,
+                "cost": 0
+              },
+              "xenosTactica": {
+                "label": "Xenos Tactica",
                 "advance": -20,
                 "cost": 0
               }
@@ -556,6 +566,11 @@
                 "advance": -20,
                 "cost": 0
               },
+              "walkers": {
+                "label": "Walkers",
+                "advance": -20,
+                "cost": 0
+              },
               "aeronautica": {
                 "label": "Aeronautica",
                 "advance": -20,
@@ -672,6 +687,11 @@
               },
               "tacticaImperialis": {
                 "label": "Tactica Imperialis",
+                "advance": -20,
+                "cost": 0
+              },
+              "xenology": {
+                "label": "Xenology",
                 "advance": -20,
                 "cost": 0
               }
@@ -841,6 +861,11 @@
               },
               "technomat": {
                 "label": "Technomat",
+                "advance": -20,
+                "cost": 0
+              },
+              "vehiculum": {
+                "label": "Vehiculum",
                 "advance": -20,
                 "cost": 0
               },
