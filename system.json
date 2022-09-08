@@ -71,6 +71,6 @@
   "url": "https://github.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT",
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT/master/system.json",
-  "download": "https://github.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT/releases/download/RogueTrader2.0.1/DarkHeresy2E-RogueTrader2-FoundryVTT-master.zip",
+  "download": "https://github.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT/releases/download/RogueTrader2.0.3/DarkHeresy2E-RogueTrader2-FoundryVTT-master.zip",
   "license": "LICENSE.txt"
 }
