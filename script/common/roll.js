@@ -95,11 +95,11 @@ async function _rollDamage(rollData) {
         } else {
             rollData.numberOfHit = 1;
         }
-        let minDamage = rollData.damages.reduce((min, damage) => min.minDice < damage.minDice ? min : damage, rollData.damages[0]);
-        if (minDamage.minDice < rollData.dos) {
-          minDamage.total += (rollData.dos - minDamage.minDice)
-          minDamage.result =  minDamage.result.replace(`(${minDamage.minDice})`, `(${minDamage.minDice} -> DoS: ${rollData.dos})`);
-        };
+        // let minDamage = rollData.damages.reduce((min, damage) => min.minDice < damage.minDice ? min : damage, rollData.damages[0]);
+        // if (minDamage.minDice < rollData.dos) {
+        //   minDamage.total += (rollData.dos - minDamage.minDice)
+        //   minDamage.result =  minDamage.result.replace(`(${minDamage.minDice})`, `(${minDamage.minDice} -> DoS: ${rollData.dos})`);
+        // };
     }
 }
 
@@ -219,7 +219,7 @@ function _computeRateOfFire(rollData) {
             rollData.attackType.hitMargin = 1;
             rollData.maxAdditionalHit = rollData.rateOfFire.full - 1;
             break;
-        
+
         case "called_shot":
             rollData.attackType.modifier = -20;
             rollData.attackType.hitMargin = 0;
@@ -281,8 +281,8 @@ function _getDegree(a, b) {
 /**
  * Replaces all Symbols in the given Formula with their Respective Values
  * The Symbols consist of Attribute Boni and Psyrating
- * @param {*} formula 
- * @param {*} rollData 
+ * @param {*} formula
+ * @param {*} rollData
  */
 function _replaceSymbols(formula, rollData) {
     if(rollData.psy) {

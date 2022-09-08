@@ -219,6 +219,11 @@
                 "advance": -20,
                 "cost": 0
               },
+              "eldar": {
+                "label": "Eldar",
+                "advance": -20,
+                "cost": 0
+              },
               "imperialCreed": {
                 "label": "Imperial Creed",
                 "advance": -20,
@@ -323,6 +328,11 @@
             "specialities": {
               "archaeotech": {
                 "label": "Archaeotech",
+                "advance": -20,
+                "cost": 0
+              },
+              "admechforbid": {
+                "label": "Adeptus Mechanicus",
                 "advance": -20,
                 "cost": 0
               },
