@@ -2,9 +2,13 @@
   "name": "rogue-trader",
   "title": "Rogue Trader 2E",
   "description": "Wealth provides everything",
-  "version": "3.2.0",
-  "minimumCoreVersion": "0.8.4",
-  "compatibleCoreVersion": "9",
+  "version": "4.0.0",
+  "minimumCoreVersion" : 10,
+  "compatibility" : {
+    "minimum" : 10,
+    "verified" : 10,
+    "maximum" : 10
+  },
   "templateVersion": 2,
   "author": "JeansenVaars, Moo Man, fredthedeadhead, Perfectro, Vendare, Silver292, Updated for RT2 by MortarionUA",
   "scripts": [],
