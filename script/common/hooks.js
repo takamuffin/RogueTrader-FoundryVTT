@@ -41,29 +41,29 @@ Hooks.once("init", () => {
         combatRoll
     };
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("dark-heresy", AcolyteSheet, { types: ["acolyte"], makeDefault: true });
-    Actors.registerSheet("dark-heresy", NpcSheet, { types: ["npc"], makeDefault: true });
+    Actors.registerSheet("rogue-trader", AcolyteSheet, { types: ["acolyte"], makeDefault: true });
+    Actors.registerSheet("rogue-trader", NpcSheet, { types: ["npc"], makeDefault: true });
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("dark-heresy", WeaponSheet, { types: ["weapon"], makeDefault: true });
-    Items.registerSheet("dark-heresy", AmmunitionSheet, { types: ["ammunition"], makeDefault: true });
-    Items.registerSheet("dark-heresy", WeaponModificationSheet, { types: ["weaponModification"], makeDefault: true });
-    Items.registerSheet("dark-heresy", ArmourSheet, { types: ["armour"], makeDefault: true });
-    Items.registerSheet("dark-heresy", ForceFieldSheet, { types: ["forceField"], makeDefault: true });
-    Items.registerSheet("dark-heresy", CyberneticSheet, { types: ["cybernetic"], makeDefault: true });
-    Items.registerSheet("dark-heresy", DrugSheet, { types: ["drug"], makeDefault: true });
-    Items.registerSheet("dark-heresy", GearSheet, { types: ["gear"], makeDefault: true });
-    Items.registerSheet("dark-heresy", ToolSheet, { types: ["tool"], makeDefault: true });
-    Items.registerSheet("dark-heresy", CriticalInjurySheet, { types: ["criticalInjury"], makeDefault: true });
-    Items.registerSheet("dark-heresy", MalignancySheet, { types: ["malignancy"], makeDefault: true });
-    Items.registerSheet("dark-heresy", MentalDisorderSheet, { types: ["mentalDisorder"], makeDefault: true });
-    Items.registerSheet("dark-heresy", MutationSheet, { types: ["mutation"], makeDefault: true });
-    Items.registerSheet("dark-heresy", PsychicPowerSheet, { types: ["psychicPower"], makeDefault: true });
-    Items.registerSheet("dark-heresy", TalentSheet, { types: ["talent"], makeDefault: true });
-    Items.registerSheet("dark-heresy", SpecialAbilitySheet, { types: ["specialAbility"], makeDefault: true });
-    Items.registerSheet("dark-heresy", TraitSheet, { types: ["trait"], makeDefault: true });
-    Items.registerSheet("dark-heresy", AptitudeSheet, { types: ["aptitude"], makeDefault: true });
+    Items.registerSheet("rogue-trader", WeaponSheet, { types: ["weapon"], makeDefault: true });
+    Items.registerSheet("rogue-trader", AmmunitionSheet, { types: ["ammunition"], makeDefault: true });
+    Items.registerSheet("rogue-trader", WeaponModificationSheet, { types: ["weaponModification"], makeDefault: true });
+    Items.registerSheet("rogue-trader", ArmourSheet, { types: ["armour"], makeDefault: true });
+    Items.registerSheet("rogue-trader", ForceFieldSheet, { types: ["forceField"], makeDefault: true });
+    Items.registerSheet("rogue-trader", CyberneticSheet, { types: ["cybernetic"], makeDefault: true });
+    Items.registerSheet("rogue-trader", DrugSheet, { types: ["drug"], makeDefault: true });
+    Items.registerSheet("rogue-trader", GearSheet, { types: ["gear"], makeDefault: true });
+    Items.registerSheet("rogue-trader", ToolSheet, { types: ["tool"], makeDefault: true });
+    Items.registerSheet("rogue-trader", CriticalInjurySheet, { types: ["criticalInjury"], makeDefault: true });
+    Items.registerSheet("rogue-trader", MalignancySheet, { types: ["malignancy"], makeDefault: true });
+    Items.registerSheet("rogue-trader", MentalDisorderSheet, { types: ["mentalDisorder"], makeDefault: true });
+    Items.registerSheet("rogue-trader", MutationSheet, { types: ["mutation"], makeDefault: true });
+    Items.registerSheet("rogue-trader", PsychicPowerSheet, { types: ["psychicPower"], makeDefault: true });
+    Items.registerSheet("rogue-trader", TalentSheet, { types: ["talent"], makeDefault: true });
+    Items.registerSheet("rogue-trader", SpecialAbilitySheet, { types: ["specialAbility"], makeDefault: true });
+    Items.registerSheet("rogue-trader", TraitSheet, { types: ["trait"], makeDefault: true });
+    Items.registerSheet("rogue-trader", AptitudeSheet, { types: ["aptitude"], makeDefault: true });
     initializeHandlebars();
-    game.settings.register("dark-heresy", "worldSchemaVersion", {
+    game.settings.register("rogue-trader", "worldSchemaVersion", {
         name: "World Version",
         hint: "Used to automatically upgrade worlds data when the system is upgraded.",
         scope: "world",

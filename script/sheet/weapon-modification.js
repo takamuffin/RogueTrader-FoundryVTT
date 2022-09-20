@@ -3,8 +3,8 @@ import { DarkHeresyItemSheet } from "./item.js";
 export class WeaponModificationSheet extends DarkHeresyItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["dark-heresy", "sheet", "weapon-modification"],
-            template: "systems/dark-heresy/template/sheet/weapon-modification.html",
+            classes: ["rogue-trader", "sheet", "weapon-modification"],
+            template: "systems/rogue-trader/template/sheet/weapon-modification.html",
             width: 500,
             height: 369,
             resizable: false,

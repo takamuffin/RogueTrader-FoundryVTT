@@ -3,8 +3,8 @@ import { DarkHeresyItemSheet } from "./item.js";
 export class SpecialAbilitySheet extends DarkHeresyItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["dark-heresy", "sheet", "special-ability"],
-            template: "systems/dark-heresy/template/sheet/special-ability.html",
+            classes: ["rogue-trader", "sheet", "special-ability"],
+            template: "systems/rogue-trader/template/sheet/special-ability.html",
             width: 500,
             height: 369,
             resizable: false,

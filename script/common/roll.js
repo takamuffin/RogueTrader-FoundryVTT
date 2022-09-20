@@ -114,10 +114,10 @@ async function _rollDamage(rollData) {
         } else {
             rollData.numberOfHit = 1;
         }
-        let minDamage = rollData.damages.reduce((min, damage) => min.minDice < damage.minDice ? min : damage, rollData.damages[0]);
-        if (minDamage.minDice < rollData.dos) {
-          minDamage.total += (rollData.dos - minDamage.minDice)
-        };
+        // let minDamage = rollData.damages.reduce((min, damage) => min.minDice < damage.minDice ? min : damage, rollData.damages[0]);
+        // if (minDamage.minDice < rollData.dos) {
+        //   minDamage.total += (rollData.dos - minDamage.minDice)
+        // };
     }
 }
 
@@ -357,7 +357,7 @@ async function _sendToChat(rollData) {
         rollData.render = await rollData.rollObject.render()
         chatData.roll = rollData.rollObject;
     }
-    const html = await renderTemplate("systems/dark-heresy/template/chat/roll.html", rollData);
+    const html = await renderTemplate("systems/rogue-trader/template/chat/roll.html", rollData);
 
     chatData.user = game.user.id,
     chatData.rollMode = game.settings.get("core", "rollMode"),
@@ -376,7 +376,7 @@ async function _emptyClipToChat(rollData) {
     let chatData = {
         user: game.user.id,
         content: `
-          <div class="dark-heresy chat roll">
+          <div class="rogue-trader chat roll">
               <div class="background border">
                   <p><strong>Reload! Out of Ammo!</strong></p>
               </div>

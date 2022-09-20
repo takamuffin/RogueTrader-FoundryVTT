@@ -3,8 +3,8 @@ import { DarkHeresyItemSheet } from "./item.js";
 export class MutationSheet extends DarkHeresyItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["dark-heresy", "sheet", "mutation"],
-            template: "systems/dark-heresy/template/sheet/mutation.html",
+            classes: ["rogue-trader", "sheet", "mutation"],
+            template: "systems/rogue-trader/template/sheet/mutation.html",
             width: 500,
             height: 369,
             resizable: false,

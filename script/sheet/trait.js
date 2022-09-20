@@ -3,8 +3,8 @@ import { DarkHeresyItemSheet } from "./item.js";
 export class TraitSheet extends DarkHeresyItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["dark-heresy", "sheet", "trait"],
-            template: "systems/dark-heresy/template/sheet/trait.html",
+            classes: ["rogue-trader", "sheet", "trait"],
+            template: "systems/rogue-trader/template/sheet/trait.html",
             width: 500,
             height: 369,
             resizable: false,

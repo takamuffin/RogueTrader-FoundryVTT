@@ -56,7 +56,7 @@
     {
       "name": "character-aptitudes",
       "label": "Character Aptitudes",
-      "system": "dark-heresy",
+      "system": "rogue-trader",
       "path": "./packs/character/aptitudes.db",
       "entity": "Item"
     }
