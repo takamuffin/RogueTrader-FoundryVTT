@@ -954,6 +954,7 @@
       "insanity": 0,
       "corruption": 0,
       "aptitudes": {},
+      "moveBonus": 0,
       "size": 4
     },
     "npc": {
@@ -973,6 +974,7 @@
       "subfaction": "",
       "type": "troop",
       "threatLevel": 0,
+      "moveBonus": 0,
       "size": 4
     }
   },

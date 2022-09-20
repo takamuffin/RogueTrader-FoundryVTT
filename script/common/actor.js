@@ -169,11 +169,12 @@ export class DarkHeresyActor extends Actor {
     _computeMovement() {
         let agility = this.characteristics.agility;
         let size = this.size;
+        let moveBonus = this.moveBonus;
         this.system.movement = {
-            half: agility.bonus + size - 4,
-            full: (agility.bonus + size - 4) * 2,
-            charge: (agility.bonus  + size - 4) * 3,
-            run: (agility.bonus + size - 4) * 6
+            half: agility.bonus + size - 4 + moveBonus,
+            full: (agility.bonus + size - 4 + moveBonus) * 2,
+            charge: (agility.bonus  + size - 4 + moveBonus) * 3,
+            run: (agility.bonus + size - 4 + moveBonus) * 6
         }
     }
 
@@ -453,6 +454,7 @@ export class DarkHeresyActor extends Actor {
     get corruption() {return this.system.corruption}
     get aptitudes() {return this.system.aptitudes}
     get size() {return this.system.size}
+    get moveBonus() {return this.system.moveBonus}
     get faction() {return this.system.faction}
     get subfaction() {return this.system.subfaction}
     get subtype() {return this.system.type}
