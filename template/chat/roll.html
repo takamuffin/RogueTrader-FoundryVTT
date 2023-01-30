@@ -1,5 +1,8 @@
-<div class="rogue-trader chat roll">
+<div class="rogue-trader chat roll" data-actor-id="{{ownerId}}" data-item-id="{{itemId}}" {{#if tokenId}}data-token-id="{{tokenId}}"{{/if}}>
     <div class="background border">
+        {{#if isReRoll}}
+            <h1>{{localize "CHAT.REROLL"}}</h1>
+        {{/if}}
         {{# unless weaponTraits.skipAttackRoll}}
             <h1>{{name}} ({{target}})</h1>
             {{#if isSuccess}}
@@ -14,6 +17,9 @@
                 <p><strong>{{localize "CHAT.ROLLED_WITH"}}:</strong> {{rolledWith}}</p>
             {{/if}}
 
+            {{#if aim}}
+                <p><strong>{{localize "CHAT.AIMING"}}:</strong> {{aim.text}}</p>
+            {{/if}}
             {{#if rangeText}}
                 <p><strong>{{localize "CHAT.ATTACK_RANGE"}}:</strong> {{rangeText}}</p>
             {{/if}}
@@ -51,7 +57,7 @@
             <h3 class="separator damage-location" data-location={{location}}>{{localize location}}</h3>
             <div>
                 <p><strong>{{localize "CHAT.DAMAGE"}}:</strong> <span class="damage-total">{{damage.total}}</span> 
-                   <strong class="damage-type">{{../item.DamageTypeShort}}</strong>
+                   <strong class="damage-type">{{damageTypeShort ../damageType}}</strong>
                 </p>
             </div>
             <p><strong>{{localize "CHAT.PENETRATION"}}:</strong> <span class="damage-penetration">{{penetration}}</span></p>
@@ -68,9 +74,16 @@
             </div>
         {{/unless}}
         {{#each damages as |damage|}}
+            <p><strong>{{localize "CHAT.DAMAGE_HEADER"}}</strong></p>
             <div class="dice-roll-render">
                 {{{damage.damageRender}}}
             </div>
+            {{#if damage.accurateRender}}
+                <p><strong>{{localize "CHAT.ACCURATE_HEADER"}}</strong></p>
+                <div class="dice-roll-render">
+                    {{{damage.accurateRender}}}
+                </div>
+            {{/if}}
         {{/each}}
     </div>
 </div>

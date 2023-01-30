@@ -3,25 +3,6 @@
   "ACTOR.TypeAcolyte" : "Acolyte",
   "ACTOR.TypeNpc" : "NPC",
 
-  "ITEM.TypeAmmunition" : "Ammunition",
-  "ITEM.TypeAptitude" : "Aptitude",
-  "ITEM.TypeArmour" : "Armour",
-  "ITEM.TypeCriticalinjury" : "Critical Injury",
-  "ITEM.TypeCybernetic" : "Cybernetic",
-  "ITEM.TypeDrug" : "Drug",
-  "ITEM.TypeForcefield" : "Force Field",
-  "ITEM.TypeGear" : "Gear",
-  "ITEM.TypeMalignancy" : "Malignancy",
-  "ITEM.TypeMentaldisorder" : "Mental Disorder",
-  "ITEM.TypeMutation" : "Mutation",
-  "ITEM.TypePsychicpower" : "Psychic Power",
-  "ITEM.TypeSpecialability" : "Special Ability",
-  "ITEM.TypeTalent" : "Talent",
-  "ITEM.TypeTool" : "Tool",
-  "ITEM.TypeTrait" : "Trait",
-  "ITEM.TypeWeapon" : "Weapon",
-  "ITEM.TypeWeaponmodification" : "Weapon Modification",
-
   "ADVANCE.NONE": "None",
   "ADVANCE.UNTRAINED": "Untrained",
   "ADVANCE.SIMPLE": "Simple",
@@ -33,6 +14,10 @@
   "ADVANCE.VETERAN": "Veteran",
 
   "APTITUDE.NAME": "Name",
+
+  "AIMING.NONE" : "None",
+  "AIMING.HALF" : "Half",
+  "AIMING.FULL" : "Full",
 
   "AMMUNITION.HEADER": "Ammunition",
   "AMMUNITION.NAME": "Name",
@@ -61,6 +46,7 @@
   "ARMOUR.TYPE": "Type",
   "ARMOUR.CRAFTSMANSHIP": "Craftsmanship",
   "ARMOUR.AVAILABILITY": "Availability",
+  "ARMOUR.IS_ADDITIVE": "Additive to other Armour",
 
   "ARMOUR_TYPE.BASIC": "Basic",
   "ARMOUR_TYPE.FLAK": "Flak",
@@ -152,6 +138,11 @@
   "CHAT.HAS_PSYCHIC_PHENOMENA": "You must roll on the Psychic Phenomena table !",
   "CHAT.HAS_PSYCHIC_PHENOMENA_WITH_WARPCONDUIT": "You must roll on the Psychic Phenomena table at +30 !",
   "CHAT.CONTEXT.APPLY_DAMAGE": "Apply Damage",
+  "CHAT.CONTEXT.REROLL" : "Roll again with Fate",
+  "CHAT.ACCURATE_HEADER": "Accurate Damage",
+  "CHAT.DAMAGE_HEADER": "Damage Roll",
+  "CHAT.REROLL" : "Fate Reroll",
+  "CHAT.AIMING" : "Aiming",
 
   "CORRUPTION.HEADER": "Corruption",
   "CORRUPTION.MALIGNANCY": "Malignancy",
@@ -195,6 +186,7 @@
   "DIALOG.RANGE": "Range",
   "DIALOG.ATTACK_TYPE": "Attack Type",
   "DIALOG.WARPCONDUIT": "Warp Conduit",
+  "DIALOG.AIM": "Aiming",
 
   "DRUG.HEADER": "Drug",
   "DRUG.NAME": "Name",
@@ -237,6 +229,25 @@
 
   "INSANITY.MENTAL_DISORDER": "Mental Disorder",
 
+  "ITEM.TypeAmmunition" : "Ammunition",
+  "ITEM.TypeAptitude" : "Aptitude",
+  "ITEM.TypeArmour" : "Armour",
+  "ITEM.TypeCriticalinjury" : "Critical Injury",
+  "ITEM.TypeCybernetic" : "Cybernetic",
+  "ITEM.TypeDrug" : "Drug",
+  "ITEM.TypeForcefield" : "Force Field",
+  "ITEM.TypeGear" : "Gear",
+  "ITEM.TypeMalignancy" : "Malignancy",
+  "ITEM.TypeMentaldisorder" : "Mental Disorder",
+  "ITEM.TypeMutation" : "Mutation",
+  "ITEM.TypePsychicpower" : "Psychic Power",
+  "ITEM.TypeSpecialability" : "Special Ability",
+  "ITEM.TypeTalent" : "Talent",
+  "ITEM.TypeTool" : "Tool",
+  "ITEM.TypeTrait" : "Trait",
+  "ITEM.TypeWeapon" : "Weapon",
+  "ITEM.TypeWeaponmodification" : "Weapon Modification",
+
   "MALIGNANCY.NAME": "Name",
 
   "MENTAL_DISORDER.NAME": "Name",
@@ -251,6 +262,8 @@
   "NPC_TYPE.TROOP": "Troop",
   "NPC_TYPE.MASTER": "Master",
   "NPC_TYPE.ELITE": "Elite",
+
+  "NOTIFICATION.MACRO_ITEM_NOT_FOUND": "Couldn't find the Item. You may not have a Token selected or the Actor doesn't posses the item",
 
   "PSYCHIC_POWER.NAME": "Name",
   "PSYCHIC_POWER.COST": "Cost",

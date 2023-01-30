@@ -400,6 +400,11 @@
                 "label": "Xenos Tactica",
                 "advance": -20,
                 "cost": 0
+              },
+              "webway": {
+                "label": "Webway",
+                "advance": -20,
+                "cost": 0
               }
             }
           },
@@ -557,6 +562,11 @@
               },
               "warp": {
                 "label": "Warp",
+                "advance": -20,
+                "cost": 0
+              },
+              "webway": {
+                "label": "Webway",
                 "advance": -20,
                 "cost": 0
               }
@@ -1030,6 +1040,7 @@
     "armour": {
       "templates": [ "equipment" ],
       "type": "basic",
+      "isAdditive": false,
       "part": {
         "head": 0,
         "leftArm": 0,

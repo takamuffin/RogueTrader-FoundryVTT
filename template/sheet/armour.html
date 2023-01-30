@@ -35,6 +35,10 @@
                             {{/select}}
                         </select>
                     </div>
+                    <div class="stat part">
+					              <label>{{localize "ARMOUR.IS_ADDITIVE"}}</label>
+						            <input name="system.isAdditive" type="checkbox" {{checked system.isAdditive}} />
+                    </div>
                     <div class="stat max-agility">
                         <label>{{localize "ARMOUR.MAX_AGILITY"}}</label>
                         <input name="system.maxAgility" type="number" value="{{system.maxAgility}}" data-dtype="Number" />
@@ -109,7 +113,7 @@
             <div class="notes-editor border">
                 <h1>{{localize "TITLE.NOTES"}}</h1>
                 <div style="height: 132px; width: 100%">
-                    {{editor enrichment.system.description target="system.description" engine="prosemirror"  button=true owner=owner editable=editable}}
+                    {{editor enrichment.system.description target="system.description" engine="prosemirror" button=true owner=owner editable=editable}}
                 </div>
             </div>
         </div>
