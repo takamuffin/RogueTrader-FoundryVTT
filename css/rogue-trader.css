@@ -117,7 +117,7 @@ li.folder > .folder-header h3 > i {
 /* SIDEBAR BACKGROUND & TEXT COLOR */
 #sidebar,
 .sidebar-popout {
-    background: url('../asset/image/heresy2.jpg') repeat;
+    background: url('../asset/image/background.jpg') repeat;
     background-position: center;
 }
 #sidebar,
