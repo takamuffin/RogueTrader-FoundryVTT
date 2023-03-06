@@ -1,0 +1,79 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="spaceship">
+        <div class="header border">
+            <div class="flex row">
+                <div class="avatar">
+                    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+                </div>
+                <div class="flex column grow">
+                    <div class="name header-row">
+                        <label>{{localize "BIO.NAME"}}</label>
+                        <input name="name" type="text" value="{{actor.name}}" />
+                    </div>
+                    <div class="header-row">
+                        <div class="ship-class">
+                            <label>{{localize "BIO.SHIP_CLASS"}}</label>
+                            <input name="system.bio.shipClass" type="text" value="{{system.bio.shipClass}}" />
+                        </div>
+                        <div class="ship-space">
+                            <label>{{localize "BIO.SHIP_SPACE"}}</label>
+                            <input style="margin-left: 20px" name="system.shipSpace.value" type="number" value="{{system.shipSpace.value}}" data-dtype="Number" />
+                            /
+                            <input name="system.shipSpace.max" type="number" value="{{system.shipSpace.max}}" data-dtype="Number" />
+                        </div>
+                        <div class="ship-crew">
+                            <label>{{localize "BIO.SHIP_CREW"}}</label>
+                            <input style="margin-left: 20px" name="system.shipCrew.value" type="number" value="{{system.shipCrew.value}}" data-dtype="Number" />
+                            /
+                            <input name="system.shipCrew.max" type="number" value="{{system.shipCrew.max}}" data-dtype="Number" />
+                        </div>
+                    </div>
+                    <div class="header-row">
+                        <div class="ship-hull-type">
+                            <label>{{localize "BIO.SHIP_HULL_TYPE"}}</label>
+                            <input name="system.bio.shipHullType" type="text" value="{{system.bio.shipHullType}}" />
+                        </div>
+                        <div class="ship-crew-rate">
+                            <label>{{localize "BIO.SHIP_CREW_RATE"}}</label>
+                            <input name="system.bio.shipCrewRate" type="text" value="{{system.bio.shipCrewRate}}" />
+                        </div>
+                        <div class="ship-energy">
+                            <label>{{localize "BIO.SHIP_ENERGY"}}</label>
+                            <input name="system.shipEnergy.value" type="number" value="{{system.shipEnergy.value}}" data-dtype="Number" />
+                            /
+                            <input name="system.shipEnergy.max" type="number" value="{{system.shipEnergy.max}}" data-dtype="Number" />
+                        </div>
+                        <div class="ship-morale">
+                            <label>{{localize "BIO.SHIP_MORALE"}}</label>
+                            <input name="system.shipMorale.value" type="number" value="{{system.shipMorale.value}}" data-dtype="Number" />
+                            /
+                            <input name="system.shipMorale.max" type="number" value="{{system.shipMorale.max}}" data-dtype="Number" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-tabs tabs flex row" data-group="primary">
+            <b class="item" data-tab="ship-systems">{{localize "TAB.SYSTEMS"}}</b>
+            <b class="item" data-tab="ship-combat">{{localize "TAB.COMBAT"}}</b>
+            <b class="item" data-tab="ship-abilities">{{localize "TAB.ABILITIES"}}</b>
+            <b class="item" data-tab="ship-notes">{{localize "TAB.NOTES"}}</b>
+        </div>
+
+        <div class="sheet-body">
+            <div class="tab" data-group="primary" data-tab="ship-systems">
+                {{> systems/rogue-trader/template/sheet/actor/tab/spaceship-systems.html}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="ship-combat">
+                {{> systems/rogue-trader/template/sheet/actor/tab/spaceship-combat.html}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="ship-abilities">
+                {{> systems/rogue-trader/template/sheet/actor/tab/spaceship-abilities.html}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="ship-notes">
+                {{> systems/rogue-trader/template/sheet/actor/tab/npc-notes.html}}
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,273 @@
+<div class="flex wrap spaceship-combat">
+    <div class="wounds border">
+        <h1>{{localize "TITLE.SHIELDS"}}</h1>
+        <div class="information">
+            <label>{{localize "SHIELDS.SHIELD1"}}</label>
+            <input name="system.shipShields.shieldOneCur" type="number" value="{{system.shipShields.shieldOneCur}}"
+                   data-dtype="Number"/>
+            <label style="flex-basis: 5%">/</label>
+            <input name="system.shipShields.shieldOneMax" type="number" value="{{system.shipShields.shieldOneMax}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "SHIELDS.SHIELD2"}}</label>
+            <input name="system.shipShields.shieldTwoCur" type="number" value="{{system.shipShields.shieldTwoCur}}"
+                   data-dtype="Number"/>
+            <label style="flex-basis: 5%">/</label>
+            <input name="system.shipShields.shieldTwoMax" type="number" value="{{system.shipShields.shieldTwoMax}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "SHIELDS.SHIELD3"}}</label>
+            <input name="system.shipShields.shieldThreeCur" type="number" value="{{system.shipShields.shieldThreeCur}}"
+                   data-dtype="Number"/>
+            <label style="flex-basis: 5%">/</label>
+            <input name="system.shipShields.shieldThreeMax" type="number" value="{{system.shipShields.shieldThreeMax}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "SHIELDS.SHIELD4"}}</label>
+            <input name="system.shipShields.shieldFourCur" type="number" value="{{system.shipShields.shieldFourCur}}"
+                   data-dtype="Number"/>
+            <label style="flex-basis: 5%">/</label>
+            <input name="system.shipShields.shieldFourMax" type="number" value="{{system.shipShields.shieldFourMax}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "SHIELDS.SHIELD5"}}</label>
+            <input name="system.shipShields.shieldFiveCur" type="number" value="{{system.shipShields.shieldFiveCur}}"
+                   data-dtype="Number"/>
+            <label style="flex-basis: 5%">/</label>
+            <input name="system.shipShields.shieldFiveMax" type="number" value="{{system.shipShields.shieldFiveMax}}"
+                   data-dtype="Number"/>
+        </div>
+        <h1 style="margin-top: 5px">{{localize "TITLE.ENERGY"}}</h1>
+        <div class="energy">
+            <label>{{localize "ENERGY.CURRENT"}}</label>
+            <label>{{localize "ENERGY.MAX"}}</label>
+            <label>{{localize "ENERGY.GENERATION"}}</label>
+        </div>
+        <div class="energy">
+            <input name="system.shipCharge.cur" type="number" value="{{system.shipCharge.cur}}"
+                   data-dtype="Number"/>
+            <input name="system.shipCharge.max" type="number" value="{{system.shipCharge.max}}"
+                   data-dtype="Number"/>
+            <input name="system.shipCharge.gen" type="number" value="{{system.shipCharge.gen}}"
+                   data-dtype="Number"/>
+        </div>
+    </div>
+    <div class="armour border">
+        <h1>{{localize "TITLE.ARMOUR"}}</h1>
+        <div class="armour-row">
+            <div class="part">
+                <div class="name">{{localize "SHIP_ARMOUR.PROW"}}</div>
+                <div class="information">
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
+                        <input name="system.shipArmor.prowAPCur" type="number" value="{{system.shipArmor.prowAPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.prowAPMax" type="number" value="{{system.shipArmor.prowAPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
+                        <input name="system.shipArmor.prowSPCur" type="number" value="{{system.shipArmor.prowSPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.prowSPMax" type="number" value="{{system.shipArmor.prowSPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="armour-row">
+            <div class="part">
+                <div class="name">{{localize "SHIP_ARMOUR.PORT"}}</div>
+                <div class="information">
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
+                        <input name="system.shipArmor.portAPCur" type="number" value="{{system.shipArmor.portAPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.portAPMax" type="number" value="{{system.shipArmor.portAPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
+                        <input name="system.shipArmor.portSPCur" type="number" value="{{system.shipArmor.portSPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.portSPMax" type="number" value="{{system.shipArmor.portSPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+            <div class="part">
+                <div class="information">
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
+                        <input name="system.shipArmor.stbdAPCur" type="number" value="{{system.shipArmor.stbdAPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.stbdAPMax" type="number" value="{{system.shipArmor.stbdAPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
+                        <input name="system.shipArmor.stbdSPCur" type="number" value="{{system.shipArmor.stbdSPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.stbdSPMax" type="number" value="{{system.shipArmor.stbdSPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="name">{{localize "SHIP_ARMOUR.STARBOARD"}}</div>
+            </div>
+        </div>
+        <div class="armour-row">
+            <div class="part">
+                <div class="name">{{localize "SHIP_ARMOUR.MAIN"}}</div>
+                <div class="information">
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
+                        <input name="system.shipArmor.mainAPCur" type="number" value="{{system.shipArmor.mainAPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.mainAPMax" type="number" value="{{system.shipArmor.mainAPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
+                        <input name="system.shipArmor.mainSPCur" type="number" value="{{system.shipArmor.mainSPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.mainSPMax" type="number" value="{{system.shipArmor.mainSPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+            <div class="part">
+                <div class="information">
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
+                        <input name="system.shipArmor.bridgeAPCur" type="number"
+                               value="{{system.shipArmor.bridgeAPCur}}" data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.bridgeAPMax" type="number"
+                               value="{{system.shipArmor.bridgeAPMax}}" data-dtype="Number"/>
+                    </div>
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
+                        <input name="system.shipArmor.bridgeSPCur" type="number"
+                               value="{{system.shipArmor.bridgeSPCur}}" data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.bridgeSPMax" type="number"
+                               value="{{system.shipArmor.bridgeSPMax}}" data-dtype="Number"/>
+                    </div>
+                </div>
+                <div class="name">{{localize "SHIP_ARMOUR.BRIDGE"}}</div>
+            </div>
+        </div>
+        <div class="armour-row">
+            <div class="part">
+                <div class="name">{{localize "SHIP_ARMOUR.AFT"}}</div>
+                <div class="information">
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
+                        <input name="system.shipArmor.aftAPCur" type="number" value="{{system.shipArmor.aftAPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.aftAPMax" type="number" value="{{system.shipArmor.aftAPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                    <div class="armour-row">
+                        <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
+                        <input name="system.shipArmor.aftSPCur" type="number" value="{{system.shipArmor.aftSPCur}}"
+                               data-dtype="Number"/>
+                        <label>/</label>
+                        <input name="system.shipArmor.aftSPMax" type="number" value="{{system.shipArmor.aftSPMax}}"
+                               data-dtype="Number"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="movement border">
+        <h1>{{localize "TITLE.MOVEMENT"}}</h1>
+        <div class="information">
+            <label>{{localize "SHIP_MOVEMENT.SPEED_NORMAL"}}</label>
+            <input name="system.shipMovement.speedNormal" type="number" value="{{system.shipMovement.speedNormal}}" data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "SHIP_MOVEMENT.SPEED_MAX"}}</label>
+            <input name="system.shipMovement.speedMax" type="number" value="{{system.shipMovement.speedMax}}" data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "SHIP_MOVEMENT.MANEUVER_NORMAL"}}</label>
+            <input name="system.shipMovement.maneuverNormal" type="number" value="{{system.shipMovement.maneuverNormal}}" data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "SHIP_MOVEMENT.MANEUVER_MAX"}}</label>
+            <input name="system.shipMovement.maneuverMax" type="number" value="{{system.shipMovement.maneuverMax}}" data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "SHIP_MOVEMENT.MANEUVER_BONUS"}}</label>
+            <input name="system.shipMovement.maneuverBonus" type="number" value="{{system.shipMovement.maneuverBonus}}" data-dtype="Number"/>
+        </div>
+        <h1 style="margin-top: 5px">{{localize "TITLE.OTHER"}}</h1>
+        <div class="information initiative">
+            <label>{{localize "INITIATIVE"}}</label>
+            <input name="system.initiative.base" type="text" value="{{system.initiative.base}}"/>
+            +
+            <input type="number" value="{{system.detection.bonus}}" data-dtype="Number" disabled />
+        </div>
+        <div class="information">
+            <label>{{localize "DETECTION"}}</label>
+            <input name="system.detection.modifier" type="number" value="{{system.detection.modifier}}" data-dtype="Number"/>
+        </div>
+    </div>
+    <div class="weapons border">
+        <h1>{{localize "TITLE.WEAPONS"}}</h1>
+        <div class="item-list">
+            <div class="flex header">
+                <b class="ship-weapon-roll">{{localize "SHIP_WEAPON.ROLL"}}</b>
+                <b class="ship-weapon-name">{{localize "SHIP_WEAPON.NAME"}}</b>
+                <b class="ship-weapon-class">{{localize "SHIP_WEAPON.CLASS"}}</b>
+                <b class="ship-weapon-size">{{localize "SHIP_WEAPON.SIZE"}}</b>
+                <b class="ship-weapon-energy">{{localize "SHIP_WEAPON.ENERGY"}}</b>
+                <b class="ship-weapon-range">{{localize "SHIP_WEAPON.RANGE"}}</b>
+                <b class="ship-weapon-strength">{{localize "SHIP_WEAPON.STRENGTH"}}</b>
+                <b class="ship-weapon-damage">{{localize "SHIP_WEAPON.DAMAGE"}}</b>
+                <b class="ship-weapon-arc">{{localize "SHIP_WEAPON.ARC"}}</b>
+                <b class="ship-weapon-special">{{localize "SHIP_WEAPON.SPECIAL"}}</b>
+                <a class="button item-create" title="Add Weapon" data-type="shipWeapon"><i class="fas fa-plus"></i></a>
+            </div>
+            <div class="items">
+                {{#each items.shipWeapons as |item|}}
+                <div class="weapon item flex row" data-item-id="{{item.id}}">
+                    <div class="flex ship-weapon-roll">
+<!--                        <img src="icons/svg/fire.svg"/>-->
+                        <button class="roll-ship-weapon" type="button"><img src="icons/svg/fire.svg"/>
+                        </button>
+                    </div>
+                    <div class="flex ship-weapon-name item-edit">
+                        <div>{{item.name}}</div>
+                    </div>
+                    <div class="ship-weapon-class">{{item.ShipWeaponClass}}</div>
+                    <div class="ship-weapon-size">{{item.shipWeaponSize}}</div>
+                    <div class="ship-weapon-energy">{{item.shipWeaponEnergy}}</div>
+                    <div class="ship-weapon-range">{{item.ShipWeaponRange}}</div>
+                    <div class="ship-weapon-strength">{{item.shipWeaponStrength}}</div>
+                    <div class="ship-weapon-damage">{{item.shipWeaponDamage}}</div>
+                    <div class="ship-weapon-arc">{{item.shipWeaponArc}}</div>
+                    <div class="ship-weapon-special">{{item.special}}</div>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete Weapon"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

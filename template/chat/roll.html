@@ -56,7 +56,7 @@
         {{#each damages as |damage|}}
             <h3 class="separator damage-location" data-location={{location}}>{{localize location}}</h3>
             <div>
-                <p><strong>{{localize "CHAT.DAMAGE"}}:</strong> <span class="damage-total">{{damage.total}}</span> 
+                <p><strong>{{localize "CHAT.DAMAGE"}}:</strong> <span class="damage-total">{{damage.total}}</span>
                    <strong class="damage-type">{{damageTypeShort ../damageType}}</strong>
                 </p>
             </div>
@@ -66,7 +66,7 @@
             {{/if}}
         {{/each}}
     </div>
-    
+
     <div class="dice-rolls" style="display:none">
         {{# unless weaponTraits.skipAttackRoll}}
             <div class="dice-roll-render">

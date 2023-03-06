@@ -25,54 +25,59 @@ export class DarkHeresyActor extends Actor {
     this._computeExperience();
     this._computeArmour();
     this._computeMovement();
+    this._computeDetection();
   }
 
   _computeCharacteristics() {
-    let middle = Object.values(this.characteristics).length / 2;
-    let i = 0;
-    for (let characteristic of Object.values(this.characteristics)) {
-      characteristic.total = characteristic.base + characteristic.advance;
-      characteristic.bonus = Math.floor(characteristic.total / 10) + characteristic.unnatural;
-      if (this.fatigue.value > characteristic.bonus) {
-        characteristic.total = Math.ceil(characteristic.total / 2);
+    if (this.characteristics) {
+      let middle = Object.values(this.characteristics).length / 2;
+      let i = 0;
+      for (let characteristic of Object.values(this.characteristics)) {
+        characteristic.total = characteristic.base + characteristic.advance;
         characteristic.bonus = Math.floor(characteristic.total / 10) + characteristic.unnatural;
+        if (this.fatigue.value > characteristic.bonus) {
+          characteristic.total = Math.ceil(characteristic.total / 2);
+          characteristic.bonus = Math.floor(characteristic.total / 10) + characteristic.unnatural;
+        }
+        characteristic.isLeft = i < middle;
+        characteristic.isRight = i >= middle;
+        characteristic.advanceCharacteristic = this._getAdvanceCharacteristic(characteristic.advance);
+        i++;
       }
-      characteristic.isLeft = i < middle;
-      characteristic.isRight = i >= middle;
-      characteristic.advanceCharacteristic = this._getAdvanceCharacteristic(characteristic.advance);
-      i++;
+      this.system.insanityBonus = Math.floor(this.insanity / 10);
+      this.system.corruptionBonus = Math.floor(this.corruption / 10);
+      this.psy.currentRating = this.psy.rating - this.psy.sustained;
+      this.initiative.bonus = this.characteristics[this.initiative.characteristic].bonus;
+      // Done as variables to make it easier to read & understand
+      let tb = Math.floor(
+          (this.characteristics.toughness.base
+              + this.characteristics.toughness.advance) / 10);
+
+      let wb = Math.floor(
+          (this.characteristics.willpower.base
+              + this.characteristics.willpower.advance) / 10);
+
+      // The only thing not affected by itself
+      this.fatigue.max = tb + wb;
     }
-    this.system.insanityBonus = Math.floor(this.insanity / 10);
-    this.system.corruptionBonus = Math.floor(this.corruption / 10);
-    this.psy.currentRating = this.psy.rating - this.psy.sustained;
-    this.initiative.bonus = this.characteristics[this.initiative.characteristic].bonus;
-    // Done as variables to make it easier to read & understand
-    let tb = Math.floor(
-      ( this.characteristics.toughness.base
-            + this.characteristics.toughness.advance) / 10);
-
-    let wb = Math.floor(
-      ( this.characteristics.willpower.base
-            + this.characteristics.willpower.advance) / 10);
-
-    // The only thing not affected by itself
-    this.fatigue.max = tb + wb;
 
   }
 
   _computeSkills() {
-    for (let skill of Object.values(this.skills)) {
-      let short = skill.characteristics[0];
-      let characteristic = this._findCharacteristic(short);
-      let modSkill = parseInt(skill.modifier, 10);
-      skill.total = characteristic.total + skill.advance + modSkill;
-      skill.advanceSkill = this._getAdvanceSkill(skill.advance);
-      if (skill.isSpecialist) {
-        for (let speciality of Object.values(skill.specialities)) {
-          let specSkill = parseInt(speciality.modifier, 10)
-          speciality.total = characteristic.total + speciality.advance + specSkill;
-          speciality.isKnown = speciality.advance >= 0;
-          speciality.advanceSpec = this._getAdvanceSkill(speciality.advance);
+    if (this.skills) {
+      for (let skill of Object.values(this.skills)) {
+        let short = skill.characteristics[0];
+        let characteristic = this._findCharacteristic(short);
+        let modSkill = parseInt(skill.modifier, 10);
+        skill.total = characteristic.total + skill.advance + modSkill;
+        skill.advanceSkill = this._getAdvanceSkill(skill.advance);
+        if (skill.isSpecialist) {
+          for (let speciality of Object.values(skill.specialities)) {
+            let specSkill = parseInt(speciality.modifier, 10)
+            speciality.total = characteristic.total + speciality.advance + specSkill;
+            speciality.isKnown = speciality.advance >= 0;
+            speciality.advanceSpec = this._getAdvanceSkill(speciality.advance);
+          }
         }
       }
     }
@@ -90,34 +95,36 @@ export class DarkHeresyActor extends Actor {
   }
 
   _computeExperience() {
-    this.experience.spentCharacteristics = 0;
-    this.experience.spentSkills = 0;
-    this.experience.spentTalents = 0;
-    this.experience.spentPsychicPowers = this.psy.cost;
-    for (let characteristic of Object.values(this.characteristics)) {
-      this.experience.spentCharacteristics += parseInt(characteristic.cost, 10);
-    }
-    for (let skill of Object.values(this.skills)) {
-      if (skill.isSpecialist) {
-        for (let speciality of Object.values(skill.specialities)) {
-          this.experience.spentSkills += parseInt(speciality.cost, 10);
+    if (this.experience) {
+      this.experience.spentCharacteristics = 0;
+      this.experience.spentSkills = 0;
+      this.experience.spentTalents = 0;
+      this.experience.spentPsychicPowers = this.psy.cost;
+      for (let characteristic of Object.values(this.characteristics)) {
+        this.experience.spentCharacteristics += parseInt(characteristic.cost, 10);
+      }
+      for (let skill of Object.values(this.skills)) {
+        if (skill.isSpecialist) {
+          for (let speciality of Object.values(skill.specialities)) {
+            this.experience.spentSkills += parseInt(speciality.cost, 10);
+          }
+        } else {
+          this.experience.spentSkills += parseInt(skill.cost, 10);
         }
-      } else {
-        this.experience.spentSkills += parseInt(skill.cost, 10);
       }
-    }
-    for (let item of this.items) {
-      if (item.isTalent) {
-        this.experience.spentTalents += parseInt(item.cost, 10);
-      } else if (item.isPsychicPower) {
-        this.experience.spentPsychicPowers += parseInt(item.cost, 10);
+      for (let item of this.items) {
+        if (item.isTalent) {
+          this.experience.spentTalents += parseInt(item.cost, 10);
+        } else if (item.isPsychicPower) {
+          this.experience.spentPsychicPowers += parseInt(item.cost, 10);
+        }
       }
+      this.experience.totalSpent = this.experience.spentCharacteristics
+          + this.experience.spentSkills
+          + this.experience.spentTalents
+          + this.experience.spentPsychicPowers;
+      this.experience.remaining = this.experience.value - this.experience.totalSpent;
     }
-    this.experience.totalSpent = this.experience.spentCharacteristics
-      + this.experience.spentSkills
-      + this.experience.spentTalents
-      + this.experience.spentPsychicPowers;
-    this.experience.remaining = this.experience.value - this.experience.totalSpent;
   }
 
   _computeArmour() {
@@ -179,15 +186,24 @@ export class DarkHeresyActor extends Actor {
   }
 
   _computeMovement() {
-    let agility = this.characteristics.agility;
-    let size = this.size;
-    let moveBonus = this.moveBonus;
-    this.system.movement = {
-      half: agility.bonus + size - 4 + moveBonus,
-      full: (agility.bonus + size - 4 + moveBonus) * 2,
-      charge: (agility.bonus  + size - 4 + moveBonus) * 3,
-      run: (agility.bonus + size - 4 + moveBonus) * 6
-    };
+    if (this.characteristics) {
+      let agility = this.characteristics.agility;
+      let size = this.size;
+      let moveBonus = this.moveBonus;
+      this.system.movement = {
+        half: agility.bonus + size - 4 + moveBonus,
+        full: (agility.bonus + size - 4 + moveBonus) * 2,
+        charge: (agility.bonus + size - 4 + moveBonus) * 3,
+        run: (agility.bonus + size - 4 + moveBonus) * 6
+      };
+    }
+  }
+
+  _computeDetection(){
+    if (this.detection) {
+      let detection = this.detection.modifier;
+      this.detection.bonus = detection / 10;
+    }
   }
 
   _findCharacteristic(short) {
@@ -505,4 +521,6 @@ export class DarkHeresyActor extends Actor {
   get movement() {return this.system.movement;}
 
   get moveBonus() {return this.system.moveBonus;}
+
+  get detection() {return this.system.detection;}
 }

@@ -112,6 +112,27 @@
         <p><strong>{{localize "HEADER.DESCRIPTION"}}:</strong> {{{item.description}}}</p>
         {{/if}}
 
+        {{#if item.isSystemAbility}}
+        <p><strong>{{localize "HEADER.DESCRIPTION"}}:</strong> {{{item.description}}}</p>
+        {{/if}}
+
+        {{#if item.isShipSystem}}
+        <p><strong>{{localize "HEADER.DESCRIPTION"}}:</strong> {{{item.description}}}</p>
+        {{/if}}
+
+        {{#if item.isShipWeapon}}
+        <p><strong>{{localize "SHIP_WEAPON.CLASS"}}:</strong> {{item.ShipWeaponClass}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.SIZE"}}:</strong> {{item.shipWeaponSize}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.ENERGY"}}:</strong> {{item.shipWeaponEnergy}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.RANGE_FULL"}}:</strong> {{item.ShipWeaponRange}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.STRENGTH"}}:</strong> {{item.shipWeaponStrength}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.DAMAGE"}}:</strong> {{item.shipWeaponDamage}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.ARC"}}:</strong> {{item.shipWeaponArc}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.SPECIAL"}}:</strong> {{item.special}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.DESCRIPTION"}}:</strong> {{{item.description}}}</p>
+        <p><strong>{{localize "SHIP_WEAPON.CRAFTSMANSHIP"}}:</strong> {{item.Craftsmanship}}</p>
+        {{/if}}
+
         {{#if item.isWeapon}}
         <p><strong>{{localize "WEAPON.CLASS"}}:</strong> {{item.WeaponClass}}</p>
         <p><strong>{{localize "WEAPON.RANGE"}}:</strong> {{item.range}}</p>

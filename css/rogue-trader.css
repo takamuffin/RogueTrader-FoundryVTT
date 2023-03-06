@@ -441,6 +441,28 @@ li.folder.collapsed > .folder-header {
 .rogue-trader.trait .stats .stats-row .stat.benefit input {
     width: 428px;
 }
+.rogue-trader.system .notes-editor {
+    height: 165px;
+    max-height: 165px;
+}
+.rogue-trader.system .stats {
+    height: 165px;
+    align-content: baseline;
+}
+.rogue-trader.system .stats .stats-row .stat.benefit input {
+    width: 31em;
+}
+.rogue-trader.system-ability .notes-editor {
+    height: 165px;
+    max-height: 165px;
+}
+.rogue-trader.system-ability .stats {
+    height: 165px;
+    align-content: baseline;
+}
+.rogue-trader.system-ability .stats .stats-row .stat.benefit input {
+    width: 31em;
+}
 .rogue-trader.special-ability .notes-editor {
     height: 165px;
     max-height: 165px;
@@ -576,6 +598,48 @@ li.folder.collapsed > .folder-header {
     text-align: center;
 }
 .rogue-trader.weapon .stats .stats-row .stat.special input {
+    width: 29em;
+}
+.rogue-trader.ship-weapon .notes-editor {
+    height: 165px;
+    max-height: 165px;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.class select {
+    width: 5em;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.size select {
+    width: 4em;
+    text-align: center;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.energy input {
+    width: 4em;
+    text-align: center;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.range input {
+    width: 2em;
+    text-align: center;
+    margin: 0 2px;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.arc input {
+    width: 6em;
+    text-align: center;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.strength input {
+    width: 5em;
+    text-align: center;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.damage select {
+    width: 5em;
+    text-align: center;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.craftsmanship select {
+    width: 8em;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.attack input {
+    width: 2em;
+    text-align: center;
+}
+.rogue-trader.ship-weapon .stats .stats-row .stat.special input {
     width: 29em;
 }
 .rogue-trader.armour .notes-editor {
@@ -992,6 +1056,30 @@ li.folder.collapsed > .folder-header {
 }
 .rogue-trader .acolyte .header .fate input,
 .rogue-trader .acolyte .header .fatigue input {
+    width: 2em;
+    margin: 0 5px;
+}
+.rogue-trader .spaceship {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.rogue-trader .spaceship .header .ship-class,
+.rogue-trader .spaceship .header .ship-hull-type {
+    flex-basis: 40%;
+}
+.rogue-trader .spaceship .header .ship-class input{
+    width: 11em;
+}
+.rogue-trader .spaceship .header .ship-hull-type input{
+    width: 9em;
+}
+.rogue-trader .spaceship .header .ship-space input,
+.rogue-trader .spaceship .header .ship-crew input,
+.rogue-trader .spaceship .header .ship-crew-rate input,
+.rogue-trader .spaceship .header .ship-energy input,
+.rogue-trader .spaceship .header .ship-morale input {
     width: 2em;
     margin: 0 5px;
 }
@@ -1437,6 +1525,176 @@ li.folder.collapsed > .folder-header {
     max-height: 100px;
     height: 100px;
 }
+.rogue-trader .spaceship-combat .wounds {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 30%;
+}
+.rogue-trader .spaceship-combat .wounds .information {
+    display: flex;
+    margin-top: 5px;
+}
+.rogue-trader .spaceship-combat .wounds .information label {
+    flex-basis: 25%;
+}
+.rogue-trader .spaceship-combat .wounds .information input {
+    flex-basis: 35%;
+}
+.rogue-trader .spaceship-combat .wounds .energy {
+    display: flex;
+    margin-top: 5px;
+}
+.rogue-trader .spaceship-combat .wounds .energy label{
+    flex-basis: 33%;
+    flex-shrink: 1;
+}
+.rogue-trader .spaceship-combat .wounds .energy input{
+    flex-basis: 33%;
+    margin: 3px;
+}
+.rogue-trader .spaceship-combat .armour {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: calc(45% - 4px);
+    align-items: center;
+    margin: 0 2px;
+}
+.rogue-trader .spaceship-combat .armour .armour-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 0px;
+    flex-basis: 100%;
+}
+.rogue-trader .spaceship-combat .armour .armour-row .part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-basis: 50%;
+    justify-content: center;
+}
+.rogue-trader .spaceship-combat .armour .armour-row .part .name {
+    flex-basis: 18%;
+    font-size: 20px;
+    text-align: center;
+    font-family: var(--font-text);
+    font-weight: bold;
+    margin: 5px;
+}
+.rogue-trader .spaceship-combat .armour .armour-row .part .total {
+    font-size: 24px;
+    height: 50px;
+    width: 50px;
+    margin: 1px;
+}
+.rogue-trader .spaceship-combat .armour .armour-row .part .information {
+    display: flex;
+    flex-direction: column;
+}
+/*.rogue-trader .spaceship-combat .armour .armour-row .part .information input {*/
+/*    height: 24px;*/
+/*    width: 24px;*/
+/*    margin: 1px;*/
+/*    text-align: center;*/
+/*}*/
+.rogue-trader .spaceship-combat .armour .armour-row .part .information label {
+    flex-basis: 10%;
+    margin: 3px;
+}
+.rogue-trader .spaceship-combat .armour .armour-row .part .information input {
+    text-align: center;
+    flex-basis: 45%;
+}
+
+.rogue-trader .spaceship-combat .movement {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 25%;
+    justify-content: space-between;
+}
+.rogue-trader .spaceship-combat .movement .information {
+    display: flex;
+    margin-top: 5px;
+}
+.rogue-trader .spaceship-combat .movement .information label {
+    flex-basis: 75%;
+}
+.rogue-trader .spaceship-combat .movement .information input {
+    text-align: center;
+    flex-basis: 25%;
+}
+.rogue-trader .spaceship-combat .movement .information select {
+    flex-basis: 45%;
+}
+.rogue-trader .spaceship-combat .movement .information.initiative label {
+    flex-basis: 30%;
+}
+.rogue-trader .spaceship-combat .weapons {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 2px;
+    flex-basis: 100%;
+    height: 40vh;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-header {
+    margin-top: 5px;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-name {
+    flex-basis: 28%;
+    text-align: center;
+    align-items: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-class {
+    flex-basis: 8%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-size {
+    flex-basis: 5%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-energy {
+    flex-basis: 5%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-range {
+    flex-basis: 8%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-strength {
+    flex-basis: 6%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-damage {
+    flex-basis: 6%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-arc {
+    flex-basis: 6%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-special {
+    flex-basis: 20%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .ship-weapon-roll {
+    flex-basis: 5%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .button {
+    flex-basis: 3%;
+    text-align: center;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .items .weapon {
+    width: 100%;
+}
+.rogue-trader .spaceship-combat .weapons .item-list .items {
+    max-height: 34vh;
+    /*height: 100px;*/
+}
 .rogue-trader .combat .psychic-powers {
     display: flex;
     flex-direction: column;
@@ -1803,6 +2061,54 @@ li.folder.collapsed > .folder-header {
     align-items: center;
 }
 .rogue-trader .progression .talents .item-list .items .item input {
+    flex-basis: 28%;
+    margin: 1px 5px;
+}
+.rogue-trader .spaceship-systems .systems {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: calc(50% - 4px);
+    align-items: center;
+    margin: 0 2px;
+}
+.rogue-trader .spaceship-systems .systems .item-list .header {
+    margin-top: 5px;
+}
+.rogue-trader .spaceship-systems .systems .item-list .header .name {
+    flex-basis: 70%;
+}
+.rogue-trader .spaceship-systems .systems .item-list .header .check {
+    flex-basis: 5%;
+}
+.rogue-trader .spaceship-systems .systems .item-list .header .button {
+    flex-basis: 5%;
+}
+.rogue-trader .spaceship-systems .systems .item-list .items .talent {
+    width: 100%;
+}
+.rogue-trader .spaceship-systems .systems .item-list .items {
+    max-height: 160px;
+    height: 160px;
+}
+.rogue-trader .spaceship-systems .systems .item-list .items .item .talent-row {
+    flex-basis: 70%;
+    align-items: center;
+}
+.rogue-trader .spaceship-systems .systems .item-list .items .item .hp {
+    flex-direction: column;
+    align-items: center;
+}
+.rogue-trader .spaceship-systems .systems .item-list .items .item .hp .check {
+    width: 100%;
+}
+.rogue-trader .spaceship-systems .systems .item-list .items .item .check {
+    flex-basis: 5%;
+}
+.rogue-trader .spaceship-systems .systems .item-list .items .item .button {
+    flex-basis: 5%;
+}
+.rogue-trader .spaceship-systems .systems .item-list .items .item input {
     flex-basis: 28%;
     margin: 1px 5px;
 }

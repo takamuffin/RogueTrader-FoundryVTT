@@ -2,7 +2,8 @@
   "Actor": {
     "types": [
       "acolyte",
-      "npc"
+      "npc",
+      "spaceship"
     ],
     "templates": {
       "characteristics": {
@@ -1040,6 +1041,94 @@
           "value": 0
         }
       },
+      "shipShields": {
+        "shipShields": {
+          "shieldOneCur": 0,
+          "shieldOneMax": 0,
+          "shieldTwoCur": 0,
+          "shieldTwoMax": 0,
+          "shieldThreeCur": 0,
+          "shieldThreeMax": 0,
+          "shieldFourCur": 0,
+          "shieldFourMax": 0,
+          "shieldFiveCur": 0,
+          "shieldFiveMax": 0
+        }
+      },
+      "detection": {
+        "detection": {
+          "modifier": 0,
+          "bonus": 0
+        }
+      },
+      "shipArmor": {
+        "shipArmor": {
+          "prowAPCur": 0,
+          "prowAPMax": 0,
+          "prowSPCur": 0,
+          "prowSPMax": 0,
+          "portAPCur": 0,
+          "portAPMax": 0,
+          "portSPCur": 0,
+          "portSPMax": 0,
+          "stbdAPCur": 0,
+          "stbdAPMax": 0,
+          "stbdSPCur": 0,
+          "stbdSPMax": 0,
+          "mainAPCur": 0,
+          "mainAPMax": 0,
+          "mainSPCur": 0,
+          "mainSPMax": 0,
+          "bridgeAPCur": 0,
+          "bridgeAPMax": 0,
+          "bridgeSPCur": 0,
+          "bridgeSPMax": 0,
+          "aftAPCur": 0,
+          "aftAPMax": 0,
+          "aftSPCur": 0,
+          "aftSPMax": 0
+        }
+      },
+      "shipSpace": {
+        "shipSpace": {
+          "max": 0,
+          "value": 0
+        }
+      },
+      "shipCrew": {
+        "shipCrew": {
+          "max": 0,
+          "value": 0
+        }
+      },
+      "shipEnergy": {
+        "shipEnergy": {
+          "max": 0,
+          "value": 0
+        }
+      },
+      "shipCharge": {
+        "shipCharge": {
+          "cur": 0,
+          "max": 0,
+          "gen": 0
+        }
+      },
+      "shipMovement": {
+        "shipMovement": {
+          "speedNormal": 0,
+          "speedMax": 0,
+          "maneuverNormal": 0,
+          "maneuverMax": 0,
+          "maneuverBonus": 0
+        }
+      },
+      "shipMorale": {
+        "shipMorale": {
+          "max": 0,
+          "value": 0
+        }
+      },
       "psy": {
         "psy": {
           "rating": 0,
@@ -1084,6 +1173,32 @@
       "moveBonus": 0,
       "size": 4
     },
+    "spaceship": {
+      "templates": [
+        "characteristics",
+        "skills",
+        "wounds",
+        "fatigue",
+        "fate",
+        "psy",
+        "initiative",
+        "shipSpace",
+        "shipArmor",
+        "shipShields",
+        "shipCrew",
+        "shipCharge",
+        "shipMovement",
+        "shipEnergy",
+        "shipMorale",
+        "detection"
+      ],
+      "bio": {
+        "shipClass": "",
+        "shipHullType": "",
+        "shipCrewRate": 0,
+        "notes": ""
+      }
+    },
     "npc": {
       "templates": [
         "characteristics",
@@ -1121,9 +1236,12 @@
       "psychicPower",
       "specialAbility",
       "talent",
+      "systemAbility",
+      "shipSystem",
       "tool",
       "trait",
       "weapon",
+      "shipWeapon",
       "weaponModification"
     ],
     "templates": {
@@ -1139,7 +1257,9 @@
       }
     },
     "ammunition": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "quantity": 0,
       "effect": {
         "damage": {
@@ -1155,7 +1275,9 @@
       "weapon": ""
     },
     "armour": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "type": "basic",
       "isAdditive": false,
       "part": {
@@ -1169,38 +1291,56 @@
       "maxAgility": 0
     },
     "criticalInjury": {
-      "templates": ["itemDescription"],
+      "templates": [
+        "itemDescription"
+      ],
       "type": "impact",
       "part": "body"
     },
     "cybernetic": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "installed": false
     },
     "drug": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "shortDescription": ""
     },
     "forceField": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "protectionRating": 0,
       "overloadChance": 0
     },
     "gear": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "shortDescription": ""
     },
     "malignancy": {
-      "templates": ["itemDescription"]
+      "templates": [
+        "itemDescription"
+      ]
     },
     "mentalDisorder": {
-      "templates": ["itemDescription"]
+      "templates": [
+        "itemDescription"
+      ]
     },
     "mutation": {
-      "templates": ["itemDescription"]
+      "templates": [
+        "itemDescription"
+      ]
     },
     "psychicPower": {
-      "templates": ["itemDescription"],
+      "templates": [
+        "itemDescription"
+      ],
       "shortDescription": "",
       "cost": 0,
       "prerequisite": "",
@@ -1222,27 +1362,53 @@
       }
     },
     "specialAbility": {
-      "templates": ["itemDescription"],
+      "templates": [
+        "itemDescription"
+      ],
       "benefit": ""
     },
     "talent": {
-      "templates": ["itemDescription"],
+      "templates": [
+        "itemDescription"
+      ],
       "prerequisites": "",
       "aptitudes": "",
       "benefit": "",
       "tier": 0,
       "cost": 0
     },
+    "systemAbility": {
+      "templates": [
+        "itemDescription"
+      ],
+      "shortDescription": ""
+    },
+    "shipSystem": {
+      "templates": [
+        "itemDescription"
+      ],
+      "isOnFire" : false,
+      "isUnPowered" : false,
+      "isDepressurised" : false,
+      "isDamaged" : false,
+      "isDestroyed" : false
+    },
     "tool": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "shortDescription": ""
     },
     "trait": {
-      "templates": ["itemDescription"],
+      "templates": [
+        "itemDescription"
+      ],
       "benefit": ""
     },
     "weapon": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "class": "",
       "type": "",
       "range": 0,
@@ -1262,13 +1428,35 @@
       "special": "",
       "attack": 0
     },
+    "shipWeapon": {
+      "templates": [
+        "equipment"
+      ],
+      "shipWeaponClass": "Macro",
+      "shipWeaponSize": "S",
+      "shipWeaponEnergy": 0,
+      "shipWeaponRange": {
+        "short": 0,
+        "medium": 0,
+        "long": 0
+      },
+      "shipWeaponStrength": 0,
+      "shipWeaponDamage": 0,
+      "shipWeaponArc": 0,
+      "special": "",
+      "shipWeaponAttack": 0
+    },
     "weaponModification": {
-      "templates": [ "equipment" ],
+      "templates": [
+        "equipment"
+      ],
       "upgrades": "",
       "installed": false
     },
-    "aptitude" : {
-      "templates": ["itemDescription"]
+    "aptitude": {
+      "templates": [
+        "itemDescription"
+      ]
     }
   }
 }

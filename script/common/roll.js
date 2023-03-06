@@ -28,6 +28,23 @@ export async function combatRoll(rollData) {
   await _sendToChat(rollData);
 }
 
+export async function shipCombatRoll(rollData) {
+  // if (rollData.weaponTraits.skipAttackRoll) {
+  //   rollData.result = 5; // Attacks that skip the hit roll always hit body; 05 reversed 50 = body
+  //   await _rollShipDamage(rollData);
+  //   // Without a To Hit Roll we need a substitute otherwise foundry can't render the message
+  //   rollData.rollObject = rollData.damages[0].damageRoll;
+  // } else {
+    await _computeShipTarget(rollData);
+    rollData.shotResults = [];
+    rollData.numberOfHits = 0;
+    for (let i = 0; i < rollData.strength; i++) {
+      await _rollShipTargetDamage(rollData);
+    }
+  // }
+  await _sendShipToChat(rollData);
+}
+
 /**
  * Post an "empty clip, need to reload" message to chat.
  * @param {object} rollData
@@ -74,6 +91,22 @@ async function _computeTarget(rollData) {
   rollData.rollObject = r;
 }
 
+async function _computeShipTarget(rollData) {
+  const range = (rollData.range) ? rollData.range : "0";
+  let attackType = 0;
+  const formula = `0 + ${rollData.modifier} + + ${range}`;
+  let r = new Roll(formula, {});
+  r.evaluate({ async: false });
+  if (r.total > 60) {
+    rollData.target = rollData.baseTarget + 60;
+  } else if (r.total < -60) {
+    rollData.target = rollData.baseTarget + -60;
+  } else {
+    rollData.target = rollData.baseTarget + r.total;
+  }
+  rollData.rollObject = r;
+}
+
 /**
  * Roll a d100 against a target, and apply the result to the rollData.
  * @param {object} rollData
@@ -92,6 +125,34 @@ async function _rollTarget(rollData) {
     rollData.dof = 1 + _getDegree(rollData.result, rollData.target);
   }
   if (typeof rollData.psy !== "undefined") _computePsychicPhenomena(rollData);
+}
+
+async function _rollShipTargetDamage(rollData) {
+  let r = new Roll("1d100", {});
+  r.evaluate({ async: false });
+  let rollResult = new Object();
+  rollResult.result = r.total;
+  rollResult.rollObject = r;
+  rollResult.isSuccess = rollResult.result <= rollData.target;
+  if (rollResult.isSuccess) {
+    rollResult.dof = 0;
+    rollResult.dos = 1 + _getDegree(rollData.target, rollResult.result);
+  } else {
+    rollResult.dos = 0;
+    rollResult.dof = 1 + _getDegree(rollResult.result, rollData.target);
+  }
+  if (rollResult.isSuccess) {
+    let formula = "0";
+    if (rollData.damageFormula) {
+      formula = rollData.damageFormula;
+
+      formula = `${formula}+${rollData.damageBonus}`;
+    }
+    rollResult.hit = await _computeShipDamage(formula, rollResult.dos);
+    rollResult.location = _getShipLocation(rollResult.result, rollData.attackedShipType.name, rollData.sideOfAttack.name);
+    rollData.numberOfHits++;
+  }
+  rollData.shotResults.push(rollResult);
 }
 
 /**
@@ -146,6 +207,18 @@ async function _rollDamage(rollData) {
   }
 }
 
+async function _rollShipDamage(rollData) {
+  let formula = "0";
+  if (rollData.damageFormula) {
+    formula = rollData.damageFormula;
+
+    formula = `${formula}+${rollData.damageBonus}`;
+    formula = _replaceSymbols(formula, rollData);
+  }
+  let hit = await _computeShipDamage(formula, rollData.dos);
+  hit.location = _getShipLocation(rollData.result, rollData.attackedShipType, rollData.sideOfAttack);
+}
+
 /**
  * Roll and compute damage.
  * @param {number} penetration
@@ -195,6 +268,38 @@ async function _computeDamage(damageFormula, penetration, dos, aimMode, weaponTr
       });
     }
   });
+  return damage;
+}
+
+async function _computeShipDamage(damageFormula, dos) {
+  let r = new Roll(damageFormula);
+  r.evaluate({ async: false });
+  let damage = {
+    total: r.total,
+    righteousFury: 0,
+    dices: [],
+    dos: dos,
+    formula: damageFormula,
+    replaced: false,
+    damageRender: await r.render()
+  };
+
+  // Without a To Hit we a roll to associate the chat message with
+  // if (weaponTraits.skipAttackRoll) {
+  //   damage.damageRoll = r;
+  // }
+
+  // r.terms.forEach(term => {
+  //   if (typeof term === "object" && term !== null) {
+  //     let rfFace = weaponTraits.rfFace ? weaponTraits.rfFace : term.faces; // Without the Vengeful weapon trait rfFace is undefined
+  //     term.results?.forEach(async result => {
+  //       let dieResult = result.count ? result.count : result.result; // Result.count = actual value if modified by term
+  //       if (result.active && dieResult >= rfFace) damage.righteousFury = _rollRighteousFury();
+  //       if (result.active && dieResult < dos) damage.dices.push(dieResult);
+  //       if (result.active && (typeof damage.minDice === "undefined" || dieResult < damage.minDice)) damage.minDice = dieResult;
+  //     });
+  //   }
+  // });
   return damage;
 }
 
@@ -278,6 +383,91 @@ function _getLocation(result) {
     return "ARMOUR.LEFT_LEG";
   } else {
     return "ARMOUR.BODY";
+  }
+}
+
+function _getShipLocation(result, attackedShip, sideOfAttack) {
+  const toReverse = result < 10 ? `0${result}` : result.toString();
+  const locationTarget = parseInt(toReverse.split("").reverse().join(""));
+  if (attackedShip == "big") {
+    if (sideOfAttack == "prow") {
+      if (locationTarget <= 5) {
+        return "HIT_SYSTEMS.BRIDGE";
+      } else if (locationTarget <= 45) {
+        return "HIT_SYSTEMS.PROW";
+      } else if (locationTarget <= 60) {
+        return "HIT_SYSTEMS.PORT";
+      } else if (locationTarget <= 75) {
+        return "HIT_SYSTEMS.STARBOARD";
+      } else return "HIT_SYSTEMS.MAIN";
+    }
+    if (sideOfAttack == "port") {
+      if (locationTarget <= 5) {
+        return "HIT_SYSTEMS.BRIDGE";
+      } else if (locationTarget <= 15) {
+        return "HIT_SYSTEMS.PROW";
+      } else if (locationTarget <= 30) {
+        return "HIT_SYSTEMS.AFT";
+      } else if (locationTarget <= 60) {
+        return "HIT_SYSTEMS.PORT";
+      } else return "HIT_SYSTEMS.MAIN";
+    }
+    if (sideOfAttack == "starboard") {
+      if (locationTarget <= 5) {
+        return "HIT_SYSTEMS.BRIDGE";
+      } else if (locationTarget <= 15) {
+        return "HIT_SYSTEMS.PROW";
+      } else if (locationTarget <= 30) {
+        return "HIT_SYSTEMS.AFT";
+      } else if (locationTarget <= 60) {
+        return "HIT_SYSTEMS.STARBOARD";
+      } else return "HIT_SYSTEMS.MAIN";
+    }
+    if (sideOfAttack == "aft") {
+      if (locationTarget <= 5) {
+        return "HIT_SYSTEMS.BRIDGE";
+      } else if (locationTarget <= 45) {
+        return "HIT_SYSTEMS.AFT";
+      } else if (locationTarget <= 60) {
+        return "HIT_SYSTEMS.PORT";
+      } else if (locationTarget <= 75) {
+        return "HIT_SYSTEMS.STARBOARD";
+      } else return "HIT_SYSTEMS.MAIN";
+    }
+  }
+  else {
+    if (sideOfAttack == "prow") {
+      if (locationTarget <= 5) {
+        return "HIT_SYSTEMS.BRIDGE";
+      } else if (locationTarget <= 60) {
+        return "HIT_SYSTEMS.PROW";
+      } else return "HIT_SYSTEMS.MAIN";
+    }
+    if (sideOfAttack == "port") {
+      if (locationTarget <= 5) {
+        return "HIT_SYSTEMS.BRIDGE";
+      } else if (locationTarget <= 30) {
+        return "HIT_SYSTEMS.PORT";
+      } else if (locationTarget <= 50) {
+        return "HIT_SYSTEMS.AFT";
+      } else return "HIT_SYSTEMS.MAIN";
+    }
+    if (sideOfAttack == "starboard") {
+      if (locationTarget <= 5) {
+        return "HIT_SYSTEMS.BRIDGE";
+      } else if (locationTarget <= 30) {
+        return "HIT_SYSTEMS.STARBOARD";
+      } else if (locationTarget <= 50) {
+        return "HIT_SYSTEMS.AFT";
+      } else return "HIT_SYSTEMS.MAIN";
+    }
+    if (sideOfAttack == "aft") {
+      if (locationTarget <= 5) {
+        return "HIT_SYSTEMS.BRIDGE";
+      } else if (locationTarget <= 60) {
+        return "HIT_SYSTEMS.AFT";
+      } else return "HIT_SYSTEMS.MAIN";
+    }
   }
 }
 
@@ -477,6 +667,39 @@ async function _sendToChat(rollData) {
   }
 
   const html = await renderTemplate("systems/rogue-trader/template/chat/roll.html", rollData);
+  chatData.content = html;
+
+  if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
+    chatData.whisper = ChatMessage.getWhisperRecipients("GM");
+  } else if (chatData.rollMode === "selfroll") {
+    chatData.whisper = [game.user];
+  }
+
+  ChatMessage.create(chatData);
+}
+
+async function _sendShipToChat(rollData) {
+  let speaker = ChatMessage.getSpeaker();
+  let chatData = {
+    user: game.user.id,
+    type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    rollMode: game.settings.get("core", "rollMode"),
+    speaker: speaker,
+    flags: {
+      "rogue-trader.rollData": rollData
+    }
+  };
+
+  if(speaker.token) {
+    rollData.tokenId = speaker.token;
+  }
+
+  // if (rollData.rollObject) {
+  //   rollData.render = await rollData.rollObject.render();
+  //   chatData.roll = rollData.rollObject;
+  // }
+
+  const html = await renderTemplate("systems/rogue-trader/template/chat/ship-roll.html", rollData);
   chatData.content = html;
 
   if (["gmroll", "blindroll"].includes(chatData.rollMode)) {

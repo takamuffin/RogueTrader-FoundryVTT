@@ -1,4 +1,4 @@
-import { commonRoll, combatRoll, reportEmptyClip } from "./roll.js";
+import { commonRoll, combatRoll, shipCombatRoll, reportEmptyClip } from "./roll.js";
 
 /**
  * Show a generic roll dialog.
@@ -120,6 +120,58 @@ export async function prepareCombatRoll(rollData, actorRef) {
                         }
                     }
                     await combatRoll(rollData);
+                },
+            },
+            cancel: {
+                icon: '<i class="fas fa-times"></i>',
+                label: game.i18n.localize("BUTTON.CANCEL"),
+                callback: () => {},
+            },
+        },
+        default: "roll",
+        close: () => {},
+    }, {width: 200});
+    dialog.render(true);
+}
+
+/**
+ * Show a ship combat roll dialog.
+ * @param {object} rollData
+ * @param {DarkHeresyActor} actorRef
+ */
+export async function prepareShipCombatRoll(rollData, actorRef) {
+    const html = await renderTemplate("systems/rogue-trader/template/dialog/ship-combat-roll.html", rollData);
+    let dialog = new Dialog({
+        title: rollData.name,
+        content: html,
+        buttons: {
+            roll: {
+                icon: '<i class="fas fa-check"></i>',
+                label: game.i18n.localize("BUTTON.ROLL"),
+                callback: async (html) => {
+                    rollData.name = game.i18n.localize(rollData.name);
+                    rollData.baseTarget = parseInt(html.find("#target")[0]?.value, 10);
+                    rollData.modifier = html.find("#modifier")[0]?.value;
+                    rollData.strength = parseInt(html.find("#strength")[0]?.value, 10);
+                    const range = html.find("#range")[0];
+                    if (typeof range !== "undefined" && range !== null) {
+                        rollData.range = range.value;
+                        rollData.rangeText = range.options[range.selectedIndex].text;
+                    }
+                    const attackedShipType = html.find("#attackedShipType")[0];
+                    rollData.attackedShipType = {
+                        name : attackedShipType?.value,
+                        text : attackedShipType?.options[attackedShipType.selectedIndex].text
+                    };
+                    const sideOfAttack = html.find("#sideOfAttack")[0];
+                    rollData.sideOfAttack = {
+                        name : sideOfAttack?.value,
+                        text : sideOfAttack?.options[sideOfAttack.selectedIndex].text
+                    };
+                    rollData.damageFormula = parseInt(html.find("#damageFormula")[0].value, 10);
+                    rollData.damageBonus = parseInt(html.find("#damageBonus")[0].value, 10);
+                    rollData.isCombatTest = true;
+                    await shipCombatRoll(rollData);
                 },
             },
             cancel: {

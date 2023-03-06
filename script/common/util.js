@@ -11,6 +11,15 @@ export default class DarkHeresyUtil {
         };
     }
 
+    static createCommonShipAttackRollData(actor, item) {
+        return {
+            name: item.name,
+            ownerId: actor.id,
+            itemId: item.id,
+            damageBonus: 0,
+        };
+    }
+
     static createWeaponRollData(actor, weapon) {
         let characteristic = this.getWeaponCharacteristic(actor, weapon);
         let rateOfFire;
@@ -33,6 +42,18 @@ export default class DarkHeresyUtil {
         rollData.weaponTraits= this.extractWeaponTraits(weapon.special);
         rollData.special= weapon.special;
         rollData.psy= { value: actor.psy.rating, display: false};
+        return rollData;
+    }
+
+    static createShipWeaponRollData(actor, weapon) {
+        let characteristic = this.getShipWeaponCharacteristic(actor);
+
+        let rollData = this.createCommonShipAttackRollData(actor, weapon);
+        rollData.baseTarget = parseInt(characteristic, 10) + weapon.shipWeaponAttack,
+            rollData.modifier = 0;
+        rollData.strength = parseInt(weapon.shipWeaponStrength, 10);
+        rollData.damageFormula = weapon.shipWeaponDamage;
+        rollData.special = weapon.special;
         return rollData;
     }
 
@@ -106,6 +127,10 @@ export default class DarkHeresyUtil {
         } else {
             return actor.characteristics.ballisticSkill;
         }
+    }
+
+    static getShipWeaponCharacteristic(actor) {
+        return actor.bio.shipCrewRate;
     }
 
     static getFocusPowerTarget(actor, psychicPower) {

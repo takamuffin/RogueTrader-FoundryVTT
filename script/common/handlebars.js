@@ -12,6 +12,7 @@ function preloadHandlebarsTemplates() {
   const templatePaths = [
     "systems/rogue-trader/template/sheet/actor/acolyte.html",
     "systems/rogue-trader/template/sheet/actor/npc.html",
+    "systems/rogue-trader/template/sheet/actor/spaceship.html",
     "systems/rogue-trader/template/sheet/actor/limited-sheet.html",
 
     "systems/rogue-trader/template/sheet/actor/tab/abilities.html",
@@ -20,6 +21,9 @@ function preloadHandlebarsTemplates() {
     "systems/rogue-trader/template/sheet/actor/tab/notes.html",
     "systems/rogue-trader/template/sheet/actor/tab/npc-notes.html",
     "systems/rogue-trader/template/sheet/actor/tab/npc-stats.html",
+    "systems/rogue-trader/template/sheet/actor/tab/spaceship-abilities.html",
+    "systems/rogue-trader/template/sheet/actor/tab/spaceship-combat.html",
+    "systems/rogue-trader/template/sheet/actor/tab/spaceship-systems.html",
     "systems/rogue-trader/template/sheet/actor/tab/progression.html",
     "systems/rogue-trader/template/sheet/actor/tab/psychic-powers.html",
     "systems/rogue-trader/template/sheet/actor/tab/stats.html",
@@ -30,10 +34,12 @@ function preloadHandlebarsTemplates() {
     "systems/rogue-trader/template/sheet/mutation.html",
     "systems/rogue-trader/template/sheet/talent.html",
     "systems/rogue-trader/template/sheet/trait.html",
+    "systems/rogue-trader/template/sheet/system-ability.html",
     "systems/rogue-trader/template/sheet/special-ability.html",
     "systems/rogue-trader/template/sheet/psychic-power.html",
     "systems/rogue-trader/template/sheet/critical-injury.html",
     "systems/rogue-trader/template/sheet/weapon.html",
+    "systems/rogue-trader/template/sheet/ship-weapon.html",
     "systems/rogue-trader/template/sheet/armour.html",
     "systems/rogue-trader/template/sheet/gear.html",
     "systems/rogue-trader/template/sheet/drug.html",
@@ -49,9 +55,11 @@ function preloadHandlebarsTemplates() {
     "systems/rogue-trader/template/sheet/characteristics/total.html",
     "systems/rogue-trader/template/chat/item.html",
     "systems/rogue-trader/template/chat/roll.html",
+    "systems/rogue-trader/template/chat/ship-roll.html",
     "systems/rogue-trader/template/chat/critical.html",
     "systems/rogue-trader/template/dialog/common-roll.html",
     "systems/rogue-trader/template/dialog/combat-roll.html",
+    "systems/rogue-trader/template/dialog/ship-combat-roll.html",
     "systems/rogue-trader/template/dialog/psychic-power-roll.html"
   ];
   return loadTemplates(templatePaths);

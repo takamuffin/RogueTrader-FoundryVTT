@@ -1,0 +1,61 @@
+<div class="rogue-trader dialog">
+    <div class="flex row wrap background border" style="flex-basis: 100%;margin-bottom: 5px">
+        <h1>{{localize name}}</h1>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.TARGET"}}</label>
+            <input id="target" type="number" value="{{baseTarget}}" data-dtype="Number"/>
+        </div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.MODIFIER"}}</label>
+            <input id="modifier" type="text" value="{{modifier}}"/>
+        </div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.SHIP_WEAPON_STRENGTH"}}</label>
+            <input id="strength" type="text" value="{{strength}}"/>
+        </div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.RANGE"}}</label>
+            <select id="range">
+                {{#select aim}}
+                <option value="30" selected>{{localize "RANGE.SHORT"}}</option>
+                <option value="10">{{localize "RANGE.MEDIUM"}}</option>
+                <option value="-20">{{localize "RANGE.LONG"}}</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.ATTACKED_SHIP_TYPE"}}</label>
+            <select id="attackedShipType">
+                {{#select attackType}}
+                <option value="big">{{localize "ATTACKED_SHIP_TYPE.BIG"}}</option>
+                <option value="small" selected>{{localize "ATTACKED_SHIP_TYPE.SMALL"}}</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.SIDE_OF_ATTACK"}}</label>
+            <select id="sideOfAttack">
+                {{#select attackType}}
+                <option value="prow">{{localize "SIDE_OF_ATTACK.PROW"}}</option>
+                <option value="port" selected>{{localize "SIDE_OF_ATTACK.PORT"}}</option>
+                <option value="starboard">{{localize "SIDE_OF_ATTACK.STARBOARD"}}</option>
+                <option value="aft" selected>{{localize "SIDE_OF_ATTACK.AFT"}}</option>
+                {{/select}}
+            </select>
+        </div>
+        <div class="separator"></div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.DAMAGE"}}</label>
+            <input id="damageFormula" type="text" value="{{damageFormula}}"/>
+        </div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.BONUS"}}</label>
+            <input id="damageBonus" type="number" value="{{damageBonus}}" data-dtype="Number"/>
+        </div>
+    </div>
+</div>
+<script>
+    $(".wrapper input").focusin(function () {
+        $(this).select();
+    });
+</script>

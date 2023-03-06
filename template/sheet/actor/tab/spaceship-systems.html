@@ -1,0 +1,244 @@
+<div class="flex wrap spaceship-systems">
+    <div class="systems border" data-shiplocation="prow">
+        <h1>{{localize "SYSTEMS.PROW"}}</h1>
+        <div class="item-list">
+            <div class="flex header">
+                <b class="name">{{localize "TALENT.NAME"}}</b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="prow"><i
+                        class="fas fa-plus"></i></a>
+            </div>
+            <div class="items">
+                {{#each items.systemsProw as |item|}}
+                <div class="talent item flex row" data-item-id="{{item.id}}">
+                    <div class="flex talent-row item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
+                        </div>
+                        <div class="name">{{item.name}}</div>
+                    </div>
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                           system.isOnFire}}/>
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                           system.isUnPowered}}/>
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                           system.isDepressurised}}/>
+                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
+                           system.isDamaged}}/>
+                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
+                           system.isDestroyed}}/>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{#each item.subSystems as |item|}}
+                {{/each}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="systems border" data-shiplocation="aft">
+        <h1>{{localize "SYSTEMS.AFT"}}</h1>
+        <div class="item-list">
+            <div class="flex header">
+                <b class="name">{{localize "TALENT.NAME"}}</b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="aft"><i
+                        class="fas fa-plus"></i></a>
+            </div>
+            <div class="items">
+                {{#each items.systemsAft as |item|}}
+                <div class="talent item flex row" data-item-id="{{item.id}}">
+                    <div class="flex talent-row item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
+                        </div>
+                        <div class="name">{{item.name}}</div>
+                    </div>
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                           system.isOnFire}}/>
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                           system.isUnPowered}}/>
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                           system.isDepressurised}}/>
+                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
+                           system.isDamaged}}/>
+                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
+                           system.isDestroyed}}/>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="systems border" data-shiplocation="port">
+        <h1>{{localize "SYSTEMS.PORT"}}</h1>
+        <div class="item-list">
+            <div class="flex header">
+                <b class="name">{{localize "TALENT.NAME"}}</b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="port"><i
+                        class="fas fa-plus"></i></a>
+            </div>
+            <div class="items">
+                {{#each items.systemsPort as |item|}}
+                <div class="talent item flex row" data-item-id="{{item.id}}">
+                    <div class="flex talent-row item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
+                        </div>
+                        <div class="name">{{item.name}}</div>
+                    </div>
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                           system.isOnFire}}/>
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                           system.isUnPowered}}/>
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                           system.isDepressurised}}/>
+                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
+                           system.isDamaged}}/>
+                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
+                           system.isDestroyed}}/>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="systems border" data-shiplocation="starboard">
+        <h1>{{localize "SYSTEMS.STARBOARD"}}</h1>
+        <div class="item-list">
+            <div class="flex header">
+                <b class="name">{{localize "TALENT.NAME"}}</b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="starboard"><i
+                        class="fas fa-plus"></i></a>
+            </div>
+            <div class="items">
+                {{#each items.systemsStarboard as |item|}}
+                <div class="talent item flex row" data-item-id="{{item.id}}">
+                    <div class="flex talent-row item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
+                        </div>
+                        <div class="name">{{item.name}}</div>
+                    </div>
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                           system.isOnFire}}/>
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                           system.isUnPowered}}/>
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                           system.isDepressurised}}/>
+                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
+                           system.isDamaged}}/>
+                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
+                           system.isDestroyed}}/>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="systems border" data-shiplocation="main">
+        <h1>{{localize "SYSTEMS.MAIN"}}</h1>
+        <div class="item-list">
+            <div class="flex header">
+                <b class="name">{{localize "TALENT.NAME"}}</b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="main"><i
+                        class="fas fa-plus"></i></a>
+            </div>
+            <div class="items">
+                {{#each items.systemsMain as |item|}}
+                <div class="talent item flex row" data-item-id="{{item.id}}">
+                    <div class="flex talent-row item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
+                        </div>
+                        <div class="name">{{item.name}}</div>
+                    </div>
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                           system.isOnFire}}/>
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                           system.isUnPowered}}/>
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                           system.isDepressurised}}/>
+                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
+                           system.isDamaged}}/>
+                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
+                           system.isDestroyed}}/>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="systems border" data-shiplocation="bridge">
+        <h1>{{localize "SYSTEMS.BRIDGE"}}</h1>
+        <div class="item-list">
+            <div class="flex header">
+                <b class="name">{{localize "TALENT.NAME"}}</b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <b class="check"></b>
+                <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="bridge"><i
+                        class="fas fa-plus"></i></a>
+            </div>
+            <div class="items">
+                {{#each items.systemsBridge as |item|}}
+                <div class="talent item flex row" data-item-id="{{item.id}}">
+                    <div class="flex talent-row item-edit">
+                        <div class="image-container">
+                            <div class="image" style="background-image: url('{{item.img}}')"></div>
+                        </div>
+                        <div class="name">{{item.name}}</div>
+                    </div>
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                           system.isOnFire}}/>
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                           system.isUnPowered}}/>
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                           system.isDepressurised}}/>
+                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
+                           system.isDamaged}}/>
+                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
+                           system.isDestroyed}}/>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

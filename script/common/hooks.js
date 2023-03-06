@@ -2,7 +2,9 @@ import { DarkHeresyActor } from "./actor.js";
 import { DarkHeresyItem } from "./item.js";
 import { AcolyteSheet } from "../sheet/actor/acolyte.js";
 import { NpcSheet } from "../sheet/actor/npc.js";
+import { SpaceshipSheet } from "../sheet/actor/spaceship.js";
 import { WeaponSheet } from "../sheet/weapon.js";
+import { ShipWeaponSheet } from "../sheet/ship-weapon.js";
 import { AmmunitionSheet } from "../sheet/ammunition.js";
 import { WeaponModificationSheet } from "../sheet/weapon-modification.js";
 import { ArmourSheet } from "../sheet/armour.js";
@@ -19,6 +21,8 @@ import { PsychicPowerSheet } from "../sheet/psychic-power.js";
 import { TalentSheet } from "../sheet/talent.js";
 import { SpecialAbilitySheet } from "../sheet/special-ability.js";
 import { TraitSheet } from "../sheet/trait.js";
+import { SystemAbilitySheet } from "../sheet/system-ability.js";
+import { ShipSystemSheet } from "../sheet/shipSystem.js";
 import { AptitudeSheet } from "../sheet/aptitude.js";
 import { initializeHandlebars } from "./handlebars.js";
 import { migrateWorld } from "./migration.js";
@@ -30,7 +34,7 @@ import DhMacroUtil from "./macro.js";
 import * as chat from "./chat.js";
 
 Hooks.once("init", () => {
-  CONFIG.Combat.initiative = { formula: "@initiative.base + @initiative.bonus", decimals: 0 };
+  CONFIG.Combat.initiative = { formula: "@initiative.base + @initiative.bonus + @detection.bonus", decimals: 0 };
   CONFIG.Actor.documentClass = DarkHeresyActor;
   CONFIG.Item.documentClass = DarkHeresyItem;
   CONFIG.fontDefinitions["Caslon Antique"] = {editor: true, fonts: []};
@@ -49,8 +53,10 @@ Hooks.once("init", () => {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("rogue-trader", AcolyteSheet, { types: ["acolyte"], makeDefault: true });
   Actors.registerSheet("rogue-trader", NpcSheet, { types: ["npc"], makeDefault: true });
+  Actors.registerSheet("rogue-trader", SpaceshipSheet, { types: ["spaceship"], makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("rogue-trader", WeaponSheet, { types: ["weapon"], makeDefault: true });
+  Items.registerSheet("rogue-trader", ShipWeaponSheet, { types: ["shipWeapon"], makeDefault: true });
   Items.registerSheet("rogue-trader", AmmunitionSheet, { types: ["ammunition"], makeDefault: true });
   Items.registerSheet("rogue-trader", WeaponModificationSheet, { types: ["weaponModification"], makeDefault: true });
   Items.registerSheet("rogue-trader", ArmourSheet, { types: ["armour"], makeDefault: true });
@@ -67,6 +73,8 @@ Hooks.once("init", () => {
   Items.registerSheet("rogue-trader", TalentSheet, { types: ["talent"], makeDefault: true });
   Items.registerSheet("rogue-trader", SpecialAbilitySheet, { types: ["specialAbility"], makeDefault: true });
   Items.registerSheet("rogue-trader", TraitSheet, { types: ["trait"], makeDefault: true });
+  Items.registerSheet("rogue-trader", SystemAbilitySheet, { types: ["systemAbility"], makeDefault: true });
+  Items.registerSheet("rogue-trader", ShipSystemSheet, { types: ["shipSystem"], makeDefault: true });
   Items.registerSheet("rogue-trader", AptitudeSheet, { types: ["aptitude"], makeDefault: true });
   initializeHandlebars();
   game.settings.register("rogue-trader", "worldSchemaVersion", {
