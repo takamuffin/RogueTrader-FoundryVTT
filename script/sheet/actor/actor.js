@@ -52,53 +52,54 @@ export class DarkHeresySheet extends ActorSheet {
     }
 
     async _onDrop(event) {
-        let header = event.path.at(2).dataset;
-        let itemData = TextEditor.getDragEventData(event);
-        if (header.shiplocation && itemData.type == "Item" && this.actor.type == "spaceship") {
-            let location = header.shiplocation;
-            let itemID = TextEditor.getDragEventData(event).uuid.split(".")[3];
-            let actorData = TextEditor.getDragEventData(event).uuid.split(".")[1];
-            let lastActor;
-            let item;
-            if (itemData.uuid.split(".")[0] == "Compendium") {
-                // super._onDrop(event);
-                const data = TextEditor.getDragEventData(event);
-                const actor = this.actor;
-                const allowed = Hooks.call("dropActorSheetData", actor, this, data);
-                if ( allowed === false ) return;
-                const item = await Item.implementation.fromDropData(data);
-                const itemData = item.toObject();
-                itemData.system.location = location;
-                super._onDropItemCreate(itemData);
-                // const data = super.getData();
-                // item = data.items.get(itemData);
-            } else {
-                lastActor = game.actors.get(actorData);
-                item = lastActor.items.get(itemID);
-                // }
-                if (lastActor == this.actor) {
-                    item.update({'system.location': location});
-                } else {
+        if (event.path) {
+            let header = event.path.at(2).dataset;
+            let itemData = TextEditor.getDragEventData(event);
+            if (header.shiplocation && itemData.type == "Item" && this.actor.type == "spaceship") {
+                let location = header.shiplocation;
+                let itemID = TextEditor.getDragEventData(event).uuid.split(".")[3];
+                let actorData = TextEditor.getDragEventData(event).uuid.split(".")[1];
+                let lastActor;
+                let item;
+                if (itemData.uuid.split(".")[0] == "Compendium") {
+                    // super._onDrop(event);
+                    const data = TextEditor.getDragEventData(event);
+                    const actor = this.actor;
+                    const allowed = Hooks.call("dropActorSheetData", actor, this, data);
+                    if (allowed === false) return;
+                    const item = await Item.implementation.fromDropData(data);
                     const itemData = item.toObject();
                     itemData.system.location = location;
-                    // let description = item.shortDescription;
-                    // let isDamaged = item.system.isDamaged;
-                    // let isDepressurised = item.system.isDepressurised;
-                    // let isDestroyed = item.system.isDestroyed;
-                    // let isOnFire = item.system.isOnFire;
-                    // let isUnPowered = item.system.isUnPowered;
-                    // let data = {
-                    //     name: item.name,
-                    //     type: item.type,
-                    //     system: {location, description, isDamaged, isDepressurised, isDestroyed, isOnFire, isUnPowered},
-                    // }
-                    // lastActor.deleteEmbeddedDocuments("Item", [itemID]);
-                    // this.actor.createEmbeddedDocuments("Item", [data]);
                     super._onDropItemCreate(itemData);
+                    // const data = super.getData();
+                    // item = data.items.get(itemData);
+                } else {
+                    lastActor = game.actors.get(actorData);
+                    item = lastActor.items.get(itemID);
+                    // }
+                    if (lastActor == this.actor) {
+                        item.update({'system.location': location});
+                    } else {
+                        const itemData = item.toObject();
+                        itemData.system.location = location;
+                        // let description = item.shortDescription;
+                        // let isDamaged = item.system.isDamaged;
+                        // let isDepressurised = item.system.isDepressurised;
+                        // let isDestroyed = item.system.isDestroyed;
+                        // let isOnFire = item.system.isOnFire;
+                        // let isUnPowered = item.system.isUnPowered;
+                        // let data = {
+                        //     name: item.name,
+                        //     type: item.type,
+                        //     system: {location, description, isDamaged, isDepressurised, isDestroyed, isOnFire, isUnPowered},
+                        // }
+                        // lastActor.deleteEmbeddedDocuments("Item", [itemID]);
+                        // this.actor.createEmbeddedDocuments("Item", [data]);
+                        super._onDropItemCreate(itemData);
+                    }
                 }
-            }
-        }
-        else super._onDrop(event);
+            } else super._onDrop(event);
+        } else super._onDrop(event);
     }
 
     _onItemCreate(event) {
