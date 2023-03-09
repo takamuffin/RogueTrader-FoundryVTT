@@ -52,13 +52,16 @@ export class DarkHeresySheet extends ActorSheet {
     }
 
     async _onDrop(event) {
-        if (event.path || event.originalTarget) {
+        if (event.path || event.originalTarget || event.target) {
             let header;
             if (event.path) {
                 header = event.path.at(2).dataset;
             }
             if (event.originalTarget) {
                 header = event.originalTarget.parentElement.parentElement.dataset;
+            }
+            if (event.target) {
+                header = event.target.parentElement.parentElement.dataset;
             }
             let itemData = TextEditor.getDragEventData(event);
             if (header.shiplocation && itemData.type == "Item" && this.actor.type == "spaceship") {
