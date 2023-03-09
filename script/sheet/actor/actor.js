@@ -20,11 +20,27 @@ export class DarkHeresySheet extends ActorSheet {
     }
 
     /** @override */
+    async getData() {
+        const data = await super.getData();
+        data.system = data.data.system;
+        data.items = this.constructItemLists(data)
+
+        data.enrichment = await this._enrichment();
+        return data;
+    }
+
+    /**
     getData() {
         const data = super.getData();
         data.system = data.data.system;
         data.items = this.constructItemLists(data)
         return data;
+    } */
+
+    async _enrichment() {
+        let enrichment = {};
+        enrichment["system.bio.notes"] = await TextEditor.enrichHTML(this.actor.system.bio.notes, {async: true});
+        return expandObject(enrichment);
     }
 
     /** @override */
