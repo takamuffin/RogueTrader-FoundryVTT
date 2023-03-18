@@ -1217,7 +1217,10 @@
       "type": "troop",
       "threatLevel": 0,
       "moveBonus": 0,
-      "size": 4
+      "size": 4,
+      "bio": {
+        "notes": ""
+      }
     }
   },
   "Item": {
