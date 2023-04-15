@@ -111,6 +111,7 @@
   "BIO.SHIP_ENERGY": "Energy",
   "BIO.SHIP_MORALE": "Morale",
   "BIO.SHIP_CREW_RATE": "Crew Rating",
+  "BIO.SHIP_TURRET_RATE": "Turret Rating",
 
   "BUTTON.POST_ITEM": "Post Item",
   "BUTTON.ROLL": "Roll",
@@ -139,6 +140,8 @@
   "CHARACTERISTIC.COST": "Cost",
 
   "CHAT.SUCCESS": "Success!",
+  "CHAT.JAMMED": "Weapon Jammed!",
+  "CHAT.OVERHEATED": "Overheated!",
   "CHAT.FAILURE": "Failure!",
   "CHAT.TEST_MODIFIER": "Modifier",
   "CHAT.ATTACK_RANGE": "Range",

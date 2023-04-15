@@ -37,13 +37,22 @@
                     </div>
                 </div>
                 <div class="stats-row">
-                    <div class="stat installed">
-                        <label>{{localize "SYSTEM.IS_DAMAGED"}}</label>
-                        <input name="system.isDamaged" type="checkbox" {{checked system.isDamaged}} />
+                    <div class="counter">
+                        <label>{{localize "BIO.SHIP_ENERGY"}}</label>
+                        <input name="system.energy" type="text" value="{{system.energy}}"/>
                     </div>
-                    <div class="stat installed">
-                        <label>{{localize "SYSTEM.IS_DESTROYED"}}</label>
-                        <input name="system.isDestroyed" type="checkbox" {{checked system.isDestroyed}} />
+                    <div class="counter">
+                        <label>{{localize "BIO.SHIP_SPACE"}}</label>
+                        <input name="system.spaceNow" type="text"
+                               value="{{system.spaceNow}}"/>
+                        /
+                        <input name="system.spaceMax" type="text" value="{{system.spaceMax}}"/>
+                    </div>
+                </div>
+                <div class="stats-row">
+                    <div class="system-description">
+                        <label>{{localize "TOOL.SHORT_DESCRIPTION"}}</label>
+                        <input name="system.shortDescription" type="text" value="{{system.shortDescription}}" />
                     </div>
                 </div>
             </div>

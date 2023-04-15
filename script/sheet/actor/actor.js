@@ -181,6 +181,20 @@ export class DarkHeresySheet extends ActorSheet {
         }
     }
 
+    _onChangeInput(event) {
+        event.preventDefault();
+        let name = event.currentTarget.dataset.name;
+        const div = $(event.currentTarget).parents(".item");
+        let item = this.actor.items.get(div.data("itemId"));
+        if (name == "energy") {
+            item.update({'system.energy': event.currentTarget.value});
+        } else if (name == "spaceNow") {
+            item.update({'system.spaceNow': event.currentTarget.value});
+        } else if (name == "spaceMax") {
+            item.update({'system.spaceMax': event.currentTarget.value});
+        } else super._onChangeInput(event);
+    }
+
     _onFocusIn(event) {
         $(event.currentTarget).select();
     }

@@ -37,9 +37,11 @@ export default class DarkHeresyUtil {
         rollData.isRange= !isMelee;
         rollData.clip= weapon.clip;
         rollData.rateOfFire= rateOfFire;
-        rollData.damageFormula= weapon.damage + (isMelee && !weapon.damage.match(/SB/gi) ? "+SB" : "");
-        rollData.penetrationFormula= weapon.penetration;
         rollData.weaponTraits= this.extractWeaponTraits(weapon.special);
+        let attributeMod = (isMelee && !weapon.damage.match(/SB/gi) ? "+SB" : "");
+        rollData.damageFormula= weapon.damage + attributeMod + (rollData.weaponTraits.force ? "+PR": "");
+        rollData.penetrationFormula = weapon.penetration + (rollData.weaponTraits.force ? "+PR" : "");
+        // rollData.weaponTraits= this.extractWeaponTraits(weapon.special);
         rollData.special= weapon.special;
         rollData.psy= { value: actor.psy.rating, display: false};
         return rollData;
@@ -87,7 +89,15 @@ export default class DarkHeresyUtil {
             primitive: this.extractNumberedTrait(/Primitive.*\(\d\)/gi, traits),
             razorSharp: this.hasNamedTrait(/Razor *Sharp/gi, traits),
             skipAttackRoll: this.hasNamedTrait(/Spray/gi, traits),
-            tearing: this.hasNamedTrait(/Tearing/gi, traits)
+            tearing: this.hasNamedTrait(/Tearing/gi, traits),
+            reliable: this.hasNamedTrait(/Reliable/gi, traits),
+            unreliable: this.hasNamedTrait(/Unreliable/gi, traits),
+            unstable: this.hasNamedTrait(/Unstable/gi, traits),
+            overheats: this.hasNamedTrait(/Overheats/gi, traits),
+            storm: this.hasNamedTrait(/Storm/gi, traits),
+            force: this.hasNamedTrait(/Force/gi, traits),
+            inaccurate: this.hasNamedTrait(/Inaccurate/gi, traits),
+            twinLinked: this.hasNamedTrait(/Twin-Linked/gi, traits)
         };
     }
 

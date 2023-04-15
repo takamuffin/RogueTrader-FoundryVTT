@@ -48,6 +48,7 @@
                             <div class="name">
                                 <button class="roll-skill" data-skill="{{key}}" type="button">{{localize skill.label}}</button>
                             </div>
+                            <input class="total" name="system.skills.{{key}}.modifier" type="number" value="{{skill.modifier}}" data-dtype="Number"/>
                             <input class="total" type="number" value="{{skill.total}}" data-dtype="Number" disabled />
                             <div class="information">
                                 <input type="text" value="{{skill.advanceSkill}}" disabled />
@@ -72,6 +73,7 @@
                                             <div class="name">
                                                 <button class="roll-speciality" data-speciality="{{keySpe}}" type="button">{{speciality.label}}</button>
                                             </div>
+                                            <input class="total" name="system.skills.{{key}}.specialities.{{keySpe}}.modifier" type="number" value="{{speciality.modifier}}" data-dtype="Number"/>
                                             <input class="total" type="number" value="{{speciality.total}}" data-dtype="Number" disabled />
                                             <div class="information">
                                                 <input type="text" value="{{specialty.advanceSpec}}" disabled />

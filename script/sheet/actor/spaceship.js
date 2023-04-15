@@ -13,7 +13,7 @@ export class SpaceshipSheet extends DarkHeresySheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "ship-abilities"
+          initial: "ship-systems"
         }
       ]
     });

@@ -79,46 +79,93 @@ export async function prepareCombatRoll(rollData, actorRef) {
                       isAiming : aim?.value !== "0",
                       text : aim?.options[aim.selectedIndex].text
                     };
-                    rollData.damageFormula = html.find("#damageFormula")[0].value.replace(' ', '');
+                    if (rollData.weaponTraits.inaccurate) {
+                        rollData.aim.val=0;
+                    } else if (rollData.weaponTraits.accurate && rollData.aim.isAiming) {
+                        rollData.aim.val=`${rollData.aim.val}+10`;
+                    }
+                    rollData.damageFormula = html.find("#damageFormula")[0].value.replace(" ", "");
                     rollData.damageType = html.find("#damageType")[0].value;
                     rollData.damageBonus = parseInt(html.find("#damageBonus")[0].value, 10);
                     rollData.penetrationFormula = html.find("#penetration")[0].value;
                     rollData.isCombatTest = true;
+                    if (rollData.weaponTraits.skipAttackRoll) {rollData.attackType.name = "standard";}
                     if (rollData.isRange && rollData.clip.max > 0) {
                         const weapon = game.actors.get(rollData.ownerId)?.items?.get(rollData.itemId);
                         if(weapon) {
                             switch(rollData.attackType.name) {
                                 case 'standard':
                                 case 'called_shot': {
-                                    if (rollData.clip.value < 1) {
-                                        return reportEmptyClip(rollData);
+                                    if (rollData.weaponTraits.storm || rollData.weaponTraits.twinLinked) {
+                                        if (rollData.clip.value < 2) {
+                                            return reportEmptyClip(rollData);
+                                        } else {
+                                            rollData.clip.value -= 2;
+                                            await weapon.update({"system.clip.value" : rollData.clip.value})
+                                        }
                                     } else {
-                                        rollData.clip.value -= 1;
-                                        await weapon.update({"system.clip.value" : rollData.clip.value})
+                                        if (rollData.clip.value < 1) {
+                                            return reportEmptyClip(rollData);
+                                        } else {
+                                            rollData.clip.value -= 1;
+                                            await weapon.update({"system.clip.value": rollData.clip.value})
+                                        }
                                     }
                                     break;
                                 }
                                 case 'semi_auto': {
-                                    if (rollData.clip.value < rollData.rateOfFire.burst) {
-                                        return reportEmptyClip(rollData);
+                                    if (rollData.weaponTraits.storm || rollData.weaponTraits.twinLinked) {
+                                        if (rollData.clip.value < rollData.rateOfFire.burst * 2) {
+                                            return reportEmptyClip(rollData);
+                                        } else {
+                                            rollData.clip.value -= rollData.rateOfFire.burst * 2;
+                                            await weapon.update({"system.clip.value": rollData.clip.value})
+                                        }
+
                                     } else {
-                                        rollData.clip.value -= rollData.rateOfFire.burst;
-                                        await weapon.update({"system.clip.value" : rollData.clip.value})
+                                        if (rollData.clip.value < rollData.rateOfFire.burst) {
+                                            return reportEmptyClip(rollData);
+                                        } else {
+                                            rollData.clip.value -= rollData.rateOfFire.burst;
+                                            await weapon.update({"system.clip.value": rollData.clip.value})
+                                        }
                                     }
                                     break;
                                 }
                                 case 'full_auto': {
-                                    if (rollData.clip.value < rollData.rateOfFire.full) {
-                                        return reportEmptyClip(rollData);
+                                    if (rollData.weaponTraits.storm || rollData.weaponTraits.twinLinked) {
+                                        if (rollData.clip.value < rollData.rateOfFire.full * 2) {
+                                            return reportEmptyClip(rollData);
+                                        } else {
+                                            rollData.clip.value -= rollData.rateOfFire.full * 2;
+                                            await weapon.update({"system.clip.value": rollData.clip.value})
+                                        }
+
                                     } else {
-                                        rollData.clip.value -= rollData.rateOfFire.full;
-                                        await weapon.update({"system.clip.value" : rollData.clip.value})
+                                        if (rollData.clip.value < rollData.rateOfFire.full) {
+                                            return reportEmptyClip(rollData);
+                                        } else {
+                                            rollData.clip.value -= rollData.rateOfFire.full;
+                                            await weapon.update({"system.clip.value": rollData.clip.value})
+                                        }
                                     }
                                     break;
                                 }
                             }
                         }
                     }
+                    let jamTarget = 96;
+                    if (rollData.weaponTraits.reliable) {
+                        jamTarget = 100;
+                    }
+                    if (rollData.weaponTraits.unreliable) {
+                        jamTarget = 91;
+                    }
+                    if (rollData.weaponTraits.overheats) {
+                        jamTarget = 91;
+                        rollData.overheats = true;
+                    }
+                    rollData.jamTarget = jamTarget;
                     await combatRoll(rollData);
                 },
             },
@@ -215,6 +262,7 @@ export async function preparePsychicPowerRoll(rollData) {
           rollData.attackType.text = attackType.options[attackType.selectedIndex].text;
           rollData.psy.useModifier = true;
           rollData.isCombatTest = true;
+          rollData.isJammed = 999;
           await combatRoll(rollData);
         }
       },

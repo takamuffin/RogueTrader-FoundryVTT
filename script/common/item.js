@@ -345,6 +345,10 @@ export class DarkHeresyItem extends Item {
         return this.type === "armour";
     }
 
+    get isSystem() {
+        return this.type === "shipSystem";
+    }
+
     get isGear() {
         return this.type === "gear";
     }

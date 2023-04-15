@@ -7,8 +7,8 @@
                 <b class="check"></b>
                 <b class="check"></b>
                 <b class="check"></b>
-                <b class="check"></b>
-                <b class="check"></b>
+                <b class="name2">{{localize "BIO.SHIP_ENERGY"}}</b>
+                <b class="name3">{{localize "BIO.SHIP_SPACE"}}</b>
                 <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="prow"><i
                         class="fas fa-plus"></i></a>
             </div>
@@ -21,16 +21,23 @@
                         </div>
                         <div class="name">{{item.name}}</div>
                     </div>
-                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox"
+                           data-name="isOnFire" {{checked
                            system.isOnFire}}/>
-                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox"
+                           data-name="isUnPowered" {{checked
                            system.isUnPowered}}/>
-                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised"
+                           type="checkbox" data-name="isDepressurised" {{checked
                            system.isDepressurised}}/>
-                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
-                           system.isDamaged}}/>
-                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
-                           system.isDestroyed}}/>
+                    <div class="counter">
+                        <input name="system.energy" type="text" value="{{system.energy}}" data-name="energy"/>
+                    </div>
+                    <div class="counter2">
+                        <input name="system.spaceNow" type="text"
+                               value="{{system.spaceNow}}" data-name="spaceNow"/><b>/</b><input name="system.spaceMax" type="text" value="{{system.spaceMax}}"
+                               data-name="spaceMax"/>
+                    </div>
                     <div class="button">
                         <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
                     </div>
@@ -49,8 +56,8 @@
                 <b class="check"></b>
                 <b class="check"></b>
                 <b class="check"></b>
-                <b class="check"></b>
-                <b class="check"></b>
+                <b class="name2">{{localize "BIO.SHIP_ENERGY"}}</b>
+                <b class="name3">{{localize "BIO.SHIP_SPACE"}}</b>
                 <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="aft"><i
                         class="fas fa-plus"></i></a>
             </div>
@@ -63,16 +70,23 @@
                         </div>
                         <div class="name">{{item.name}}</div>
                     </div>
-                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox"
+                           data-name="isOnFire" {{checked
                            system.isOnFire}}/>
-                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox"
+                           data-name="isUnPowered" {{checked
                            system.isUnPowered}}/>
-                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised"
+                           type="checkbox" data-name="isDepressurised" {{checked
                            system.isDepressurised}}/>
-                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
-                           system.isDamaged}}/>
-                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
-                           system.isDestroyed}}/>
+                    <div class="counter">
+                        <input name="system.energy" type="text" value="{{system.energy}}" data-name="energy"/>
+                    </div>
+                    <div class="counter2">
+                        <input name="system.spaceNow" type="text"
+                               value="{{system.spaceNow}}" data-name="spaceNow"/><b>/</b><input name="system.spaceMax" type="text" value="{{system.spaceMax}}"
+                                                                                                data-name="spaceMax"/>
+                    </div>
                     <div class="button">
                         <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
                     </div>
@@ -89,8 +103,8 @@
                 <b class="check"></b>
                 <b class="check"></b>
                 <b class="check"></b>
-                <b class="check"></b>
-                <b class="check"></b>
+                <b class="name2">{{localize "BIO.SHIP_ENERGY"}}</b>
+                <b class="name3">{{localize "BIO.SHIP_SPACE"}}</b>
                 <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="port"><i
                         class="fas fa-plus"></i></a>
             </div>
@@ -103,16 +117,23 @@
                         </div>
                         <div class="name">{{item.name}}</div>
                     </div>
-                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox"
+                           data-name="isOnFire" {{checked
                            system.isOnFire}}/>
-                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox"
+                           data-name="isUnPowered" {{checked
                            system.isUnPowered}}/>
-                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised"
+                           type="checkbox" data-name="isDepressurised" {{checked
                            system.isDepressurised}}/>
-                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
-                           system.isDamaged}}/>
-                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
-                           system.isDestroyed}}/>
+                    <div class="counter">
+                        <input name="system.energy" type="text" value="{{system.energy}}" data-name="energy"/>
+                    </div>
+                    <div class="counter2">
+                        <input name="system.spaceNow" type="text"
+                               value="{{system.spaceNow}}" data-name="spaceNow"/><b>/</b><input name="system.spaceMax" type="text" value="{{system.spaceMax}}"
+                                                                                                data-name="spaceMax"/>
+                    </div>
                     <div class="button">
                         <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
                     </div>
@@ -129,8 +150,8 @@
                 <b class="check"></b>
                 <b class="check"></b>
                 <b class="check"></b>
-                <b class="check"></b>
-                <b class="check"></b>
+                <b class="name2">{{localize "BIO.SHIP_ENERGY"}}</b>
+                <b class="name3">{{localize "BIO.SHIP_SPACE"}}</b>
                 <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="starboard"><i
                         class="fas fa-plus"></i></a>
             </div>
@@ -143,16 +164,23 @@
                         </div>
                         <div class="name">{{item.name}}</div>
                     </div>
-                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox"
+                           data-name="isOnFire" {{checked
                            system.isOnFire}}/>
-                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox"
+                           data-name="isUnPowered" {{checked
                            system.isUnPowered}}/>
-                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised"
+                           type="checkbox" data-name="isDepressurised" {{checked
                            system.isDepressurised}}/>
-                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
-                           system.isDamaged}}/>
-                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
-                           system.isDestroyed}}/>
+                    <div class="counter">
+                        <input name="system.energy" type="text" value="{{system.energy}}" data-name="energy"/>
+                    </div>
+                    <div class="counter2">
+                        <input name="system.spaceNow" type="text"
+                               value="{{system.spaceNow}}" data-name="spaceNow"/><b>/</b><input name="system.spaceMax" type="text" value="{{system.spaceMax}}"
+                                                                                                data-name="spaceMax"/>
+                    </div>
                     <div class="button">
                         <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
                     </div>
@@ -169,8 +197,8 @@
                 <b class="check"></b>
                 <b class="check"></b>
                 <b class="check"></b>
-                <b class="check"></b>
-                <b class="check"></b>
+                <b class="name2">{{localize "BIO.SHIP_ENERGY"}}</b>
+                <b class="name3">{{localize "BIO.SHIP_SPACE"}}</b>
                 <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="main"><i
                         class="fas fa-plus"></i></a>
             </div>
@@ -183,16 +211,23 @@
                         </div>
                         <div class="name">{{item.name}}</div>
                     </div>
-                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox"
+                           data-name="isOnFire" {{checked
                            system.isOnFire}}/>
-                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox"
+                           data-name="isUnPowered" {{checked
                            system.isUnPowered}}/>
-                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised"
+                           type="checkbox" data-name="isDepressurised" {{checked
                            system.isDepressurised}}/>
-                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
-                           system.isDamaged}}/>
-                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
-                           system.isDestroyed}}/>
+                    <div class="counter">
+                        <input name="system.energy" type="text" value="{{system.energy}}" data-name="energy"/>
+                    </div>
+                    <div class="counter2">
+                        <input name="system.spaceNow" type="text"
+                               value="{{system.spaceNow}}" data-name="spaceNow"/><b>/</b><input name="system.spaceMax" type="text" value="{{system.spaceMax}}"
+                                                                                                data-name="spaceMax"/>
+                    </div>
                     <div class="button">
                         <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
                     </div>
@@ -209,8 +244,8 @@
                 <b class="check"></b>
                 <b class="check"></b>
                 <b class="check"></b>
-                <b class="check"></b>
-                <b class="check"></b>
+                <b class="name2">{{localize "BIO.SHIP_ENERGY"}}</b>
+                <b class="name3">{{localize "BIO.SHIP_SPACE"}}</b>
                 <a class="button item-create" title="Add System" data-type="shipSystem" data-shiplocation="bridge"><i
                         class="fas fa-plus"></i></a>
             </div>
@@ -223,16 +258,23 @@
                         </div>
                         <div class="name">{{item.name}}</div>
                     </div>
-                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox" data-name="isOnFire" {{checked
+                    <input class="check checkbox-click" name="system.isOnFire" title="On Fire" type="checkbox"
+                           data-name="isOnFire" {{checked
                            system.isOnFire}}/>
-                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox" data-name="isUnPowered" {{checked
+                    <input class="check checkbox-click" name="system.isUnPowered" title="Unpowered" type="checkbox"
+                           data-name="isUnPowered" {{checked
                            system.isUnPowered}}/>
-                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised" type="checkbox" data-name="isDepressurised" {{checked
+                    <input class="check checkbox-click" name="system.isDepressurised" title="Depressurised"
+                           type="checkbox" data-name="isDepressurised" {{checked
                            system.isDepressurised}}/>
-                    <input class="check checkbox-click" name="system.isDamaged" title="Damaged" type="checkbox" data-name="isDamaged" {{checked
-                           system.isDamaged}}/>
-                    <input class="check checkbox-click" name="system.isDestroyed" title="Destroyed" type="checkbox" data-name="isDestroyed" {{checked
-                           system.isDestroyed}}/>
+                    <div class="counter">
+                        <input name="system.energy" type="text" value="{{system.energy}}" data-name="energy"/>
+                    </div>
+                    <div class="counter2">
+                        <input name="system.spaceNow" type="text"
+                               value="{{system.spaceNow}}" data-name="spaceNow"/><b>/</b><input name="system.spaceMax" type="text" value="{{system.spaceMax}}"
+                                                                                                data-name="spaceMax"/>
+                    </div>
                     <div class="button">
                         <a class="item-control item-delete" title="Delete System"><i class="fas fa-trash"></i></a>
                     </div>

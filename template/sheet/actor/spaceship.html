@@ -3,51 +3,65 @@
         <div class="header border">
             <div class="flex row">
                 <div class="avatar">
-                    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+                    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
                 </div>
                 <div class="flex column grow">
-                    <div class="name header-row">
-                        <label>{{localize "BIO.NAME"}}</label>
-                        <input name="name" type="text" value="{{actor.name}}" />
-                    </div>
                     <div class="header-row">
+                        <div class="ship-name">
+                            <label>{{localize "BIO.NAME"}}</label>
+                            <input name="name" type="text" value="{{actor.name}}"/>
+                        </div>
                         <div class="ship-class">
                             <label>{{localize "BIO.SHIP_CLASS"}}</label>
-                            <input name="system.bio.shipClass" type="text" value="{{system.bio.shipClass}}" />
+                            <input name="system.bio.shipClass" type="text" value="{{system.bio.shipClass}}"/>
                         </div>
-                        <div class="ship-space">
-                            <label>{{localize "BIO.SHIP_SPACE"}}</label>
-                            <input style="margin-left: 20px" name="system.shipSpace.value" type="number" value="{{system.shipSpace.value}}" data-dtype="Number" />
-                            /
-                            <input name="system.shipSpace.max" type="number" value="{{system.shipSpace.max}}" data-dtype="Number" />
-                        </div>
-                        <div class="ship-crew">
-                            <label>{{localize "BIO.SHIP_CREW"}}</label>
-                            <input style="margin-left: 20px" name="system.shipCrew.value" type="number" value="{{system.shipCrew.value}}" data-dtype="Number" />
-                            /
-                            <input name="system.shipCrew.max" type="number" value="{{system.shipCrew.max}}" data-dtype="Number" />
+                        <div class="ship-hull-type">
+                            <label>{{localize "BIO.SHIP_HULL_TYPE"}}</label>
+                            <input name="system.bio.shipHullType" type="text" value="{{system.bio.shipHullType}}"/>
                         </div>
                     </div>
                     <div class="header-row">
-                        <div class="ship-hull-type">
-                            <label>{{localize "BIO.SHIP_HULL_TYPE"}}</label>
-                            <input name="system.bio.shipHullType" type="text" value="{{system.bio.shipHullType}}" />
-                        </div>
-                        <div class="ship-crew-rate">
-                            <label>{{localize "BIO.SHIP_CREW_RATE"}}</label>
-                            <input name="system.bio.shipCrewRate" type="text" value="{{system.bio.shipCrewRate}}" />
+                        <div class="ship-space">
+                            <label>{{localize "BIO.SHIP_SPACE"}}</label>
+                            <input name="system.shipSpace.value" type="number"
+                                   value="{{system.shipSpace.value}}" data-dtype="Number"/>
+                            /
+                            <input name="system.shipSpace.max" type="number" value="{{system.shipSpace.max}}"
+                                   data-dtype="Number"/>
                         </div>
                         <div class="ship-energy">
                             <label>{{localize "BIO.SHIP_ENERGY"}}</label>
-                            <input name="system.shipEnergy.value" type="number" value="{{system.shipEnergy.value}}" data-dtype="Number" />
+                            <input name="system.shipEnergy.value" type="number" value="{{system.shipEnergy.value}}"
+                                   data-dtype="Number"/>
                             /
-                            <input name="system.shipEnergy.max" type="number" value="{{system.shipEnergy.max}}" data-dtype="Number" />
+                            <input name="system.shipEnergy.max" type="number" value="{{system.shipEnergy.max}}"
+                                   data-dtype="Number"/>
+                        </div>
+                        <div class="ship-turret-rate">
+                            <label>{{localize "BIO.SHIP_TURRET_RATE"}}</label>
+                            <input name="system.bio.shipTurretRate" type="text" value="{{system.bio.shipTurretRate}}"/>
+                        </div>
+                    </div>
+                    <div class="header-row">
+                        <div class="ship-crew-rate">
+                            <label>{{localize "BIO.SHIP_CREW_RATE"}}</label>
+                            <input name="system.bio.shipCrewRate" type="text" value="{{system.bio.shipCrewRate}}"/>
+                        </div>
+                        <div class="ship-crew">
+                            <label>{{localize "BIO.SHIP_CREW"}}</label>
+                            <input name="system.shipCrew.value" type="number"
+                                   value="{{system.shipCrew.value}}" data-dtype="Number"/>
+                            /
+                            <input name="system.shipCrew.max" type="number" value="{{system.shipCrew.max}}"
+                                   data-dtype="Number"/>
                         </div>
                         <div class="ship-morale">
                             <label>{{localize "BIO.SHIP_MORALE"}}</label>
-                            <input name="system.shipMorale.value" type="number" value="{{system.shipMorale.value}}" data-dtype="Number" />
+                            <input name="system.shipMorale.value" type="number" value="{{system.shipMorale.value}}"
+                                   data-dtype="Number"/>
                             /
-                            <input name="system.shipMorale.max" type="number" value="{{system.shipMorale.max}}" data-dtype="Number" />
+                            <input name="system.shipMorale.max" type="number" value="{{system.shipMorale.max}}"
+                                   data-dtype="Number"/>
                         </div>
                     </div>
                 </div>

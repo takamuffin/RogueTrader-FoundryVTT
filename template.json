@@ -1196,6 +1196,7 @@
         "shipClass": "",
         "shipHullType": "",
         "shipCrewRate": 0,
+        "shipTurretRate": 0,
         "notes": ""
       }
     },
@@ -1393,8 +1394,10 @@
       "isOnFire" : false,
       "isUnPowered" : false,
       "isDepressurised" : false,
-      "isDamaged" : false,
-      "isDestroyed" : false
+      "energy" : 0,
+      "spaceNow" : 0,
+      "spaceMax" : 0,
+      "shortDescription": ""
     },
     "tool": {
       "templates": [
