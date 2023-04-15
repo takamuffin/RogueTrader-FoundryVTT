@@ -1556,7 +1556,7 @@ li.folder.collapsed > .folder-header {
 .rogue-trader .combat .weapons-alt {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     margin-top: 2px;
     flex-basis: 100%;
     height: 40vh;
