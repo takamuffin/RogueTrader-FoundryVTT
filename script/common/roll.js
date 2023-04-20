@@ -202,17 +202,17 @@ async function _rollDamage(rollData) {
 
     let potentialHits = rollData.dos;
     let stormMod = (rollData.weaponTraits.storm ? 2: 1);
-    if (rollData.weaponTraits.twinLinked) {
-      stormMod = 2;
-    }
+    // if (rollData.weaponTraits.twinLinked) {
+    //   stormMod = 2;
+    // }
     if (((rollData.attackType.hitMargin > 0) || (rollData.twinLinkedAdditionalHitMargin > 0)) && !rollData.isOverheated) {
       let maxAdditionalHit = Math.floor(((potentialHits * stormMod) - 1) / rollData.attackType.hitMargin);
       if (typeof rollData.maxAdditionalHit !== "undefined" && maxAdditionalHit > rollData.maxAdditionalHit) {
         maxAdditionalHit = rollData.maxAdditionalHit;
       }
-      if (typeof rollData.twinLinkedAdditionalHitMargin !== "undefined") {
-        let twinLinkedAdditionalHit = Math.floor((potentialHits - 1) / rollData.twinLinkedAdditionalHitMargin);
-        if (typeof rollData.maxTwinLinkedHit !== "undefined" && twinLinkedAdditionalHit > rollData.maxTwinLinkedHit) {
+      if (rollData.twinLinkedAdditionalHitMargin != 0) {
+        let twinLinkedAdditionalHit = Math.floor(potentialHits / rollData.twinLinkedAdditionalHitMargin);
+        if (twinLinkedAdditionalHit > rollData.maxTwinLinkedHit) {
           twinLinkedAdditionalHit = rollData.maxTwinLinkedHit;
         }
         if (twinLinkedAdditionalHit > 0) {
