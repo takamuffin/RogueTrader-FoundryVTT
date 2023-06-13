@@ -1,0 +1,79 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <div class="unit">
+        <div class="header border">
+            <div class="flex row">
+                <div class="avatar">
+                    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+                </div>
+                <div class="flex column grow">
+                    <div class="name header-row">
+                        <label>{{localize "BIO.NAME"}}</label>
+                        <input name="name" type="text" value="{{actor.name}}"/>
+                    </div>
+                    <div class="header-row">
+                        <div class="unit-class">
+                            <label>{{localize "BIO.UNIT_CLASS"}}</label>
+                            <input name="system.bio.unitClass" type="text" value="{{system.bio.unitClass}}"/>
+                        </div>
+                        <div class="manpower">
+                            <label>{{localize "BIO.MANPOWER"}}</label>
+                            <input name="system.unitManpower.value" type="number"
+                                   value="{{system.unitManpower.value}}" data-dtype="Number"/>
+                            /
+                            <input name="system.unitManpower.max" type="number" value="{{system.unitManpower.max}}"
+                                   data-dtype="Number"/>
+                        </div>
+                        <div class="hit-points">
+                            <label>{{localize "BIO.HIT_POINTS"}}</label>
+                            <input name="system.unitHP.value" type="number"
+                                   value="{{system.unitHP.value}}" data-dtype="Number"/>
+                            /
+                            <input name="system.unitHP.max" type="number" value="{{system.unitHP.max}}"
+                                   data-dtype="Number"/>
+                        </div>
+                    </div>
+                    <div class="header-row">
+                        <div class="unit-type">
+                            <label>{{localize "BIO.UNIT_TYPE"}}</label>
+                            <input name="system.bio.unitType" type="text" value="{{system.bio.unitType}}"/>
+                        </div>
+                        <div class="officers">
+                            <label>{{localize "BIO.OFFICERS"}}</label>
+                            <input name="system.unitOfficers.value" type="number"
+                                   value="{{system.unitOfficers.value}}" data-dtype="Number"/>
+                            /
+                            <input name="system.unitOfficers.max" type="number" value="{{system.unitOfficers.max}}"
+                                   data-dtype="Number"/>
+                        </div>
+                        <div class="morale">
+                            <label>{{localize "BIO.MORALE"}}</label>
+                            <input name="system.unitMorale.value" type="number"
+                                   value="{{system.unitMorale.value}}" data-dtype="Number"/>
+                            /
+                            <input name="system.unitMorale.max" type="number" value="{{system.unitMorale.max}}"
+                                   data-dtype="Number"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-tabs tabs flex row" data-group="primary">
+            <b class="item" data-tab="combat">{{localize "TAB.COMBAT"}}</b>
+            <b class="item" data-tab="abilities">{{localize "TAB.ABILITIES"}}</b>
+            <b class="item" data-tab="notes">{{localize "TAB.NOTES"}}</b>
+        </div>
+
+        <div class="sheet-body">
+            <div class="tab" data-group="primary" data-tab="combat">
+                {{> systems/rogue-trader/template/sheet/actor/tab/unit-combat.html}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="abilities">
+                {{> systems/rogue-trader/template/sheet/actor/tab/abilities.html}}
+            </div>
+            <div class="tab" data-group="primary" data-tab="notes">
+                {{> systems/rogue-trader/template/sheet/actor/tab/notes.html}}
+            </div>
+        </div>
+    </div>
+</form>

@@ -3,8 +3,10 @@ import { DarkHeresyItem } from "./item.js";
 import { AcolyteSheet } from "../sheet/actor/acolyte.js";
 import { NpcSheet } from "../sheet/actor/npc.js";
 import { SpaceshipSheet } from "../sheet/actor/spaceship.js";
+import { UnitSheet } from "../sheet/actor/unit.js"
 import { WeaponSheet } from "../sheet/weapon.js";
 import { ShipWeaponSheet } from "../sheet/ship-weapon.js";
+import { UnitWeaponSheet } from "../sheet/unit-weapon.js";
 import { AmmunitionSheet } from "../sheet/ammunition.js";
 import { WeaponModificationSheet } from "../sheet/weapon-modification.js";
 import { ArmourSheet } from "../sheet/armour.js";
@@ -54,9 +56,11 @@ Hooks.once("init", () => {
   Actors.registerSheet("rogue-trader", AcolyteSheet, { types: ["acolyte"], makeDefault: true });
   Actors.registerSheet("rogue-trader", NpcSheet, { types: ["npc"], makeDefault: true });
   Actors.registerSheet("rogue-trader", SpaceshipSheet, { types: ["spaceship"], makeDefault: true });
+  Actors.registerSheet("rogue-trader", UnitSheet, { types: ["unit"], makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("rogue-trader", WeaponSheet, { types: ["weapon"], makeDefault: true });
   Items.registerSheet("rogue-trader", ShipWeaponSheet, { types: ["shipWeapon"], makeDefault: true });
+  Items.registerSheet("rogue-trader", UnitWeaponSheet, { types: ["unitWeapon"], makeDefault: true });
   Items.registerSheet("rogue-trader", AmmunitionSheet, { types: ["ammunition"], makeDefault: true });
   Items.registerSheet("rogue-trader", WeaponModificationSheet, { types: ["weaponModification"], makeDefault: true });
   Items.registerSheet("rogue-trader", ArmourSheet, { types: ["armour"], makeDefault: true });

@@ -1,0 +1,17 @@
+<div class="rogue-trader chat roll" data-actor-id="{{ownerId}}" data-item-id="{{itemId}}" {{#if
+     tokenId}}data-token-id="{{tokenId}}" {{/if}}>
+<div class="background border">
+    <h1>{{name}} ({{quantity}})</h1>
+    <h3><span>{{localize "CHAT.TARGET"}}:</span> {{target}}</h3>
+    {{#if attackType}}
+    <p><strong>{{localize "CHAT.ATTACK_TYPE"}}:</strong> {{attackType.text}}</p>
+    {{/if}}
+
+    <p><strong>{{localize "CHAT.HITS"}}:</strong> {{numberOfHits}}</p>
+<!--    <p><strong>{{localize "CHAT.MAXIMAL"}}:</strong> {{maximalNumberOfHits}}</p>-->
+    <p><strong>{{localize "CHAT.CRITICAL_HITS"}}:</strong> {{crits}}</p>
+    <p><strong>{{localize "CHAT.DAMAGE"}}:</strong> {{damageDealt}}</p>
+    <p><strong>{{localize "CHAT.BRUTALS"}}:</strong> {{brutals}}</p>
+
+</div>
+</div>

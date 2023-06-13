@@ -19,17 +19,37 @@ export class DarkHeresyActor extends Actor {
 
     prepareData() {
         super.prepareData();
-        this._computeCharacteristics();
-        this._computeSkills();
-        this._computeItems();
-        this._computeExperience();
-        this._computeArmour();
-        this._computeMovement();
-        this._computeDetection();
+        if (this.type != "unit") {
+            this._computeCharacteristics();
+            this._computeSkills();
+            this._computeItems();
+            this._computeExperience();
+            this._computeArmour();
+            this._computeMovement();
+        }
+        if (this.type == "unit") {
+            this._computeHP();
+            this._computeQuantity();
+        }
         if (this.type == "spaceship") {
+            this._computeDetection();
             this._computeEnergy();
             this._computeSpace();
         }
+    }
+
+    _computeHP() {
+        if (this.system.unitHP.max != 0) {
+            this.system.bio.percentage = Number((this.system.unitHP.value / this.system.unitHP.max).toFixed(1));
+        } else this.system.bio.percentage = 0;
+    }
+
+    _computeQuantity() {
+        for (let unitWeapon of this.items)
+        {
+            unitWeapon.system.quantity.value = Number((unitWeapon.system.quantity.max * this.system.bio.percentage).toFixed(0));
+        }
+
     }
 
     _computeCharacteristics() {

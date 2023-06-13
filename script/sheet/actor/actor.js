@@ -1,4 +1,4 @@
-import {prepareCommonRoll, prepareCombatRoll, prepareShipCombatRoll, preparePsychicPowerRoll} from "../../common/dialog.js";
+import {prepareCommonRoll, prepareCombatRoll, prepareShipCombatRoll, prepareUnitCombatRoll, preparePsychicPowerRoll} from "../../common/dialog.js";
 import DarkHeresyUtil from "../../common/util.js";
 
 export class DarkHeresySheet extends ActorSheet {
@@ -16,6 +16,7 @@ export class DarkHeresySheet extends ActorSheet {
         html.find(".roll-corruption").click(async ev => await this._prepareRollCorruption(ev));
         html.find(".roll-weapon").click(async ev => await this._prepareRollWeapon(ev));
         html.find(".roll-ship-weapon").click(async ev => await this._prepareRollShipWeapon(ev));
+        html.find(".roll-unit-weapon").click(async ev => await this._prepareRollUnitWeapon(ev));
         html.find(".roll-psychic-power").click(async ev => await this._prepareRollPsychicPower(ev));
     }
 
@@ -315,6 +316,16 @@ export class DarkHeresySheet extends ActorSheet {
         );
     }
 
+    async _prepareRollUnitWeapon(event) {
+        event.preventDefault();
+        const div = $(event.currentTarget).parents(".item");
+        const weapon = this.actor.items.get(div.data("itemId"));
+        await prepareUnitCombatRoll(
+            DarkHeresyUtil.createUnitWeaponRollData(this.actor, weapon),
+            this.actor
+        );
+    }
+
     async _prepareRollPsychicPower(event) {
         event.preventDefault();
         const div = $(event.currentTarget).parents(".item");
@@ -437,6 +448,7 @@ export class DarkHeresySheet extends ActorSheet {
 
         items.weapons = itemTypes["weapon"];
         items.shipWeapons = itemTypes["shipWeapon"];
+        items.unitWeapons = itemTypes["unitWeapon"];
         items.weaponMods = itemTypes["weaponModification"];
         items.ammunitions = itemTypes["ammunition"];
         this._sortItemLists(items)

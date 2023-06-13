@@ -1,0 +1,196 @@
+<div class="flex wrap unit-combat">
+    <div class="unit-self border">
+        <h1>{{localize "TITLE.UNIT"}}</h1>
+        <div class="unit-self-stats">
+            <div class="column">
+                <div class="information">
+                    <label>{{localize "UNIT.ARMOR"}}</label>
+                    <input name="system.bio.unitArmor" type="number" value="{{system.bio.unitArmor}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.TOUGHNESS"}}</label>
+                    <input name="system.bio.unitToughness" type="number" value="{{system.bio.unitToughness}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.WOUNDS"}}</label>
+                    <input name="system.bio.unitWounds" type="number" value="{{system.bio.unitWounds}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.INITIATIVE"}}</label>
+                    <input name="system.bio.unitInitiative" type="number" value="{{system.bio.unitInitiative}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.MOVEMENT"}}</label>
+                    <input name="system.bio.unitMovement" type="number" value="{{system.bio.unitMovement}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.SIGHT"}}</label>
+                    <input name="system.bio.unitSightRange" type="number" value="{{system.bio.unitSightRange}}"
+                           data-dtype="Number"/>
+                </div>
+            </div>
+            <div class="column">
+                <div class="information">
+                    <label>{{localize "UNIT.MELEE_ATTACK"}}</label>
+                    <input name="system.bio.unitMeleeAttack" type="number" value="{{system.bio.unitMeleeAttack}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.MELEE_DEFENCE"}}</label>
+                    <input name="system.bio.unitMeleeDefence" type="number" value="{{system.bio.unitMeleeDefence}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.RANGED_ATTACK"}}</label>
+                    <input name="system.bio.unitRangedAttack" type="number" value="{{system.bio.unitRangedAttack}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.RANGED_DEFENCE"}}</label>
+                    <input name="system.bio.unitRangedDefence" type="number" value="{{system.bio.unitRangedDefence}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.MOVEMENT_TYPE"}}</label>
+                    <input name="system.bio.unitMovementType" type="text" value="{{system.bio.unitMovementType}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.SIGHT_TYPE"}}</label>
+                    <input name="system.bio.unitSightType" type="text" value="{{system.bio.unitSightType}}"
+                           data-dtype="Number"/>
+                </div>
+            </div>
+        </div>
+        <div class="unit-self-auxiliary border">
+            <h1>{{localize "TITLE.AUXILIARY"}}</h1>
+            <div class="column">
+                <div class="information">
+                    <label>{{localize "UNIT.AUX_CHANCE"}}</label>
+                    <input name="system.bio.unitAuxChance" type="number" value="{{system.bio.unitAuxChance}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.AUX_TOUGHNESS"}}</label>
+                    <input name="system.bio.unitAuxToughness" type="number" value="{{system.bio.unitAuxToughness}}"
+                           data-dtype="Number"/>
+                </div>
+            </div>
+            <div class="column">
+                <div class="information">
+                    <label>{{localize "UNIT.AUX_ARMOR"}}</label>
+                    <input name="system.bio.unitAuxArmor" type="number" value="{{system.bio.unitAuxArmor}}"
+                           data-dtype="Number"/>
+                </div>
+                <div class="information">
+                    <label>{{localize "UNIT.AUX_WOUNDS"}}</label>
+                    <input name="system.bio.unitAuxWounds" type="number" value="{{system.bio.unitAuxWounds}}"
+                           data-dtype="Number"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="unit-enemy border">
+        <h1>{{localize "TITLE.ENEMY"}}</h1>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_ARMOR"}}</label>
+            <input name="system.bio.enemyArmor" type="number" value="{{system.bio.enemyArmor}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_TOUGHNESS"}}</label>
+            <input name="system.bio.enemyToughness" type="number" value="{{system.bio.enemyToughness}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_WOUNDS"}}</label>
+            <input name="system.bio.enemyWounds" type="number" value="{{system.bio.enemyWounds}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_MELEE_DEFENCE"}}</label>
+            <input name="system.bio.enemyMeleeDefence" type="number" value="{{system.bio.enemyMeleeDefence}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_RANGED_DEFENCE"}}</label>
+            <input name="system.bio.enemyRangedDefence" type="number" value="{{system.bio.enemyRangedDefence}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_RANGE"}}</label>
+            <input name="system.bio.enemyRange" type="number" value="{{system.bio.enemyRange}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_AUX_CHANCE"}}</label>
+            <input name="system.bio.enemyAuxChance" type="number" value="{{system.bio.enemyAuxChance}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_AUX_ARMOR"}}</label>
+            <input name="system.bio.enemyAuxArmor" type="number" value="{{system.bio.enemyAuxArmor}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_AUX_TOUGHNESS"}}</label>
+            <input name="system.bio.enemyAuxToughness" type="number" value="{{system.bio.enemyAuxToughness}}"
+                   data-dtype="Number"/>
+        </div>
+        <div class="information">
+            <label>{{localize "UNIT.ENEMY_AUX_WOUNDS"}}</label>
+            <input name="system.bio.enemyAuxWounds" type="number" value="{{system.bio.enemyAuxWounds}}"
+                   data-dtype="Number"/>
+        </div>
+    </div>
+    <div class="weapons-alt border">
+        <h1>{{localize "TITLE.WEAPONS"}}</h1>
+        <div class="item-list">
+            <div class="flex header">
+                <b class="unit-weapon-roll">{{localize "WEAPON.ROLL"}}</b>
+                <b class="name">{{localize "WEAPON.NAME"}}</b>
+                <b class="quantity">{{localize "WEAPON.QUANTITY"}}</b>
+                <b class="class">{{localize "WEAPON.CLASS"}}</b>
+                <b class="range">{{localize "WEAPON.RANGE"}}</b>
+                <b class="rate-of-fire">{{localize "WEAPON.RATE_OF_FIRE"}}</b>
+                <b class="initiative">{{localize "WEAPON.INITIATIVE"}}</b>
+                <b class="damage">{{localize "WEAPON.DAMAGE"}}</b>
+                <b class="type">{{localize "WEAPON.DAMAGE_TYPE"}}</b>
+                <b class="penetration">{{localize "WEAPON.PENETRATION"}}</b>
+                <b class="special">{{localize "WEAPON.SPECIAL"}}</b>
+                <a class="button item-create" title="Add Weapon" data-type="unitWeapon"><i class="fas fa-plus"></i></a>
+            </div>
+            <div class="items">
+                {{#each items.unitWeapons as |item|}}
+                <div class="weapon item flex row" data-item-id="{{item.id}}">
+                    <div class="flex unit-weapon-roll">
+                        <!--                        <img src="icons/svg/fire.svg"/>-->
+                        <button class="roll-unit-weapon" type="button"><img src="icons/svg/fire.svg"/>
+                        </button>
+                    </div>
+                    <div class="flex name item-edit">
+                        <div>{{item.name}}</div>
+                    </div>
+                    <div class="quantity">{{item.Quantity}}</div>
+                    <div class="class">{{item.WeaponClass}}</div>
+                    <div class="range">{{item.range}}</div>
+                    <div class="rate-of-fire">{{item.RateOfFire}}</div>
+                    <div class="initiative">{{item.initiative}}</div>
+                    <div class="damage">{{item.damage}}</div>
+                    <div class="type">{{item.DamageTypeShort}}</div>
+                    <div class="penetration">{{item.penetration}}</div>
+                    <div class="special">{{item.special}}</div>
+                    <div class="button">
+                        <a class="item-control item-delete" title="Delete Weapon"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,16 @@ export default class DarkHeresyUtil {
         };
     }
 
+    static createCommonUnitAttackRollData(actor, item) {
+        return {
+            name: item.name,
+            ownerId: actor.id,
+            itemId: item.id,
+            damageBonus: 0,
+            damageType: item.damageType,
+        };
+    }
+
     static createWeaponRollData(actor, weapon) {
         let characteristic = this.getWeaponCharacteristic(actor, weapon);
         let rateOfFire;
@@ -56,6 +66,37 @@ export default class DarkHeresyUtil {
         rollData.strength = parseInt(weapon.shipWeaponStrength, 10);
         rollData.damageFormula = weapon.shipWeaponDamage;
         rollData.special = weapon.special;
+        return rollData;
+    }
+
+    static createUnitWeaponRollData(actor, weapon) {
+        let characteristic = this.getUnitWeaponCharacteristic(actor, weapon);
+        let enemyStats = this.getEnemyStats(actor);
+        let rateOfFire;
+        if (weapon.class === "melee") {
+            rateOfFire = {burst: characteristic.bonus, full: characteristic.bonus};
+        } else {
+            rateOfFire = {burst: weapon.rateOfFire.burst, full: weapon.rateOfFire.full};
+        }
+        let isMelee = weapon.class === "melee";
+
+        let rollData = this.createCommonUnitAttackRollData(actor, weapon);
+        rollData.baseTarget= characteristic.total + weapon.attack,
+            rollData.modifier= 0,
+            rollData.isMelee= isMelee;
+        rollData.weaponClass = weapon.class;
+        rollData.enemyStats = enemyStats;
+        rollData.isRange= !isMelee;
+        rollData.quantity= weapon.quantity.value;
+        rollData.rateOfFire= rateOfFire;
+        rollData.weaponTraits= this.extractWeaponTraits(weapon.special);
+        rollData.damageFormula= weapon.damage;
+        rollData.penetrationFormula = weapon.penetration;
+        rollData.special= weapon.special;
+        rollData.numberOfHits = 0;
+        rollData.crits = 0;
+        rollData.damageDealt = 0;
+        rollData.brutals = 0;
         return rollData;
     }
 
@@ -97,7 +138,10 @@ export default class DarkHeresyUtil {
             storm: this.hasNamedTrait(/Storm/gi, traits),
             force: this.hasNamedTrait(/Force/gi, traits),
             inaccurate: this.hasNamedTrait(/Inaccurate/gi, traits),
-            twinLinked: this.hasNamedTrait(/Twin-Linked/gi, traits)
+            twinLinked: this.hasNamedTrait(/Twin-Linked/gi, traits),
+            torrent: this.extractNumberedTrait(/Torrent.*\(\d\)/gi, traits),
+            ordnance: this.extractNumberedTrait(/Ordnance.*\(\d\)/gi, traits),
+            scatter: this.hasNamedTrait(/Scatter/gi, traits),
         };
     }
 
@@ -141,6 +185,34 @@ export default class DarkHeresyUtil {
 
     static getShipWeaponCharacteristic(actor) {
         return actor.bio.shipCrewRate;
+    }
+
+    static getUnitWeaponCharacteristic(actor, weapon) {
+        if (weapon.class === "melee") {
+            let characteristics = new Object();
+            characteristics.total = actor.bio.unitMeleeAttack;
+            characteristics.bonus = Number((characteristics.total / 10).toFixed(0));
+            return characteristics;
+        } else {
+            let characteristics = new Object();
+            characteristics.total = actor.bio.unitRangedAttack;
+            characteristics.bonus = Number((characteristics.total / 10).toFixed(0));
+            return characteristics;
+        }
+    }
+
+    static getEnemyStats(actor) {
+        let enemyStats = new Object();
+        enemyStats.armor = actor.bio.enemyArmor;
+        enemyStats.toughness = actor.bio.enemyToughness;
+        enemyStats.wounds = actor.bio.enemyWounds;
+        enemyStats.auxChance = actor.bio.enemyAuxChance;
+        enemyStats.auxArmor = actor.bio.enemyAuxArmor;
+        enemyStats.auxToughness = actor.bio.enemyAuxToughness;
+        enemyStats.auxWounds = actor.bio.enemyAuxWounds;
+        enemyStats.meleeDefence = actor.bio.enemyMeleeDefence;
+        enemyStats.rangedDefence = actor.bio.enemyRangedDefence;
+        return enemyStats;
     }
 
     static getFocusPowerTarget(actor, psychicPower) {

@@ -578,12 +578,21 @@ li.folder.collapsed > .folder-header {
     width: 4em;
     text-align: center;
 }
+.rogue-trader.weapon .stats .stats-row .stat.initiative input {
+     width: 4em;
+     text-align: center;
+ }
 .rogue-trader.weapon .stats .stats-row .stat.reload input {
     width: 6em;
     text-align: center;
 }
 .rogue-trader.weapon .stats .stats-row .stat.clip input {
     width: 2em;
+    text-align: center;
+    margin: 0 2px;
+}
+.rogue-trader.weapon .stats .stats-row .stat.quantity input {
+    width: 3em;
     text-align: center;
     margin: 0 2px;
 }
@@ -661,6 +670,73 @@ li.folder.collapsed > .folder-header {
     text-align: center;
 }
 .rogue-trader.ship-weapon .stats .stats-row .stat.special input {
+    width: 29em;
+}
+
+.rogue-trader.unit-weapon .notes-editor {
+    height: 165px;
+    max-height: 165px;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.class select {
+    width: 5em;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.type select {
+    width: 5em;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.range input {
+    width: 4em;
+    text-align: center;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.initiative input {
+    width: 4em;
+    text-align: center;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.reload input {
+    width: 6em;
+    text-align: center;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.clip input {
+    width: 2em;
+    text-align: center;
+    margin: 0 2px;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.quantity input {
+    width: 3em;
+    text-align: center;
+    margin: 0 2px;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.damage input {
+    width: 5em;
+    text-align: center;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.damage select {
+    width: 6em;
+    margin-left: 2px;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.penetration input {
+    width: 4em;
+    text-align: center;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.rate-of-fire input {
+    width: 2em;
+    text-align: center;
+    margin: 0 2px;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.craftsmanship select {
+    width: 8em;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.availability select {
+    width: 8em;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.weight input {
+    width: 2em;
+    text-align: center;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.attack input {
+    width: 2em;
+    text-align: center;
+}
+.rogue-trader.unit-weapon .stats .stats-row .stat.special input {
     width: 29em;
 }
 .rogue-trader.armour .notes-editor {
@@ -1109,6 +1185,28 @@ li.folder.collapsed > .folder-header {
 .rogue-trader .spaceship .header .ship-energy input,
 .rogue-trader .spaceship .header .ship-morale input {
     width: 2em;
+    margin: 0 5px;
+}
+.rogue-trader .unit {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.rogue-trader .unit .header .unit-class,
+.rogue-trader .unit .header .unit-type {
+    flex-basis: 35%;
+}
+.rogue-trader .unit .header .unit-class input,
+.rogue-trader .unit .header .unit-type input {
+    width: 11em;
+    height: 22px;
+}
+.rogue-trader .unit .header .manpower input,
+.rogue-trader .unit .header .hit-points input,
+.rogue-trader .unit .header .officers input,
+.rogue-trader .unit .header .morale input {
+    width: 4em;
     margin: 0 5px;
 }
 .rogue-trader .npc {
@@ -1609,6 +1707,116 @@ li.folder.collapsed > .folder-header {
     width: 100%;
 }
 .rogue-trader .combat .weapons-alt .item-list .items {
+    max-height: 34vh;
+    /*height: 100px;*/
+}
+.rogue-trader .unit-combat .unit-self {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 66%;
+}
+.rogue-trader .unit-combat .unit-self .unit-self-stats {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.rogue-trader .unit-combat .unit-self .unit-self-stats .column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 50%;
+}
+.rogue-trader .unit-combat .unit-self .unit-self-auxiliary {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 5px;
+}
+.rogue-trader .unit-combat .unit-self .unit-self-auxiliary .column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 50%;
+}
+.rogue-trader .unit-combat .unit-enemy {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 34%;
+}
+.rogue-trader .unit-combat .information {
+    display: flex;
+    margin-top: 5px;
+}
+.rogue-trader .unit-combat .information label {
+    flex-basis: 75%;
+}
+.rogue-trader .unit-combat .information input {
+    flex-basis: 25%;
+}
+
+.rogue-trader .unit-combat .weapons-alt {
+    display: flex;
+    flex-direction: column;
+    /*flex-wrap: wrap;*/
+    margin-top: 2px;
+    flex-basis: 100%;
+    height: 35vh;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .unit-weapon-roll {
+    flex-basis: 5%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .header {
+    margin-top: 5px;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .name {
+    flex-basis: 20%;
+    text-align: center;
+    align-items: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .quantity {
+    flex-basis: 10%;
+    text-align: center;
+    align-items: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .class {
+    flex-basis: 10%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .range {
+    flex-basis: 5%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .rate-of-fire {
+    flex-basis: 10%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .initiative {
+    flex-basis: 5%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .damage {
+    flex-basis: 10%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .type {
+    flex-basis: 5%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .penetration {
+    flex-basis: 5%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .special {
+    flex-basis: 20%;
+    text-align: center;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .items .weapon {
+    width: 100%;
+}
+.rogue-trader .unit-combat .weapons-alt .item-list .items {
     max-height: 34vh;
     /*height: 100px;*/
 }

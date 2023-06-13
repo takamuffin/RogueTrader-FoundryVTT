@@ -21,6 +21,10 @@ export class DarkHeresyItem extends Item {
         return `${this.clip.value}/${this.clip.max}`;
     }
 
+    get Quantity() {
+        return `${this.quantity.value}/${this.quantity.max}`;
+    }
+
     get RateOfFire() {
         let rof = this.rateOfFire;
         let single = rof.single > 0 ? "S" : "-";

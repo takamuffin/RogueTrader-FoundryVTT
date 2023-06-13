@@ -3,7 +3,8 @@
     "types": [
       "acolyte",
       "npc",
-      "spaceship"
+      "spaceship",
+      "unit"
     ],
     "templates": {
       "characteristics": {
@@ -1129,6 +1130,30 @@
           "value": 0
         }
       },
+      "unitManpower": {
+        "unitManpower": {
+          "max": 0,
+          "value": 0
+        }
+      },
+      "unitOfficers": {
+        "unitOfficers": {
+          "max": 0,
+          "value": 0
+        }
+      },
+      "unitHP": {
+        "unitHP": {
+          "max": 0,
+          "value": 0
+        }
+      },
+      "unitMorale": {
+        "unitMorale": {
+          "max": 0,
+          "value": 0
+        }
+      },
       "psy": {
         "psy": {
           "rating": 0,
@@ -1200,6 +1225,46 @@
         "notes": ""
       }
     },
+    "unit": {
+      "templates": [
+        "unitManpower",
+        "unitOfficers",
+        "unitHP",
+        "unitMorale"
+      ],
+      "bio": {
+        "unitClass": "",
+        "unitType": "",
+        "notes": "",
+        "percentage": 0,
+        "unitArmor" : 0,
+        "unitToughness" : 0,
+        "unitWounds" : 0,
+        "unitInitiative" : 0,
+        "unitMeleeAttack" : 0,
+        "unitMeleeDefence" : 0,
+        "unitRangedAttack" : 0,
+        "unitRangedDefence" : 0,
+        "unitMovement" : 0,
+        "unitMovementType" : "",
+        "unitSightRange" : 0,
+        "unitSightType" : "",
+        "unitAuxChance" : 0,
+        "unitAuxArmor" : 0,
+        "unitAuxToughness" : 0,
+        "unitAuxWounds" : 0,
+        "enemyArmor" : 0,
+        "enemyToughness" : 0,
+        "enemyWounds" : 0,
+        "enemyMeleeDefence" : 0,
+        "enemyRangedDefence" : 0,
+        "enemyRange" : 0,
+        "enemyAuxChance" : 0,
+        "enemyAuxArmor" : 0,
+        "enemyAuxToughness" : 0,
+        "enemyAuxWounds" : 0
+      }
+    },
     "npc": {
       "templates": [
         "characteristics",
@@ -1246,7 +1311,8 @@
       "trait",
       "weapon",
       "shipWeapon",
-      "weaponModification"
+      "weaponModification",
+      "unitWeapon"
     ],
     "templates": {
       "equipment": {
@@ -1451,6 +1517,29 @@
       "shipWeaponArc": 0,
       "special": "",
       "shipWeaponAttack": 0
+    },
+    "unitWeapon": {
+      "templates": [
+        "equipment"
+      ],
+      "quantity": {
+        "max": 0,
+        "value": 0
+      },
+      "class": "",
+      "type": "",
+      "range": 0,
+      "rateOfFire": {
+        "single": 0,
+        "burst": 0,
+        "full": 0
+      },
+      "initiative": 0,
+      "damage": "",
+      "damageType": "impact",
+      "penetration": "",
+      "special": "",
+      "attack": 0
     },
     "weaponModification": {
       "templates": [

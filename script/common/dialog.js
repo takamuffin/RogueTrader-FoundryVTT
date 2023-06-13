@@ -1,4 +1,4 @@
-import { commonRoll, combatRoll, shipCombatRoll, reportEmptyClip } from "./roll.js";
+import { commonRoll, combatRoll, shipCombatRoll, reportEmptyClip, unitCombatRoll } from "./roll.js";
 
 /**
  * Show a generic roll dialog.
@@ -219,6 +219,56 @@ export async function prepareShipCombatRoll(rollData, actorRef) {
                     rollData.damageBonus = parseInt(html.find("#damageBonus")[0].value, 10);
                     rollData.isCombatTest = true;
                     await shipCombatRoll(rollData);
+                },
+            },
+            cancel: {
+                icon: '<i class="fas fa-times"></i>',
+                label: game.i18n.localize("BUTTON.CANCEL"),
+                callback: () => {},
+            },
+        },
+        default: "roll",
+        close: () => {},
+    }, {width: 200});
+    dialog.render(true);
+}
+
+/**
+ * Show a unit combat roll dialog.
+ * @param {object} rollData
+ * @param {DarkHeresyActor} actorRef
+ */
+export async function prepareUnitCombatRoll(rollData, actorRef) {
+    const html = await renderTemplate("systems/rogue-trader/template/dialog/unit-combat-roll.html", rollData);
+    let dialog = new Dialog({
+        title: rollData.name,
+        content: html,
+        buttons: {
+            roll: {
+                icon: '<i class="fas fa-check"></i>',
+                label: game.i18n.localize("BUTTON.ROLL"),
+                callback: async (html) => {
+                    rollData.name = game.i18n.localize(rollData.name);
+                    rollData.baseTarget = parseInt(html.find("#target")[0]?.value, 10);
+                    rollData.modifier = html.find("#modifier")[0]?.value;
+                    const range = html.find("#range")[0];
+                    if (typeof range !== "undefined" && range !== null) {
+                        rollData.range = range.value;
+                        rollData.rangeText = range.options[range.selectedIndex].text;
+                    }
+                    const attackType = html.find("#attackType")[0];
+                    rollData.attackType = {
+                        name : attackType?.value,
+                        text : attackType?.options[attackType.selectedIndex].text,
+                        modifier : 0
+                    };
+                    rollData.damageFormula = html.find("#damageFormula")[0].value.replace(" ", "");
+                    rollData.damageType = html.find("#damageType")[0].value;
+                    rollData.damageBonus = parseInt(html.find("#damageBonus")[0].value, 10);
+                    rollData.penetrationFormula = html.find("#penetration")[0].value;
+                    rollData.isCombatTest = true;
+                    if (rollData.weaponTraits.skipAttackRoll) {rollData.attackType.name = "standard";}
+                    await unitCombatRoll(rollData);
                 },
             },
             cancel: {
