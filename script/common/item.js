@@ -628,6 +628,10 @@ export class DarkHeresyItem extends Item {
         return this.system.reload;
     }
 
+    get initiative() {
+        return this.system.initiative;
+    }
+
     get special() {
         return this.system.special;
     }

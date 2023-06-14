@@ -220,6 +220,20 @@ export default class DarkHeresyUtil {
         return enemyStats;
     }
 
+    static getTargetStats(actor) {
+        let enemyStats = new Object();
+        enemyStats.armor = actor.bio.unitArmor;
+        enemyStats.toughness = actor.bio.unitToughness;
+        enemyStats.wounds = actor.bio.unitWounds;
+        enemyStats.auxChance = actor.bio.unitAuxChance;
+        enemyStats.auxArmor = actor.bio.unitAuxArmor;
+        enemyStats.auxToughness = actor.bio.unitAuxToughness;
+        enemyStats.auxWounds = actor.bio.unitAuxWounds;
+        enemyStats.meleeDefence = actor.bio.unitMeleeDefence;
+        enemyStats.rangedDefence = actor.bio.unitRangedDefence;
+        return enemyStats;
+    }
+
     static getFocusPowerTarget(actor, psychicPower) {
         const normalizeName = psychicPower.focusPower.test.toLowerCase();
         if (actor.characteristics.hasOwnProperty(normalizeName)) {
