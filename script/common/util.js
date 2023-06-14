@@ -69,9 +69,14 @@ export default class DarkHeresyUtil {
         return rollData;
     }
 
-    static createUnitWeaponRollData(actor, weapon) {
+    static createUnitWeaponRollData(actor, weapon, targetActor) {
         let characteristic = this.getUnitWeaponCharacteristic(actor, weapon);
-        let enemyStats = this.getEnemyStats(actor);
+        let enemyStats;
+        if (targetActor && targetActor.type == "unit") {
+            enemyStats = this.getTargetStats(targetActor);
+        } else {
+            enemyStats = this.getEnemyStats(actor);
+        }
         let rateOfFire;
         if (weapon.class === "melee") {
             rateOfFire = {burst: characteristic.bonus, full: characteristic.bonus};

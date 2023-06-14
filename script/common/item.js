@@ -605,6 +605,10 @@ export class DarkHeresyItem extends Item {
         return this.system.rateOfFire;
     }
 
+    get quantity() {
+        return this.system.quantity;
+    }
+
     get damageType() {
         return this.system.damageType
             || this.system?.damage?.type

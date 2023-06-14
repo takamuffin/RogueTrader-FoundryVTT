@@ -319,9 +319,14 @@ export class DarkHeresySheet extends ActorSheet {
     async _prepareRollUnitWeapon(event) {
         event.preventDefault();
         const div = $(event.currentTarget).parents(".item");
+        let targetActor;
+        for(let target of Array.from(game.user.targets)) {
+            targetActor = target.actor;
+        }
+        let target = game.user.targets;
         const weapon = this.actor.items.get(div.data("itemId"));
         await prepareUnitCombatRoll(
-            DarkHeresyUtil.createUnitWeaponRollData(this.actor, weapon),
+            DarkHeresyUtil.createUnitWeaponRollData(this.actor, weapon, targetActor),
             this.actor
         );
     }
