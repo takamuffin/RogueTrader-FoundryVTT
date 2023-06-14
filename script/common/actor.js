@@ -47,7 +47,9 @@ export class DarkHeresyActor extends Actor {
     _computeQuantity() {
         for (let unitWeapon of this.items)
         {
-            unitWeapon.system.quantity.value = Number((unitWeapon.system.quantity.max * this.system.bio.percentage).toFixed(0));
+            if (unitWeapon.type = "unitWeapon") {
+                unitWeapon.system.quantity.value = Number((unitWeapon.system.quantity.max * this.system.bio.percentage).toFixed(0));
+            }
         }
 
     }
