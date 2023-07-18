@@ -38,18 +38,28 @@
                     </div>
                     <div class="stat size">
                         <label>{{localize "SHIP_WEAPON.SIZE"}}</label>
-                        <input name="system.shipWeaponSize" type="text" value="{{system.shipWeaponSize}}"/>
+                        <select name="system.shipWeaponSize">
+                            {{#select system.shipWeaponSize}}
+                            <option value="SL">{{localize "SHIP_WEAPON.SUPER_LIGHT"}}</option>
+                            <option value="L">{{localize "SHIP_WEAPON.LIGHT"}}</option>
+                            <option value="M">{{localize "SHIP_WEAPON.MEDIUM"}}</option>
+                            <option value="H">{{localize "SHIP_WEAPON.HEAVY"}}</option>
+                            <option value="SH">{{localize "SHIP_WEAPON.SUPER_HEAVY"}}</option>
+                            {{/select}}
+                        </select>
                     </div>
                     <div class="stat energy">
                         <label>{{localize "SHIP_WEAPON.ENERGY"}}</label>
-                        <input name="system.shipWeaponEnergy" type="number" value="{{system.shipWeaponEnergy}}" data-dtype="Number"/>
+                        <input name="system.shipWeaponEnergy" type="number" value="{{system.shipWeaponEnergy}}"
+                               data-dtype="Number"/>
                     </div>
                     <div class="stat range">
                         <label>{{localize "SHIP_WEAPON.RANGE"}}</label>
                         <input style="margin-left: 8px" name="system.shipWeaponRange.short" type="number"
                                value="{{system.shipWeaponRange.short}}" data-dtype="Number"/>
                         /
-                        <input name="system.shipWeaponRange.medium" type="number" value="{{system.shipWeaponRange.medium}}"
+                        <input name="system.shipWeaponRange.medium" type="number"
+                               value="{{system.shipWeaponRange.medium}}"
                                data-dtype="Number"/>
                         /
                         <input name="system.shipWeaponRange.long" type="number" value="{{system.shipWeaponRange.long}}"
@@ -59,15 +69,18 @@
                 <div class="stats-row">
                     <div class="stat arc">
                         <label>{{localize "SHIP_WEAPON.ARC"}}</label>
-                        <input name="system.shipWeaponArc" type="number" value="{{system.shipWeaponArc}}" data-dtype="Number"/>
+                        <input name="system.shipWeaponArc" type="number" value="{{system.shipWeaponArc}}"
+                               data-dtype="Number"/>
                     </div>
                     <div class="stat strength">
                         <label>{{localize "SHIP_WEAPON.STRENGTH"}}</label>
-                        <input name="system.shipWeaponStrength" type="number" value="{{system.shipWeaponStrength}}" data-dtype="Number"/>
+                        <input name="system.shipWeaponStrength" type="number" value="{{system.shipWeaponStrength}}"
+                               data-dtype="Number"/>
                     </div>
                     <div class="stat damage">
                         <label>{{localize "SHIP_WEAPON.DAMAGE"}}</label>
-                        <input name="system.shipWeaponDamage" type="number" value="{{system.shipWeaponDamage}}" data-dtype="Number"/>
+                        <input name="system.shipWeaponDamage" type="number" value="{{system.shipWeaponDamage}}"
+                               data-dtype="Number"/>
                     </div>
                     <div class="stat craftsmanship">
                         <label>{{localize "WEAPON.CRAFTSMANSHIP"}}</label>
@@ -89,7 +102,8 @@
                         </div>
                         <div class="stat attack">
                             <label>{{localize "WEAPON.ATTACK"}}</label>
-                            <input name="system.shipWeaponAttack" type="number" value="{{system.shipWeaponAttack}}" data-dtype="Number"/>
+                            <input name="system.shipWeaponAttack" type="number" value="{{system.shipWeaponAttack}}"
+                                   data-dtype="Number"/>
                         </div>
                     </div>
                 </div>

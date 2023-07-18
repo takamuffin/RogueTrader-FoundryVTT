@@ -1,4 +1,11 @@
-import {prepareCommonRoll, prepareCombatRoll, prepareShipCombatRoll, prepareUnitCombatRoll, preparePsychicPowerRoll} from "../../common/dialog.js";
+import {
+    prepareCommonRoll,
+    prepareCombatRoll,
+    prepareShipCombatRoll,
+    prepareShipTurretsRoll,
+    prepareUnitCombatRoll,
+    preparePsychicPowerRoll
+} from "../../common/dialog.js";
 import DarkHeresyUtil from "../../common/util.js";
 
 export class DarkHeresySheet extends ActorSheet {
@@ -16,8 +23,28 @@ export class DarkHeresySheet extends ActorSheet {
         html.find(".roll-corruption").click(async ev => await this._prepareRollCorruption(ev));
         html.find(".roll-weapon").click(async ev => await this._prepareRollWeapon(ev));
         html.find(".roll-ship-weapon").click(async ev => await this._prepareRollShipWeapon(ev));
+        html.find(".roll-ship-turrets").click(async ev => await this._prepareRollShipTurrets(ev));
         html.find(".roll-unit-weapon").click(async ev => await this._prepareRollUnitWeapon(ev));
         html.find(".roll-psychic-power").click(async ev => await this._prepareRollPsychicPower(ev));
+        if ( this.isEditable ) {
+            const inputs = html.find("input");
+            inputs.focus(ev => ev.currentTarget.select());
+            inputs.addBack().find('[type="text"][data-dtype="Number"]').change(this._onChangeInputDelta.bind(this));
+        }
+    }
+
+    /**
+     * Handle input changes to numeric form fields, allowing them to accept delta-typed inputs.
+     * @param {Event} event  Triggering event.
+     * @protected
+     */
+    _onChangeInputDelta(event) {
+        const input = event.target;
+        const value = input.value;
+        if ( ["+", "-"].includes(value[0]) ) {
+            const delta = parseFloat(value);
+            input.value = Number(foundry.utils.getProperty(this.actor, input.name)) + delta;
+        } else if ( value[0] === "=" ) input.value = value.slice(1);
     }
 
     /** @override */
@@ -31,7 +58,7 @@ export class DarkHeresySheet extends ActorSheet {
     }
 
     /**
-    getData() {
+     getData() {
         const data = super.getData();
         data.system = data.data.system;
         data.items = this.constructItemLists(data)
@@ -309,9 +336,21 @@ export class DarkHeresySheet extends ActorSheet {
     async _prepareRollShipWeapon(event) {
         event.preventDefault();
         const div = $(event.currentTarget).parents(".item");
+        let targetActor;
+        for (let target of Array.from(game.user.targets)) {
+            targetActor = target.actor;
+        }
         const weapon = this.actor.items.get(div.data("itemId"));
         await prepareShipCombatRoll(
-            DarkHeresyUtil.createShipWeaponRollData(this.actor, weapon),
+            DarkHeresyUtil.createShipWeaponRollData(this.actor, weapon, targetActor),
+            this.actor
+        );
+    }
+
+    async _prepareRollShipTurrets(event) {
+        event.preventDefault();
+        await prepareShipTurretsRoll(
+            DarkHeresyUtil.createShipTurretsRollData(this.actor),
             this.actor
         );
     }
@@ -320,7 +359,7 @@ export class DarkHeresySheet extends ActorSheet {
         event.preventDefault();
         const div = $(event.currentTarget).parents(".item");
         let targetActor;
-        for(let target of Array.from(game.user.targets)) {
+        for (let target of Array.from(game.user.targets)) {
             targetActor = target.actor;
         }
         let target = game.user.targets;

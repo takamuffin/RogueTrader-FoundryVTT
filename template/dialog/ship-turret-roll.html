@@ -1,0 +1,22 @@
+<div class="rogue-trader dialog">
+    <div class="flex row wrap background border" style="flex-basis: 100%;margin-bottom: 5px">
+        <h1>{{localize "DIALOG.TURRETS"}}</h1>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.TARGET"}}</label>
+            <input id="target" type="number" value="{{baseTarget}}" data-dtype="Number"/>
+        </div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.MODIFIER"}}</label>
+            <input id="modifier" type="text" value="{{modifier}}" data-dtype="Number"/>
+        </div>
+        <div class="wrapper">
+            <label>{{localize "DIALOG.TURRETS_NUMBER"}}</label>
+            <input id="turretNumber" type="text" value="{{turretNumber}}" data-dtype="Number"/>
+        </div>
+    </div>
+</div>
+<script>
+    $(".wrapper input").focusin(function () {
+        $(this).select();
+    });
+</script>

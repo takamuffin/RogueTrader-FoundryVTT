@@ -1044,16 +1044,26 @@
       },
       "shipShields": {
         "shipShields": {
-          "shieldOneCur": 0,
-          "shieldOneMax": 0,
-          "shieldTwoCur": 0,
-          "shieldTwoMax": 0,
-          "shieldThreeCur": 0,
-          "shieldThreeMax": 0,
-          "shieldFourCur": 0,
-          "shieldFourMax": 0,
-          "shieldFiveCur": 0,
-          "shieldFiveMax": 0
+          "shieldOne": {
+            "max": 0,
+            "value": 0
+          },
+          "shieldTwo": {
+            "max": 0,
+            "value": 0
+          },
+          "shieldThree": {
+            "max": 0,
+            "value": 0
+          },
+          "shieldFour": {
+            "max": 0,
+            "value": 0
+          },
+          "shieldFive": {
+            "max": 0,
+            "value": 0
+          }
         }
       },
       "detection": {
@@ -1064,34 +1074,76 @@
       },
       "shipArmor": {
         "shipArmor": {
-          "prowAPCur": 0,
-          "prowAPMax": 0,
-          "prowSPCur": 0,
-          "prowSPMax": 0,
-          "portAPCur": 0,
-          "portAPMax": 0,
-          "portSPCur": 0,
-          "portSPMax": 0,
-          "stbdAPCur": 0,
-          "stbdAPMax": 0,
-          "stbdSPCur": 0,
-          "stbdSPMax": 0,
-          "mainAPCur": 0,
-          "mainAPMax": 0,
-          "mainSPCur": 0,
-          "mainSPMax": 0,
-          "bridgeAPCur": 0,
-          "bridgeAPMax": 0,
-          "bridgeSPCur": 0,
-          "bridgeSPMax": 0,
-          "aftAPCur": 0,
-          "aftAPMax": 0,
-          "aftSPCur": 0,
-          "aftSPMax": 0
+          "prow": {
+            "armor": {
+              "max": 0,
+              "value": 0
+            },
+            "structure": {
+              "max": 0,
+              "value": 0
+            }
+          },
+          "port": {
+            "armor": {
+              "max": 0,
+              "value": 0
+            },
+            "structure": {
+              "max": 0,
+              "value": 0
+            }
+          },
+          "starboard": {
+            "armor": {
+              "max": 0,
+              "value": 0
+            },
+            "structure": {
+              "max": 0,
+              "value": 0
+            }
+          },
+          "main": {
+            "armor": {
+              "max": 0,
+              "value": 0
+            },
+            "structure": {
+              "max": 0,
+              "value": 0
+            }
+          },
+          "bridge": {
+            "armor": {
+              "max": 0,
+              "value": 0
+            },
+            "structure": {
+              "max": 0,
+              "value": 0
+            }
+          },
+          "aft": {
+            "armor": {
+              "max": 0,
+              "value": 0
+            },
+            "structure": {
+              "max": 0,
+              "value": 0
+            }
+          }
         }
       },
       "shipSpace": {
         "shipSpace": {
+          "max": 0,
+          "value": 0
+        }
+      },
+      "shipTurretRate": {
+        "shipTurretRate": {
           "max": 0,
           "value": 0
         }
@@ -1215,13 +1267,13 @@
         "shipMovement",
         "shipEnergy",
         "shipMorale",
-        "detection"
+        "detection",
+        "shipTurretRate"
       ],
       "bio": {
-        "shipClass": "",
+        "shipClass": "Big Ship",
         "shipHullType": "",
         "shipCrewRate": 0,
-        "shipTurretRate": 0,
         "notes": ""
       }
     },
@@ -1505,7 +1557,7 @@
         "equipment"
       ],
       "shipWeaponClass": "Macro",
-      "shipWeaponSize": "S",
+      "shipWeaponSize": "Medium",
       "shipWeaponEnergy": 0,
       "shipWeaponRange": {
         "short": 0,

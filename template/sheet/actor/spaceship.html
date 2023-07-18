@@ -13,7 +13,14 @@
                         </div>
                         <div class="ship-class">
                             <label>{{localize "BIO.SHIP_CLASS"}}</label>
-                            <input name="system.bio.shipClass" type="text" value="{{system.bio.shipClass}}"/>
+                            <select name="system.bio.shipClass">
+                                {{#select system.bio.shipClass}}
+                                <option value="bigShip">{{localize "SHIP_CLASS.BIG_SHIP"}}</option>
+                                <option value="smallShip">{{localize "SHIP_CLASS.SMALL_SHIP"}}</option>
+                                <option value="special">{{localize "SHIP_CLASS.SPECIAL"}}</option>
+                                {{/select}}
+                            </select>
+<!--                            <input name="system.bio.shipClass" type="text" value="{{system.bio.shipClass}}"/>-->
                         </div>
                         <div class="ship-hull-type">
                             <label>{{localize "BIO.SHIP_HULL_TYPE"}}</label>
@@ -23,44 +30,48 @@
                     <div class="header-row">
                         <div class="ship-space">
                             <label>{{localize "BIO.SHIP_SPACE"}}</label>
-                            <input name="system.shipSpace.value" type="number"
+                            <input name="system.shipSpace.value" type="text"
                                    value="{{system.shipSpace.value}}" data-dtype="Number"/>
                             /
-                            <input name="system.shipSpace.max" type="number" value="{{system.shipSpace.max}}"
+                            <input name="system.shipSpace.max" type="text" value="{{system.shipSpace.max}}"
                                    data-dtype="Number"/>
                         </div>
                         <div class="ship-energy">
                             <label>{{localize "BIO.SHIP_ENERGY"}}</label>
-                            <input name="system.shipEnergy.value" type="number" value="{{system.shipEnergy.value}}"
+                            <input name="system.shipEnergy.value" type="text" value="{{system.shipEnergy.value}}"
                                    data-dtype="Number"/>
                             /
-                            <input name="system.shipEnergy.max" type="number" value="{{system.shipEnergy.max}}"
+                            <input name="system.shipEnergy.max" type="text" value="{{system.shipEnergy.max}}"
                                    data-dtype="Number"/>
                         </div>
                         <div class="ship-turret-rate">
-                            <label>{{localize "BIO.SHIP_TURRET_RATE"}}</label>
-                            <input name="system.bio.shipTurretRate" type="text" value="{{system.bio.shipTurretRate}}"/>
+                            <button class="roll-ship-turrets" type="button"><label>{{localize "BIO.SHIP_TURRET_RATE"}}</label></button>
+                            <input name="system.shipTurretRate.value" type="text" value="{{system.shipTurretRate.value}}"
+                                   data-dtype="Number"/>
+                            /
+                            <input name="system.shipTurretRate.max" type="text" value="{{system.shipTurretRate.max}}"
+                                   data-dtype="Number"/>
                         </div>
                     </div>
                     <div class="header-row">
                         <div class="ship-crew-rate">
                             <label>{{localize "BIO.SHIP_CREW_RATE"}}</label>
-                            <input name="system.bio.shipCrewRate" type="text" value="{{system.bio.shipCrewRate}}"/>
+                            <input name="system.bio.shipCrewRate" type="text" value="{{system.bio.shipCrewRate}}" data-dtype="Number"/>
                         </div>
                         <div class="ship-crew">
                             <label>{{localize "BIO.SHIP_CREW"}}</label>
-                            <input name="system.shipCrew.value" type="number"
+                            <input name="system.shipCrew.value" type="text"
                                    value="{{system.shipCrew.value}}" data-dtype="Number"/>
                             /
-                            <input name="system.shipCrew.max" type="number" value="{{system.shipCrew.max}}"
+                            <input name="system.shipCrew.max" type="text" value="{{system.shipCrew.max}}"
                                    data-dtype="Number"/>
                         </div>
                         <div class="ship-morale">
                             <label>{{localize "BIO.SHIP_MORALE"}}</label>
-                            <input name="system.shipMorale.value" type="number" value="{{system.shipMorale.value}}"
+                            <input name="system.shipMorale.value" type="text" value="{{system.shipMorale.value}}"
                                    data-dtype="Number"/>
                             /
-                            <input name="system.shipMorale.max" type="number" value="{{system.shipMorale.max}}"
+                            <input name="system.shipMorale.max" type="text" value="{{system.shipMorale.max}}"
                                    data-dtype="Number"/>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import { commonRoll, combatRoll, shipCombatRoll, reportEmptyClip, unitCombatRoll } from "./roll.js";
+import { commonRoll, combatRoll, shipCombatRoll, shipTurretRoll, reportEmptyClip, unitCombatRoll } from "./roll.js";
 
 /**
  * Show a generic roll dialog.
@@ -219,6 +219,41 @@ export async function prepareShipCombatRoll(rollData, actorRef) {
                     rollData.damageBonus = parseInt(html.find("#damageBonus")[0].value, 10);
                     rollData.isCombatTest = true;
                     await shipCombatRoll(rollData);
+                },
+            },
+            cancel: {
+                icon: '<i class="fas fa-times"></i>',
+                label: game.i18n.localize("BUTTON.CANCEL"),
+                callback: () => {},
+            },
+        },
+        default: "roll",
+        close: () => {},
+    }, {width: 200});
+    dialog.render(true);
+}
+
+/**
+ * Show a ship turret roll dialog.
+ * @param {object} rollData
+ * @param {DarkHeresyActor} actorRef
+ */
+export async function prepareShipTurretsRoll(rollData, actorRef) {
+    const html = await renderTemplate("systems/rogue-trader/template/dialog/ship-turret-roll.html", rollData);
+    let dialog = new Dialog({
+        title: rollData.name,
+        content: html,
+        buttons: {
+            roll: {
+                icon: '<i class="fas fa-check"></i>',
+                label: game.i18n.localize("BUTTON.ROLL"),
+                callback: async (html) => {
+                    rollData.name = game.i18n.localize(rollData.name);
+                    rollData.baseTarget = parseInt(html.find("#target")[0]?.value, 10);
+                    rollData.modifier = parseInt(html.find("#modifier")[0]?.value, 10);
+                    rollData.turretNumber = parseInt(html.find("#turretNumber")[0]?.value, 10);
+                    rollData.isCombatTest = true;
+                    await shipTurretRoll(rollData);
                 },
             },
             cancel: {

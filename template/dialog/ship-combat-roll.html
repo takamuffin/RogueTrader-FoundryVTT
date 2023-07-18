@@ -26,9 +26,10 @@
         <div class="wrapper">
             <label>{{localize "DIALOG.ATTACKED_SHIP_TYPE"}}</label>
             <select id="attackedShipType">
-                {{#select attackType}}
-                <option value="big">{{localize "ATTACKED_SHIP_TYPE.BIG"}}</option>
-                <option value="small" selected>{{localize "ATTACKED_SHIP_TYPE.SMALL"}}</option>
+                {{#select attackedShipType}}
+                <option value="bigShip">{{localize "ATTACKED_SHIP_TYPE.BIG"}}</option>
+                <option value="smallShip">{{localize "ATTACKED_SHIP_TYPE.SMALL"}}</option>
+                <option value="special">{{localize "ATTACKED_SHIP_TYPE.SPECIAL"}}</option>
                 {{/select}}
             </select>
         </div>
@@ -37,9 +38,9 @@
             <select id="sideOfAttack">
                 {{#select attackType}}
                 <option value="prow">{{localize "SIDE_OF_ATTACK.PROW"}}</option>
-                <option value="port" selected>{{localize "SIDE_OF_ATTACK.PORT"}}</option>
+                <option value="port">{{localize "SIDE_OF_ATTACK.PORT"}}</option>
                 <option value="starboard">{{localize "SIDE_OF_ATTACK.STARBOARD"}}</option>
-                <option value="aft" selected>{{localize "SIDE_OF_ATTACK.AFT"}}</option>
+                <option value="aft">{{localize "SIDE_OF_ATTACK.AFT"}}</option>
                 {{/select}}
             </select>
         </div>

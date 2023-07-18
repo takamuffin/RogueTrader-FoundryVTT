@@ -6,15 +6,24 @@
     {{#if rangeText}}
     <p><strong>{{localize "CHAT.ATTACK_RANGE"}}:</strong> {{rangeText}}</p>
     {{/if}}
+    {{#if turretHits}}
+    <h3><strong>{{localize "CHAT.TURRET_HITS"}}:</strong> {{turretHits}}</h3>
+    {{/if}}
     <h3><strong>{{localize "CHAT.NUMBER_OF_HIT"}}:</strong> {{numberOfHits}}</h3>
     {{#each shotResults as |result|}}
     {{#if result.isSuccess}}
     <p><strong style="color: var(--color-success)">{{localize "CHAT.SUCCESS"}} ({{result.result}})</strong></p>
-    <p><strong>{{localize "CHAT.NUMBER_OF_HIT"}}:</strong><strong> {{localize result.location}}</strong></p>
+    <p><strong>{{localize "CHAT.LOCATION"}}:</strong><strong> {{localize result.location}}</strong></p>
     <div>
         <h3><strong>{{localize "CHAT.DAMAGE"}}:</strong> <span class="damage-total">{{hit.total}}</span>
         </h3>
     </div>
+    {{#if result.critical}}
+    <div>
+        <h3><strong>{{localize "CHAT.CRITS"}}:</strong> <span class="damage-total">{{result.critical}}</span>
+        </h3>
+    </div>
+    {{/if}}
     {{else}}
     <h3><span style="color: var(--color-failure)">{{localize "CHAT.FAILURE"}} ({{result.result}})</span></h3>
     {{/if}}

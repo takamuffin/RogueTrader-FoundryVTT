@@ -59,11 +59,13 @@ function preloadHandlebarsTemplates() {
     "systems/rogue-trader/template/chat/item.html",
     "systems/rogue-trader/template/chat/roll.html",
     "systems/rogue-trader/template/chat/ship-roll.html",
+    "systems/rogue-trader/template/chat/ship-turrets.html",
     "systems/rogue-trader/template/chat/unit-roll.html",
     "systems/rogue-trader/template/chat/critical.html",
     "systems/rogue-trader/template/dialog/common-roll.html",
     "systems/rogue-trader/template/dialog/combat-roll.html",
     "systems/rogue-trader/template/dialog/ship-combat-roll.html",
+    "systems/rogue-trader/template/dialog/ship-turret-roll.html",
     "systems/rogue-trader/template/dialog/unit-combat-roll.html",
     "systems/rogue-trader/template/dialog/psychic-power-roll.html"
   ];

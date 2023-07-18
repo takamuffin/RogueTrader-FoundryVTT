@@ -42,11 +42,39 @@ export async function shipCombatRoll(rollData) {
     await _computeShipTarget(rollData);
     rollData.shotResults = [];
     rollData.numberOfHits = 0;
-    for (let i = 0; i < rollData.strength; i++) {
-        await _rollShipTargetDamage(rollData);
+    if (rollData.shipWeaponClass == "attack") {
+        if (rollData.enemyStats) {
+            await _fireCounterMeasures(rollData);
+            for (let i = 0; i < rollData.strength - rollData.turretHits; i++) {
+                await _rollShipAttackCraft(rollData);
+            }
+        }
+        else {
+            for (let i = 0; i < rollData.strength; i++) {
+                await _rollShipAttackCraft(rollData);
+            }
+        }
+        await _rollShipAttackDamage(rollData);
+    } else {
+        for (let i = 0; i < rollData.strength; i++) {
+            await _rollShipTargetDamage(rollData);
+        }
     }
     // }
     await _sendShipToChat(rollData);
+}
+
+export async function shipTurretRoll(rollData) {
+    rollData.turretHits = 0;
+    rollData.target = rollData.baseTarget + rollData.modifier
+    for (let i = 0; i < rollData.turretNumber; i++) {
+        let r = new Roll("1d100", {});
+        r.evaluate({async: false});
+        if (r.total <= rollData.target) {
+            rollData.turretHits++;
+        }
+    }
+    await _sendTurretsToChat(rollData);
 }
 
 export async function unitCombatRoll(rollData) {
@@ -102,6 +130,9 @@ async function _computeTarget(rollData) {
 }
 
 async function _computeShipTarget(rollData) {
+    if (rollData.shipWeaponClass == "attack" || rollData.shipWeaponClass == "torpedoes") {
+        rollData.range = 0;
+    }
     const range = (rollData.range) ? rollData.range : "0";
     let attackType = 0;
     const formula = `0 + ${rollData.modifier} + + ${range}`;
@@ -183,6 +214,80 @@ async function _rollTarget(rollData) {
     if (typeof rollData.psy !== "undefined") _computePsychicPhenomena(rollData);
 }
 
+async function _fireCounterMeasures(rollData) {
+    let crewRate = rollData.enemyStats.enemy.bio.shipCrewRate;
+    let turretNumber = rollData.enemyStats.enemy.system.shipTurretRate.value;
+    rollData.turretHits = 0;
+    for (let i = 0; i < turretNumber; i++) {
+        let r = new Roll("1d100", {});
+        r.evaluate({async: false});
+        if (r.total <= crewRate) {
+            rollData.turretHits++;
+        }
+    }
+}
+
+async function _rollShipAttackCraft(rollData) {
+    let r = new Roll("1d100", {});
+    r.evaluate({async: false});
+    let rollResult = new Object();
+    rollResult.result = r.total;
+    rollResult.rollObject = r;
+    rollResult.isSuccess = rollResult.result <= rollData.target;
+    if (rollResult.isSuccess) {
+        rollResult.dof = 0;
+        rollResult.dos = 1 + _getDegree(rollData.target, rollResult.result);
+    } else {
+        rollResult.dos = 0;
+        rollResult.dof = 1 + _getDegree(rollResult.result, rollData.target);
+    }
+    if (rollResult.isSuccess) {
+        rollData.numberOfHits = rollData.numberOfHits + 1 + Number(((rollResult.dos - 1) / 2).toFixed(0));
+    }
+}
+
+async function _rollShipAttackDamage(rollData) {
+    let temporalDamage = 0;
+    for (let i = 0; i < rollData.numberOfHits; i++) {
+        temporalDamage++
+        if (temporalDamage == rollData.damageFormula) {
+            let formula = temporalDamage;
+            let r = new Roll("1d100", {});
+            r.evaluate({async: false});
+            let rollResult = new Object();
+            rollResult.dos = 1;
+            rollResult.isSuccess = true;
+            rollResult.result = r.total;
+            formula = `${formula}+${rollData.damageBonus}`;
+
+            rollResult.hit = await _computeShipDamage(formula, rollResult.dos);
+            rollResult.location = _getShipLocation(rollResult.result, rollData.attackedShipType.name, rollData.sideOfAttack.name);
+            if (rollData.enemyStats) {
+                await _applyDamage(rollData, rollResult);
+            }
+            temporalDamage = 0;
+            rollData.shotResults.push(rollResult);
+        } else if (i == rollData.numberOfHits - 1) {
+            let formula = temporalDamage;
+            let r = new Roll("1d100", {});
+            r.evaluate({async: false});
+            let rollResult = new Object();
+            rollResult.dos = 1;
+            rollResult.isSuccess = true;
+            rollResult.result = r.total;
+            formula = `${formula}+${rollData.damageBonus}`;
+
+            rollResult.hit = await _computeShipDamage(formula, rollResult.dos);
+            rollResult.location = _getShipLocation(rollResult.result, rollData.attackedShipType.name, rollData.sideOfAttack.name);
+            if (rollData.enemyStats) {
+                await _applyDamage(rollData, rollResult);
+            }
+            rollData.shotResults.push(rollResult);
+        }
+    }
+
+}
+
 async function _rollShipTargetDamage(rollData) {
     let r = new Roll("1d100", {});
     r.evaluate({async: false});
@@ -203,12 +308,198 @@ async function _rollShipTargetDamage(rollData) {
             formula = rollData.damageFormula;
 
             formula = `${formula}+${rollData.damageBonus}`;
+            // if (rollData.shipWeaponClass == "attack") {
+            //     formula = `${formula}+${rollData.damageBonus}+${rollResult.dos}`;
+            // }
         }
         rollResult.hit = await _computeShipDamage(formula, rollResult.dos);
-        rollResult.location = _getShipLocation(rollResult.result, rollData.attackedShipType.name, rollData.sideOfAttack.name);
+        if (rollData.enemyStats && rollData.shipWeaponClass != "torpedoes") {
+            let shipShields = rollData.enemyStats.enemy.system.shipShields;
+            let damage = rollResult.hit.total;
+            if (rollData.shipWeaponTraits.lance) {
+                damage -= rollData.shipWeaponTraits.lance.valueOf();
+            }
+            if (shipShields.shieldFive.value > 0) {
+                rollResult.hit.total = damage;
+                await rollData.enemyStats.enemy.update({'system.shipShields.shieldFive.value': shipShields.shieldFive.value - damage});
+                rollResult.location = "HIT_SYSTEMS.SHIELDS";
+            } else if (shipShields.shieldFour.value > 0) {
+                rollResult.hit.total = damage;
+                await rollData.enemyStats.enemy.update({'system.shipShields.shieldFour.value': shipShields.shieldFour.value - damage});
+                rollResult.location = "HIT_SYSTEMS.SHIELDS";
+            } else if (shipShields.shieldThree.value > 0) {
+                rollResult.hit.total = damage;
+                await rollData.enemyStats.enemy.update({'system.shipShields.shieldThree.value': shipShields.shieldThree.value - damage});
+                rollResult.location = "HIT_SYSTEMS.SHIELDS";
+            } else if (shipShields.shieldTwo.value > 0) {
+                rollResult.hit.total = damage;
+                await rollData.enemyStats.enemy.update({'system.shipShields.shieldTwo.value': shipShields.shieldTwo.value - damage});
+                rollResult.location = "HIT_SYSTEMS.SHIELDS";
+            } else if (shipShields.shieldOne.value > 0) {
+                rollResult.hit.total = damage;
+                await rollData.enemyStats.enemy.update({'system.shipShields.shieldOne.value': shipShields.shieldOne.value - damage});
+                rollResult.location = "HIT_SYSTEMS.SHIELDS";
+            } else {
+                rollResult.location = _getShipLocation(rollResult.result, rollData.attackedShipType.name, rollData.sideOfAttack.name);
+                await _applyDamage(rollData, rollResult);
+            }
+        } else {
+            rollResult.location = _getShipLocation(rollResult.result, rollData.attackedShipType.name, rollData.sideOfAttack.name);
+        }
         rollData.numberOfHits++;
     }
     rollData.shotResults.push(rollResult);
+}
+
+async function _applyDamage(rollData, rollResult) {
+    let damage = rollResult.hit.total;
+    let bonusArmorDamage = 0;
+    if (rollData.shipWeaponTraits.lance) {
+        bonusArmorDamage = rollData.shipWeaponTraits.lance.valueOf();
+    }
+    if (rollResult.location == "HIT_SYSTEMS.PROW") {
+        let armor = rollData.enemyStats.enemy.system.shipArmor.prow.armor.value;
+        let structure = rollData.enemyStats.enemy.system.shipArmor.prow.structure.value;
+        if ((damage + bonusArmorDamage) < armor) {
+            await rollData.enemyStats.enemy.update({'system.shipArmor.prow.armor.value': armor - (damage + bonusArmorDamage)});
+            rollResult.hit.total = damage + bonusArmorDamage;
+            if (rollData.shipWeaponClass == "torpedoes") await _rollCriticalDamage(rollData, rollResult, 0);
+        } else {
+            let structureDamage = damage - armor;
+            await _rollCriticalDamage(rollData, rollResult, structureDamage);
+            if (armor > 0) {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.prow.armor.value': 0});
+                await rollData.enemyStats.enemy.update({'system.shipArmor.prow.structure.value': structure - structureDamage - bonusArmorDamage});
+                rollResult.hit.total = structureDamage + bonusArmorDamage + armor;
+            } else {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.prow.structure.value': structure - structureDamage});
+                rollResult.hit.total = structureDamage;
+            }
+        }
+    }
+    if (rollResult.location == "HIT_SYSTEMS.PORT") {
+        let armor = rollData.enemyStats.enemy.system.shipArmor.port.armor.value;
+        let structure = rollData.enemyStats.enemy.system.shipArmor.port.structure.value;
+        if ((damage + bonusArmorDamage) < armor) {
+            await rollData.enemyStats.enemy.update({'system.shipArmor.port.armor.value': armor - (damage + bonusArmorDamage)});
+            rollResult.hit.total = damage + bonusArmorDamage;
+            if (rollData.shipWeaponClass == "torpedoes") await _rollCriticalDamage(rollData, rollResult, 0);
+        } else {
+            let structureDamage = damage - armor;
+            await _rollCriticalDamage(rollData, rollResult, structureDamage);
+            if (armor > 0) {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.port.armor.value': 0});
+                await rollData.enemyStats.enemy.update({'system.shipArmor.port.structure.value': structure - structureDamage - bonusArmorDamage});
+                rollResult.hit.total = structureDamage + bonusArmorDamage + armor;
+            } else {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.port.structure.value': structure - structureDamage});
+                rollResult.hit.total = structureDamage;
+            }
+        }
+    }
+    if (rollResult.location == "HIT_SYSTEMS.STARBOARD") {
+        let armor = rollData.enemyStats.enemy.system.shipArmor.starboard.armor.value;
+        let structure = rollData.enemyStats.enemy.system.shipArmor.starboard.structure.value;
+        if ((damage + bonusArmorDamage) < armor) {
+            await rollData.enemyStats.enemy.update({'system.shipArmor.starboard.armor.value': armor - (damage + bonusArmorDamage)});
+            rollResult.hit.total = damage + bonusArmorDamage;
+            if (rollData.shipWeaponClass == "torpedoes") await _rollCriticalDamage(rollData, rollResult, 0);
+        } else {
+            let structureDamage = damage - armor;
+            await _rollCriticalDamage(rollData, rollResult, structureDamage);
+            if (armor > 0) {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.starboard.armor.value': 0});
+                await rollData.enemyStats.enemy.update({'system.shipArmor.starboard.structure.value': structure - structureDamage - bonusArmorDamage});
+                rollResult.hit.total = structureDamage + bonusArmorDamage + armor;
+            } else {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.starboard.structure.value': structure - structureDamage});
+                rollResult.hit.total = structureDamage;
+            }
+        }
+    }
+    if (rollResult.location == "HIT_SYSTEMS.MAIN") {
+        let armor = rollData.enemyStats.enemy.system.shipArmor.main.armor.value;
+        let structure = rollData.enemyStats.enemy.system.shipArmor.main.structure.value;
+        if ((damage + bonusArmorDamage) < armor) {
+            await rollData.enemyStats.enemy.update({'system.shipArmor.main.armor.value': armor - (damage + bonusArmorDamage)});
+            rollResult.hit.total = damage + bonusArmorDamage;
+            if (rollData.shipWeaponClass == "torpedoes") await _rollCriticalDamage(rollData, rollResult, 0);
+        } else {
+            let structureDamage = damage - armor;
+            await _rollCriticalDamage(rollData, rollResult, structureDamage);
+            if (armor > 0) {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.main.armor.value': 0});
+                await rollData.enemyStats.enemy.update({'system.shipArmor.main.structure.value': structure - structureDamage - bonusArmorDamage});
+                rollResult.hit.total = structureDamage + bonusArmorDamage + armor;
+            } else {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.main.structure.value': structure - structureDamage});
+                rollResult.hit.total = structureDamage;
+            }
+        }
+    }
+    if (rollResult.location == "HIT_SYSTEMS.BRIDGE") {
+        let armor = rollData.enemyStats.enemy.system.shipArmor.bridge.armor.value;
+        let structure = rollData.enemyStats.enemy.system.shipArmor.bridge.structure.value;
+        if ((damage + bonusArmorDamage) < armor) {
+            await rollData.enemyStats.enemy.update({'system.shipArmor.bridge.armor.value': armor - (damage + bonusArmorDamage)});
+            rollResult.hit.total = damage + bonusArmorDamage;
+            if (rollData.shipWeaponClass == "torpedoes") await _rollCriticalDamage(rollData, rollResult, 0);
+        } else {
+            let structureDamage = damage - armor;
+            await _rollCriticalDamage(rollData, rollResult, structureDamage + 8);
+            if (armor > 0) {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.bridge.armor.value': 0});
+                await rollData.enemyStats.enemy.update({'system.shipArmor.bridge.structure.value': structure - structureDamage - bonusArmorDamage});
+                rollResult.hit.total = structureDamage + bonusArmorDamage + armor;
+            } else {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.bridge.structure.value': structure - structureDamage});
+                rollResult.hit.total = structureDamage;
+            }
+        }
+    }
+    if (rollResult.location == "HIT_SYSTEMS.AFT") {
+        let armor = rollData.enemyStats.enemy.system.shipArmor.aft.armor.value;
+        let structure = rollData.enemyStats.enemy.system.shipArmor.aft.structure.value;
+        if ((damage + bonusArmorDamage) < armor) {
+            await rollData.enemyStats.enemy.update({'system.shipArmor.aft.armor.value': armor - (damage + bonusArmorDamage)});
+            rollResult.hit.total = damage + bonusArmorDamage;
+            if (rollData.shipWeaponClass == "torpedoes") await _rollCriticalDamage(rollData, rollResult, 0);
+        } else {
+            let structureDamage = damage - armor;
+            await _rollCriticalDamage(rollData, rollResult, structureDamage);
+            if (armor > 0) {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.aft.armor.value': 0});
+                await rollData.enemyStats.enemy.update({'system.shipArmor.aft.structure.value': structure - structureDamage - bonusArmorDamage});
+                rollResult.hit.total = structureDamage + bonusArmorDamage + armor;
+            } else {
+                await rollData.enemyStats.enemy.update({'system.shipArmor.aft.structure.value': structure - structureDamage});
+                rollResult.hit.total = structureDamage;
+            }
+        }
+    }
+}
+
+async function _rollCriticalDamage(rollData, rollResult, damage) {
+    let r = new Roll("2d6", {});
+    r.evaluate({async: false});
+    let result = r.total + Number((damage / 4).toFixed(0));
+    if (result <= 8) {
+        rollResult.critical = "No Critical Hits";
+    } else if (result <= 10) {
+        rollResult.critical = "1 Critical Hit";
+    } else if (result <= 12) {
+        let t = new Roll("d3+1", {});
+        t.evaluate({async: false});
+        rollResult.critical = t.total + " Critical Hits";
+    } else if (result <= 14) {
+        let t = new Roll("d6+1", {});
+        t.evaluate({async: false});
+        rollResult.critical = t.total + " Critical Hits";
+    } else if (result > 14) {
+        let t = new Roll("2d6+2", {});
+        t.evaluate({async: false});
+        rollResult.critical = t.total + " Critical Hits";
+    }
 }
 
 async function _rollUnitTargetDamage(rollData) {
@@ -229,16 +520,16 @@ async function _rollUnitTargetDamage(rollData) {
         if (isSuccess || rollData.weaponTraits.ordnance > dof) {
             let multipleHits = 0;
             if (rollData.weaponTraits.torrent) {
-                let rollFormula = rollData.weaponTraits.torrent + "d6+" + rollData.weaponTraits.torrent;
+                let rollFormula = rollData.weaponTraits.torrent + "d4+" + rollData.weaponTraits.torrent;
                 let r = new Roll(rollFormula, {});
                 r.evaluate({async: false});
-                multipleHits += r.total + Number((dos / 2).toFixed(0));
+                multipleHits += r.total + Number(((dos - 1) / 2).toFixed(0));
             }
             if (rollData.weaponTraits.ordnance) {
-                multipleHits += rollData.weaponTraits.ordnance + dos - dof;
+                multipleHits += rollData.weaponTraits.ordnance + Number(((dos - 1) / 2).toFixed(0)) - dof;
             }
             if (rollData.weaponTraits.scatter && (rollData.range == "-20")) {
-                multipleHits += Number((dos / 2).toFixed(0));
+                multipleHits += Number(((dos - 1) / 2).toFixed(0));
             }
             if (multipleHits > 0) {
                 for (let j = 0; j < multipleHits; j++) {
@@ -260,7 +551,7 @@ async function _rollUnitTargetDamage(rollData) {
                     if (rollData.weaponTraits.scatter && (rollData.range == "-20")) {
                         damageBonus += 3;
                     }
-                    if (rollData.weaponTraits.scatter && (rollData.range == "0")){
+                    if (rollData.weaponTraits.scatter && (rollData.range == "0")) {
                         damageBonus -= 3;
                     }
                     if (rollData.damageFormula) {
@@ -351,7 +642,7 @@ async function _rollUnitTargetDamage(rollData) {
                 if (rollData.weaponTraits.scatter && (rollData.range == "-20")) {
                     damageBonus += 3;
                 }
-                if (rollData.weaponTraits.scatter && (rollData.range == "0")){
+                if (rollData.weaponTraits.scatter && (rollData.range == "0")) {
                     damageBonus -= 3;
                 }
                 if (rollData.damageFormula) {
@@ -727,7 +1018,7 @@ function _getLocation(result) {
 function _getShipLocation(result, attackedShip, sideOfAttack) {
     const toReverse = result < 10 ? `0${result}` : result.toString();
     const locationTarget = parseInt(toReverse.split("").reverse().join(""));
-    if (attackedShip == "big") {
+    if (attackedShip == "bigShip") {
         if (sideOfAttack == "prow") {
             if (locationTarget <= 5) {
                 return "HIT_SYSTEMS.BRIDGE";
@@ -772,7 +1063,7 @@ function _getShipLocation(result, attackedShip, sideOfAttack) {
                 return "HIT_SYSTEMS.STARBOARD";
             } else return "HIT_SYSTEMS.MAIN";
         }
-    } else {
+    } else if (attackedShip == "smallShip") {
         if (sideOfAttack == "prow") {
             if (locationTarget <= 5) {
                 return "HIT_SYSTEMS.BRIDGE";
@@ -805,7 +1096,7 @@ function _getShipLocation(result, attackedShip, sideOfAttack) {
                 return "HIT_SYSTEMS.AFT";
             } else return "HIT_SYSTEMS.MAIN";
         }
-    }
+    } else return "HIT_SYSTEMS.MAIN";
 }
 
 /**
@@ -1062,6 +1353,34 @@ async function _sendShipToChat(rollData) {
     // }
 
     const html = await renderTemplate("systems/rogue-trader/template/chat/ship-roll.html", rollData);
+    chatData.content = html;
+
+    if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
+        chatData.whisper = ChatMessage.getWhisperRecipients("GM");
+    } else if (chatData.rollMode === "selfroll") {
+        chatData.whisper = [game.user];
+    }
+
+    ChatMessage.create(chatData);
+}
+
+async function _sendTurretsToChat(rollData) {
+    let speaker = ChatMessage.getSpeaker();
+    let chatData = {
+        user: game.user.id,
+        type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+        rollMode: game.settings.get("core", "rollMode"),
+        speaker: speaker,
+        flags: {
+            "rogue-trader.rollData": rollData
+        }
+    };
+
+    if (speaker.token) {
+        rollData.tokenId = speaker.token;
+    }
+
+    const html = await renderTemplate("systems/rogue-trader/template/chat/ship-turrets.html", rollData);
     chatData.content = html;
 
     if (["gmroll", "blindroll"].includes(chatData.rollMode)) {

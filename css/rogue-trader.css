@@ -1165,15 +1165,17 @@ li.folder.collapsed > .folder-header {
 .rogue-trader .spaceship .header .ship-name {
     flex-basis: 40%;
 }
-.rogue-trader .spaceship .header .ship-class,
+.rogue-trader .spaceship .header .ship-class {
+    flex-basis: 30%;
+}
 .rogue-trader .spaceship .header .ship-hull-type {
     flex-basis: 30%;
 }
 .rogue-trader .spaceship .header .ship-name input{
     width: 70%;
 }
-.rogue-trader .spaceship .header .ship-class input{
-    width: 60%;
+.rogue-trader .spaceship .header .ship-class select{
+    width: 50%;
 }
 .rogue-trader .spaceship .header .ship-hull-type input{
     width: 50%;

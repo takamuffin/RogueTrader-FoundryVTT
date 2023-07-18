@@ -98,7 +98,7 @@
         <p><strong>{{localize "TALENT.PREREQUISITES"}}:</strong> {{item.prerequisites}}</p>
         <p><strong>{{localize "TALENT.APTITUDES"}}:</strong> {{item.aptitudes}}</p>
         <p><strong>{{localize "TALENT.TIER"}}:</strong> {{item.tier}}</p>
-        <p><strong>{{localize "HEADER.DESCRIPTION"}}:</strong> {{{item.description}}}</p>
+        <p><strong>{{localize "HEADER.DESCRIPTION"}}:</strong> {{{item.benefit}}}</p>
         {{/if}}
 
         {{#if item.isTool}}
@@ -109,7 +109,7 @@
         {{/if}}
 
         {{#if item.isTrait}}
-        <p><strong>{{localize "HEADER.DESCRIPTION"}}:</strong> {{{item.description}}}</p>
+        <p><strong>{{localize "HEADER.DESCRIPTION"}}:</strong> {{{item.benefit}}}</p>
         {{/if}}
 
         {{#if item.isSystemAbility}}

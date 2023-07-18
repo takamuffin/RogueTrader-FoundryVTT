@@ -20,6 +20,13 @@ export default class DarkHeresyUtil {
         };
     }
 
+    static createCommonShipTurretsRollData(actor) {
+        return {
+            ownerId: actor.id,
+            turretNumber: actor.system.shipTurretRate.value,
+        };
+    }
+
     static createCommonUnitAttackRollData(actor, item) {
         return {
             name: item.name,
@@ -57,15 +64,32 @@ export default class DarkHeresyUtil {
         return rollData;
     }
 
-    static createShipWeaponRollData(actor, weapon) {
+    static createShipWeaponRollData(actor, weapon, targetActor) {
         let characteristic = this.getShipWeaponCharacteristic(actor);
 
         let rollData = this.createCommonShipAttackRollData(actor, weapon);
+        let enemyStats;
+        if (targetActor && targetActor.type == "spaceship") {
+            enemyStats = this.getTargetShipStats(targetActor);
+            rollData.attackedShipType = enemyStats.shipType;
+        }
         rollData.baseTarget = parseInt(characteristic, 10) + weapon.shipWeaponAttack,
             rollData.modifier = 0;
         rollData.strength = parseInt(weapon.shipWeaponStrength, 10);
         rollData.damageFormula = weapon.shipWeaponDamage;
         rollData.special = weapon.special;
+        rollData.shipWeaponTraits = this.extractWeaponTraits(weapon.special);
+        rollData.shipWeaponClass = weapon.shipWeaponClass;
+        rollData.enemyStats = enemyStats;
+        return rollData;
+    }
+
+    static createShipTurretsRollData(actor) {
+        let characteristic = this.getShipWeaponCharacteristic(actor);
+
+        let rollData = this.createCommonShipTurretsRollData(actor);
+        rollData.baseTarget = parseInt(characteristic, 10, ),
+            rollData.modifier = 0;
         return rollData;
     }
 
@@ -147,6 +171,7 @@ export default class DarkHeresyUtil {
             torrent: this.extractNumberedTrait(/Torrent.*\(\d\)/gi, traits),
             ordnance: this.extractNumberedTrait(/Ordnance.*\(\d\)/gi, traits),
             scatter: this.hasNamedTrait(/Scatter/gi, traits),
+            lance: this.extractNumberedTrait(/Lance.*\(\d\)/gi, traits),
         };
     }
 
@@ -217,6 +242,17 @@ export default class DarkHeresyUtil {
         enemyStats.auxWounds = actor.bio.enemyAuxWounds;
         enemyStats.meleeDefence = actor.bio.enemyMeleeDefence;
         enemyStats.rangedDefence = actor.bio.enemyRangedDefence;
+        return enemyStats;
+    }
+
+    static getTargetShipStats(actor) {
+        let enemyStats = new Object();
+        enemyStats.shields = actor.system.shipShields;
+        enemyStats.shipTurretRate = actor.system.shipTurretRate.value;
+        enemyStats.shipCrewRate = actor.bio.shipCrewRate;
+        enemyStats.shipType = actor.bio.shipClass;
+        enemyStats.enemy = actor;
+
         return enemyStats;
     }
 
