@@ -38,7 +38,7 @@
       "label": "Character Aptitudes",
       "system": "rogue-trader",
       "path": "./packs/character/aptitudes.db",
-      "entity": "Item"
+      "type": "Item"
     }
   ],
   "languages": [
