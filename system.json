@@ -53,9 +53,9 @@
   "gridUnits": "m",
   "primaryTokenAttribute": null,
   "secondaryTokenAttribute": null,
-  "url": "https://github.com/takamuffin/RogueTrader2-FoundryVTT",
+  "url": "https://github.com/takamuffin/RogueTrader-FoundryVTT",
   "socket": true,
-  "manifest": "https://github.com/takamuffin/RogueTrader2-FoundryVTT/releases/download/v4.4.2/system.json",
-  "download": "https://github.com/takamuffin/RogueTrader2-FoundryVTT/releases/download/v4.4.2/v4.4.2.zip",
+  "manifest": "https://github.com/takamuffin/RogueTrader-FoundryVTT/releases/download/v4.4.2/system.json",
+  "download": "https://github.com/takamuffin/RogueTrader-FoundryVTT/releases/download/v4.4.2/v4.4.2.zip",
   "license": "LICENSE.txt"
 }
