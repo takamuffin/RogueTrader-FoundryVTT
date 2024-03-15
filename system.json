@@ -23,7 +23,8 @@
     { "name":"Giddy" },
     { "name":"Dazzerix" },
     { "name":"FilippoPolo" },
-    { "name":"MortarionUA" }
+    { "name":"MortarionUA" },
+    { "name":"Takamuffin"}
   ],
   "scripts": [],
   "esmodules": [
@@ -52,9 +53,9 @@
   "gridUnits": "m",
   "primaryTokenAttribute": null,
   "secondaryTokenAttribute": null,
-  "url": "https://github.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT",
+  "url": "https://github.com/takamuffin/RogueTrader2-FoundryVTT",
   "socket": true,
-  "manifest": "https://github.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT/releases/download/v4.4.1b/system.json",
-  "download": "https://github.com/MortarionUA/DarkHeresy2E-RogueTrader2-FoundryVTT/releases/download/v4.4.1b/Rogue.Trader.2.V4.4.1b.zip",
+  "manifest": "https://github.com/takamuffin/RogueTrader2-FoundryVTT/releases/download/v4.4.1b/system.json",
+  "download": "https://github.com/takamuffin/RogueTrader2-FoundryVTT/releases/download/v4.4.1b/Rogue.Trader.2.V4.4.1b.zip",
   "license": "LICENSE.txt"
 }
