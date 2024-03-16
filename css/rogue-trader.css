@@ -1138,17 +1138,23 @@ li.folder.collapsed > .folder-header {
     width: 100%;
 }
 .rogue-trader .acolyte .header .home-world,
-.rogue-trader .acolyte .header .background {
+.rogue-trader .acolyte .header .background,
+.rogue-trader .acolyte .header .lure-of-the-void {
     flex-basis: 40%;
 }
 .rogue-trader .acolyte .header .role,
-.rogue-trader .acolyte .header .elite {
+.rogue-trader .acolyte .header .elite,
+.rogue-trader .acolyte .header .motivation,
+.rogue-trader .acolyte .header .trials-and-travails {
     flex-basis: 32%;
 }
 .rogue-trader .acolyte .header .home-world input,
 .rogue-trader .acolyte .header .background input,
 .rogue-trader .acolyte .header .role input,
-.rogue-trader .acolyte .header .elite input {
+.rogue-trader .acolyte .header .elite input,
+.rogue-trader .acolyte .header .lure-of-the-void input,
+.rogue-trader .acolyte .header .motivation input,
+.rogue-trader .acolyte .header .trials-and-travails input {
     width: 11em;
 }
 .rogue-trader .acolyte .header .fate input,
