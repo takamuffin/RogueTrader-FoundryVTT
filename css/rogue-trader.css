@@ -1400,8 +1400,8 @@ li.folder.collapsed > .folder-header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    flex-basis: 100%;
     margin-top: 2px;
+    width: 50%;
 }
 .rogue-trader .stats .skills .skill {
     display: flex;

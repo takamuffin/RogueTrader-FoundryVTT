@@ -105,8 +105,8 @@
     </div>
     <div class="skills border">
         <h1>{{localize "TITLE.SKILLS"}}</h1>
-        <div class="flex row" style="flex-basis: 100%">
-            <div class="flex column wrap" style="max-height: 400px;overflow: scroll;flex-basis: 100%;">
+        <div class="flex row" style="width: 100%">
+            <div class="flex column wrap" style="max-height: 400px;overflow-y: scroll;flex-basis: 100%;flex-direction: row;">
                 {{#each system.skills as |skill key|}}
                     {{#unless skill.isSpecialist}}
                         <div class="skill">
@@ -126,8 +126,8 @@
     </div>
     <div class="skills border">
         <h1>{{localize "TITLE.SKILL_GROUPS"}}</h1>
-        <div class="flex row" style="flex-basis: 100%">
-            <div class="flex column" style="flex-basis: 100%;overflow-y: scroll">
+        <div class="flex row" style="width: 100%">
+            <div class="flex column" style="max-height: 400px;overflow-y: scroll;flex-basis: 100%;">
                 {{#each system.skills as |skill key|}}
                     {{#if skill.isSpecialist}}
                         <div class="item-list">
