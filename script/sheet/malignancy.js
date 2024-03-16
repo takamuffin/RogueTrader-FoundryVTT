@@ -6,7 +6,7 @@ export class MalignancySheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "malignancy"],
       template: "systems/rogue-trader/template/sheet/malignancy.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

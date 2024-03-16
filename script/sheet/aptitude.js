@@ -6,7 +6,7 @@ export class AptitudeSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "aptitude"],
       template: "systems/rogue-trader/template/sheet/aptitude.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

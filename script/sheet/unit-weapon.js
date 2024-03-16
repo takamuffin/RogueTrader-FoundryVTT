@@ -6,7 +6,7 @@ export class UnitWeaponSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "unit-weapon"],
       template: "systems/rogue-trader/template/sheet/unit-weapon.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

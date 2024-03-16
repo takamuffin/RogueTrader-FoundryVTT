@@ -6,7 +6,7 @@ export class SpecialAbilitySheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "special-ability"],
       template: "systems/rogue-trader/template/sheet/special-ability.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

@@ -6,7 +6,7 @@ export class ToolSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "tool"],
       template: "systems/rogue-trader/template/sheet/tool.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

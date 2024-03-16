@@ -6,7 +6,7 @@ export class ForceFieldSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "force-field"],
       template: "systems/rogue-trader/template/sheet/force-field.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

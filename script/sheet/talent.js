@@ -6,7 +6,7 @@ export class TalentSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "talent"],
       template: "systems/rogue-trader/template/sheet/talent.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

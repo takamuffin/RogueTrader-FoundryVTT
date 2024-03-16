@@ -6,7 +6,7 @@ export class DrugSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "drug"],
       template: "systems/rogue-trader/template/sheet/drug.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

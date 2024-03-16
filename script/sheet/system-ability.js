@@ -6,7 +6,7 @@ export class SystemAbilitySheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "system-ability"],
       template: "systems/rogue-trader/template/sheet/system-ability.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

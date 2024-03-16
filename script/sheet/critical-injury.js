@@ -6,7 +6,7 @@ export class CriticalInjurySheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "critical-injury"],
       template: "systems/rogue-trader/template/sheet/critical-injury.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

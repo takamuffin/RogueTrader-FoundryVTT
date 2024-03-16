@@ -8,7 +8,7 @@ export class SpaceshipSheet extends DarkHeresySheet {
       template: "systems/rogue-trader/template/sheet/actor/spaceship.html",
       width: 700,
       height: 881,
-      resizable: false,
+      resizable: true,
       tabs: [
         {
           navSelector: ".sheet-tabs",

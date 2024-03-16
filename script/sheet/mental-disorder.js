@@ -6,7 +6,7 @@ export class MentalDisorderSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "mental-disorder"],
       template: "systems/rogue-trader/template/sheet/mental-disorder.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

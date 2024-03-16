@@ -6,7 +6,7 @@ export class ArmourSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "armour"],
       template: "systems/rogue-trader/template/sheet/armour.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

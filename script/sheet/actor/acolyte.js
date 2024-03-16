@@ -8,7 +8,7 @@ export class AcolyteSheet extends DarkHeresySheet {
       template: "systems/rogue-trader/template/sheet/actor/acolyte.html",
       width: 700,
       height: 881,
-      resizable: false,
+      resizable: true,
       tabs: [
         {
           navSelector: ".sheet-tabs",

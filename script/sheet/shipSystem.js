@@ -6,7 +6,7 @@ export class ShipSystemSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "shipSystem"],
       template: "systems/rogue-trader/template/sheet/ship-system.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

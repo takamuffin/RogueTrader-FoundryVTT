@@ -6,7 +6,7 @@ export class MutationSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "mutation"],
       template: "systems/rogue-trader/template/sheet/mutation.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

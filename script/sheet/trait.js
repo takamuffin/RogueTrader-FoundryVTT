@@ -6,7 +6,7 @@ export class TraitSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "trait"],
       template: "systems/rogue-trader/template/sheet/trait.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {

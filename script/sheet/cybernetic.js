@@ -6,7 +6,7 @@ export class CyberneticSheet extends DarkHeresyItemSheet {
       classes: ["rogue-trader", "sheet", "cybernetic"],
       template: "systems/rogue-trader/template/sheet/cybernetic.html",
       width: 500,
-      height: 369,
+      height: 610,
       resizable: false,
       tabs: [
         {
