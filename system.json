@@ -2,7 +2,7 @@
   "id": "rogue-trader",
   "title": "Rogue Trader 2E",
   "description": "Wealth provides everything",
-  "version": "4.4.2",
+  "version": "4.4.3",
   "minimumCoreVersion" : 11,
   "compatibility" : {
     "minimum" : 11,
