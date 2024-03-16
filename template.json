@@ -199,7 +199,7 @@
                 "advance": -20,
                 "modifier": 0,
                 "cost": 0
-              },
+              }
             },
             "modifier": 0,
             "cost": 0
@@ -668,7 +668,7 @@
                 "advance": -20,
                 "modifier": 0,
                 "cost": 0
-              },
+              }
             },
             "modifier": 0,
             "cost": 0
