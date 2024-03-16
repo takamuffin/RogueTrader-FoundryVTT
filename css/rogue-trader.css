@@ -2613,20 +2613,20 @@ li.folder.collapsed > .folder-header {
     height: 382px;
 }
 .rogue-trader .progression .skills .item-list .items .item .name {
-    flex-basis: 40%;
-    font-size: 20px;
+    flex-basis: 51%;
+    font-size: 18px;
     text-align: center;
     font-weight: bold;
 }
 .rogue-trader .progression .skills .item-list .items .item .advance {
-    flex-basis: 25%;
+    flex-basis: 24%;
     text-align: center;
     height: 22px;
     margin-right: 5px;
 }
 .rogue-trader .progression .skills .item-list .items .item .total {
     font-size: 12px;
-    height: 24px;
+    height: 22px;
     width: 40px;
     margin: 1px;
 }
