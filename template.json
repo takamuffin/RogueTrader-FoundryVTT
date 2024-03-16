@@ -168,7 +168,7 @@
               "Int"
             ],
             "advance": -20,
-            "isSpecialist": false,
+            "isSpecialist": true,
             "specialities": {
               "astropath": {
                 "label": "Astropath",
@@ -409,7 +409,7 @@
               "Ag"
             ],
             "advance": -20,
-            "isSpecialist": false,
+            "isSpecialist": true,
             "specialities": {
               "groundVehicle": {
                 "label": "Ground Vehicle",
@@ -643,7 +643,7 @@
               "Fel"
             ],
             "advance": -20,
-            "isSpecialist": false,
+            "isSpecialist": true,
             "specialities": {
               "dancer": {
                 "label": "Dancer",
@@ -846,7 +846,7 @@
               "Fel"
             ],
             "advance": -20,
-            "isSpecialist": false,
+            "isSpecialist": true,
             "specialities": {
               "administratum": {
                 "label": "Administratum",
