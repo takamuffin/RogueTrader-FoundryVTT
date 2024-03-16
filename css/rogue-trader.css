@@ -1410,7 +1410,7 @@ li.folder.collapsed > .folder-header {
     width: 100%;
 }
 .rogue-trader .stats .skills .skill .name {
-    flex-basis: 60%;
+    flex-basis: 70%;
     font-size: 18px;
     font-weight: bold;
 }
