@@ -3,28 +3,50 @@
   "title": "Rogue Trader 2E",
   "description": "Wealth provides everything",
   "version": "4.4.5",
-  "minimumCoreVersion" : 11,
-  "compatibility" : {
-    "minimum" : 11,
-    "verified" : 11,
-    "maximum" : 11
+  "minimumCoreVersion": 11,
+  "compatibility": {
+    "minimum": 11,
+    "verified": 11,
+    "maximum": 11
   },
   "templateVersion": 2,
   "authors": [
-    { "name":"JeansenVaars" },
-    { "name":"Moo Man",
+    {
+      "name": "JeansenVaars"
+    },
+    {
+      "name": "Moo Man",
       "email": "russellt@cubicle7games.com",
       "discord": "Moo Man#7518",
-      "reddit": "u/mooman10" },
-    { "name":"fredthedeadhead" },
-    { "name":"Perfectro" },
-    { "name":"Vendare" },
-    { "name":"Silver292" },
-    { "name":"Giddy" },
-    { "name":"Dazzerix" },
-    { "name":"FilippoPolo" },
-    { "name":"MortarionUA" },
-    { "name":"Takamuffin"}
+      "reddit": "u/mooman10"
+    },
+    {
+      "name": "fredthedeadhead"
+    },
+    {
+      "name": "Perfectro"
+    },
+    {
+      "name": "Vendare"
+    },
+    {
+      "name": "Silver292"
+    },
+    {
+      "name": "Giddy"
+    },
+    {
+      "name": "Dazzerix"
+    },
+    {
+      "name": "FilippoPolo"
+    },
+    {
+      "name": "MortarionUA"
+    },
+    {
+      "name": "Takamuffin"
+    }
   ],
   "scripts": [],
   "esmodules": [
