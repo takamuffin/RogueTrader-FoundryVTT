@@ -2,7 +2,7 @@
   "id": "rogue-trader",
   "title": "Rogue Trader 2E",
   "description": "Wealth provides everything",
-  "version": "4.4.10",
+  "version": "4.4.11",
   "minimumCoreVersion": 11,
   "compatibility": {
     "minimum": 11,
@@ -78,6 +78,6 @@
   "url": "https://github.com/takamuffin/RogueTrader-FoundryVTT",
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/takamuffin/RogueTrader-FoundryVTT/main/system.json",
-  "download": "https://github.com/takamuffin/RogueTrader-FoundryVTT/releases/download/v4.4.10/v4.4.10.zip",
+  "download": "https://github.com/takamuffin/RogueTrader-FoundryVTT/releases/download/v4.4.11/v4.4.11.zip",
   "license": "LICENSE.txt"
 }
