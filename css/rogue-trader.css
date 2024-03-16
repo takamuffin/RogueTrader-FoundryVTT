@@ -419,20 +419,20 @@ li.folder.collapsed > .folder-header {
     width: 31em;
 }
 .rogue-trader.mental-disorder .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.malignancy .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.mutation .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.talent .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.talent .stats {
     height: 165px;
@@ -452,8 +452,8 @@ li.folder.collapsed > .folder-header {
     width: 428px;
 }
 .rogue-trader.trait .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.trait .stats {
     height: 165px;
@@ -463,8 +463,8 @@ li.folder.collapsed > .folder-header {
     width: 428px;
 }
 .rogue-trader.system .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.system .stats {
     height: 165px;
@@ -474,8 +474,8 @@ li.folder.collapsed > .folder-header {
     width: 31em;
 }
 .rogue-trader.system-ability .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.system-ability .stats {
     height: 165px;
@@ -485,8 +485,8 @@ li.folder.collapsed > .folder-header {
     width: 31em;
 }
 .rogue-trader.special-ability .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.special-ability .stats {
     height: 165px;
@@ -496,8 +496,8 @@ li.folder.collapsed > .folder-header {
     width: 428px;
 }
 .rogue-trader.psychic-power .notes-editor {
-    height: 193px;
-    max-height: 193px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.psychic-power .stats .stats-row .stat.prerequisite input {
     width: 10em;
@@ -553,8 +553,8 @@ li.folder.collapsed > .folder-header {
     width: 372px;
 }
 .rogue-trader.critical-injury .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.critical-injury .header .part,
 .rogue-trader.critical-injury .header .type {
@@ -565,8 +565,8 @@ li.folder.collapsed > .folder-header {
     margin: 0 8px;
 }
 .rogue-trader.weapon .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.weapon .stats .stats-row .stat.class select {
     width: 5em;
@@ -631,8 +631,8 @@ li.folder.collapsed > .folder-header {
     width: 29em;
 }
 .rogue-trader.ship-weapon .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.ship-weapon .stats .stats-row .stat.class select {
     width: 5em;
@@ -674,8 +674,8 @@ li.folder.collapsed > .folder-header {
 }
 
 .rogue-trader.unit-weapon .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.unit-weapon .stats .stats-row .stat.class select {
     width: 5em;
@@ -740,8 +740,8 @@ li.folder.collapsed > .folder-header {
     width: 29em;
 }
 .rogue-trader.armour .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.armour .stats .stats-row .stat.type input {
     width: 8em;
@@ -765,8 +765,8 @@ li.folder.collapsed > .folder-header {
     text-align: center;
 }
 .rogue-trader.gear .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.gear .stats {
     height: 165px;
@@ -786,8 +786,8 @@ li.folder.collapsed > .folder-header {
     width: 31em;
 }
 .rogue-trader.drug .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.drug .stats {
     height: 165px;
@@ -807,8 +807,8 @@ li.folder.collapsed > .folder-header {
     width: 31em;
 }
 .rogue-trader.tool .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.tool .stats {
     height: 165px;
@@ -828,8 +828,8 @@ li.folder.collapsed > .folder-header {
     width: 31em;
 }
 .rogue-trader.cybernetic .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.cybernetic .stats {
     height: 165px;
@@ -846,8 +846,8 @@ li.folder.collapsed > .folder-header {
     text-align: center;
 }
 .rogue-trader.weapon-modification .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.weapon-modification .stats {
     height: 165px;
@@ -867,8 +867,8 @@ li.folder.collapsed > .folder-header {
     width: 330px;
 }
 .rogue-trader.ammunition .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.ammunition .stats .stats-row .stat.weapon input {
     width: 26em;
@@ -907,8 +907,8 @@ li.folder.collapsed > .folder-header {
     width: 427px;
 }
 .rogue-trader.force-field .notes-editor {
-    height: 165px;
-    max-height: 165px;
+    height: 400px;
+    max-height: 400px;
 }
 .rogue-trader.force-field .stats {
     height: 165px;
@@ -2638,7 +2638,6 @@ li.folder.collapsed > .folder-header {
 }
 .rogue-trader .notes-tab .notes-editor {
     margin-top: 2px;
-    height: 476px;
 }
 .rogue-trader .notes-tab .information {
     display: flex;
