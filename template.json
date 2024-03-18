@@ -305,6 +305,12 @@
                 "modifier": 0,
                 "cost": 0
               },
+              "machineCult": {
+                "label": "Machine Cult",
+                "advance": -20,
+                "modifier": 0,
+                "cost": 0
+              },
               "navigators": {
                 "label": "Navis Nobilite",
                 "advance": -20,
