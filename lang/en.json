@@ -6,13 +6,13 @@
   "ACTOR.TypeUnit" : "Unit",
 
   "ADVANCE.NONE": "None",
+  "ADVANCE.UNKNOWN": "Unknown",
   "ADVANCE.UNTRAINED": "Untrained",
   "ADVANCE.SIMPLE": "Simple",
   "ADVANCE.KNOWN": "Known",
   "ADVANCE.INTERMEDIATE": "Intermediate",
   "ADVANCE.TRAINED": "Trained",
   "ADVANCE.EXPERT": "Expert",
-  "ADVANCE.VETERAN": "Veteran",
 
   "APTITUDE.NAME": "Name",
 
