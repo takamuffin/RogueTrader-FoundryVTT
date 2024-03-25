@@ -80,6 +80,14 @@
             "advance": 0,
             "unnatural": 0,
             "cost": 0
+          },
+          "profitFactor": {
+            "label": "CHARACTERISTIC.PROFIT_FACTOR",
+            "short": "PF",
+            "base": 0,
+            "advance": 0,
+            "unnatural": 0,
+            "cost": 0
           }
         }
       },
