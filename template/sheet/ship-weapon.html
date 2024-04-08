@@ -55,22 +55,23 @@
                     </div>
                     <div class="stat range">
                         <label>{{localize "SHIP_WEAPON.RANGE"}}</label>
-                        <input style="margin-left: 8px" name="system.shipWeaponRange.short" type="number"
-                               value="{{system.shipWeaponRange.short}}" data-dtype="Number"/>
-                        /
-                        <input name="system.shipWeaponRange.medium" type="number"
-                               value="{{system.shipWeaponRange.medium}}"
-                               data-dtype="Number"/>
-                        /
-                        <input name="system.shipWeaponRange.long" type="number" value="{{system.shipWeaponRange.long}}"
+                        <input name="system.shipWeaponRange" type="number" value="{{system.shipWeaponRange}}"
                                data-dtype="Number"/>
                     </div>
                 </div>
                 <div class="stats-row">
                     <div class="stat arc">
                         <label>{{localize "SHIP_WEAPON.ARC"}}</label>
-                        <input name="system.shipWeaponArc" type="number" value="{{system.shipWeaponArc}}"
-                               data-dtype="Number"/>
+                        <select name="system.shipWeaponArc">
+                            {{#select system.shipWeaponArc}}
+                            <option value="fore">{{localize "SHIP_WEAPON.ARC_FORE"}}</option>
+                            <option value="port">{{localize "SHIP_WEAPON.ARC_PORT"}}</option>
+                            <option value="starboard">{{localize "SHIP_WEAPON.ARC_STARBOARD"}}</option>
+                            <option value="aft">{{localize "SHIP_WEAPON.ARC_AFT"}}</option>
+                            <option value="dorsal">{{localize "SHIP_WEAPON.ARC_DORSAL"}}</option>
+                            <option value="keel">{{localize "SHIP_WEAPON.ARC_KEEL"}}</option>
+                            {{/select}}
+                        </select>
                     </div>
                     <div class="stat strength">
                         <label>{{localize "SHIP_WEAPON.STRENGTH"}}</label>
@@ -79,8 +80,7 @@
                     </div>
                     <div class="stat damage">
                         <label>{{localize "SHIP_WEAPON.DAMAGE"}}</label>
-                        <input name="system.shipWeaponDamage" type="number" value="{{system.shipWeaponDamage}}"
-                               data-dtype="Number"/>
+                        <input name="system.shipWeaponDamage" type="text" value="{{system.shipWeaponDamage}}"/>
                     </div>
                     <div class="stat craftsmanship">
                         <label>{{localize "WEAPON.CRAFTSMANSHIP"}}</label>

@@ -1749,11 +1749,7 @@
       "shipWeaponClass": "Macro",
       "shipWeaponSize": "Medium",
       "shipWeaponEnergy": 0,
-      "shipWeaponRange": {
-        "short": 0,
-        "medium": 0,
-        "long": 0
-      },
+      "shipWeaponRange": 0,
       "shipWeaponStrength": 0,
       "shipWeaponDamage": 0,
       "shipWeaponArc": 0,
