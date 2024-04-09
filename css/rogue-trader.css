@@ -1194,8 +1194,11 @@ li.folder.collapsed > .folder-header {
 .rogue-trader .spaceship .header .ship-class select {
     width: 50%;
 }
+.rogue-trader .spaceship .header .ship-crew-rate label {
+    width: 30%;
+}
 .rogue-trader .spaceship .header .ship-crew-rate select {
-    width: 75%;
+    width: 70%;
 }
 .rogue-trader .spaceship .header .ship-hull-type input {
     width: 50%;
