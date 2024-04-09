@@ -220,19 +220,41 @@ export class DarkHeresyActor extends Actor {
     }
 
     _computeSpace() {
-        let space = 0;
-        let spaceMain = 0;
+        let space = {
+            prow: 0,
+            port: 0,
+            starboard: 0,
+            main: 0,
+            bridge: 0,
+            aft: 0,
+        };
         this.items
-            .filter(item => item.isSystem)
-            .forEach(shipSystem => {space += +shipSystem.system.spaceMax});
-        // this.items.forEach(shipSystem => {spaceMain += +shipSystem.system.spaceMax});
+            .filter(item => item.system.location === "prow")
+            .forEach(shipSystem => {space.prow += +shipSystem.system.spaceMax});
+        this.items
+            .filter(item => item.system.location === "port")
+            .forEach(shipSystem => {space.port += +shipSystem.system.spaceMax});
+        this.items
+            .filter(item => item.system.location === "starboard")
+            .forEach(shipSystem => {space.starboard += +shipSystem.system.spaceMax});
         this.items
             .filter(item => item.system.location === "main")
-            .forEach(shipSystem => {spaceMain += +shipSystem.system.spaceMax});
-        console.log(this);
-        console.log(spaceMain);
-        this.system.shipArmor.main.structure.max = spaceMain;
-        this.system.shipSpace.value = space;
+            .forEach(shipSystem => {space.main += +shipSystem.system.spaceMax});
+        this.items
+            .filter(item => item.system.location === "bridge")
+            .forEach(shipSystem => {space.bridge += +shipSystem.system.spaceMax});
+        this.items
+            .filter(item => item.system.location === "aft")
+            .forEach(shipSystem => {space.aft += +shipSystem.system.spaceMax});
+
+        this.system.shipArmor.main.structure.max = space.main;
+        this.system.shipArmor.port.structure.max = space.port;
+        this.system.shipArmor.starboard.structure.max = space.starboard;
+        this.system.shipArmor.prow.structure.max = space.prow;
+        this.system.shipArmor.bridge.structure.max = space.bridge;
+        this.system.shipArmor.aft.structure.max = space.aft;
+
+        this.system.shipSpace.value = Object.values(space).reduce((acc, val) => acc + val, 0);
     }
 
     _computeMovement() {
