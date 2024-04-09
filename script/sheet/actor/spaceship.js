@@ -60,6 +60,7 @@ export class SpaceshipSheet extends DarkHeresySheet {
     const div = $(event.currentTarget).parents(".item");
     let item = this.actor.items.get(div.data("itemId"));
     item.update({"system.cost": $(event.currentTarget)[0].value});
+    item.update({"system.shipArmor.main.structure.value": $(event.currentTarget)[0].value});
   }
 
 }
