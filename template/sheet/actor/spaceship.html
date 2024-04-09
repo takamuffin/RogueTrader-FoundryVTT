@@ -15,12 +15,13 @@
                             <label>{{localize "BIO.SHIP_CLASS"}}</label>
                             <select name="system.bio.shipClass">
                                 {{#select system.bio.shipClass}}
-                                <option value="bigShip">{{localize "SHIP_CLASS.BIG_SHIP"}}</option>
-                                <option value="smallShip">{{localize "SHIP_CLASS.SMALL_SHIP"}}</option>
-                                <option value="special">{{localize "SHIP_CLASS.SPECIAL"}}</option>
+                                <option value="transportShip">{{localize "SHIP_CLASS.TRANSPORT"}}</option>
+                                <option value="raiderShip">{{localize "SHIP_CLASS.RAIDER"}}</option>
+                                <option value="frigateShip">{{localize "SHIP_CLASS.FRIGATE"}}</option>
+                                <option value="lightCruiserShip">{{localize "SHIP_CLASS.LIGHT_CRUISER"}}</option>
+                                <option value="cruiserShip">{{localize "SHIP_CLASS.CRUISER"}}</option>
                                 {{/select}}
                             </select>
-<!--                            <input name="system.bio.shipClass" type="text" value="{{system.bio.shipClass}}"/>-->
                         </div>
                         <div class="ship-hull-type">
                             <label>{{localize "BIO.SHIP_HULL_TYPE"}}</label>
@@ -48,15 +49,22 @@
                             <button class="roll-ship-turrets" type="button"><label>{{localize "BIO.SHIP_TURRET_RATE"}}</label></button>
                             <input name="system.shipTurretRate.value" type="text" value="{{system.shipTurretRate.value}}"
                                    data-dtype="Number"/>
-                            /
-                            <input name="system.shipTurretRate.max" type="text" value="{{system.shipTurretRate.max}}"
-                                   data-dtype="Number"/>
                         </div>
                     </div>
                     <div class="header-row">
                         <div class="ship-crew-rate">
                             <label>{{localize "BIO.SHIP_CREW_RATE"}}</label>
                             <input name="system.bio.shipCrewRate" type="text" value="{{system.bio.shipCrewRate}}" data-dtype="Number"/>
+
+                            <select name="system.bio.shipCrewRate">
+                                {{#select system.bio.shipCrewRate}}
+                                <option value="incompetentCrew">{{localize "SHIP_CREW.INCOMPETENT"}}</option>
+                                <option value="competentCrew">{{localize "SHIP_CREW.COMPETENT"}}</option>
+                                <option value="crackCrew">{{localize "SHIP_CREW.CRACK"}}</option>
+                                <option value="veteranCrew">{{localize "SHIP_CREW.VETERAN"}}</option>
+                                <option value="eliteCrew">{{localize "SHIP_CREW.ELITE"}}</option>
+                                {{/select}}
+                            </select>
                         </div>
                         <div class="ship-crew">
                             <label>{{localize "BIO.SHIP_CREW"}}</label>

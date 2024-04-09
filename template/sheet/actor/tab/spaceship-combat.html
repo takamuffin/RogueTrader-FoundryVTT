@@ -61,13 +61,14 @@
         <div class="armour-row">
             <div class="part">
                 <div class="name">{{localize "SHIP_ARMOUR.PROW"}}</div>
+            </div>
+        </div>
+        <div class="armour-row">
+            <div class="part">
                 <div class="information">
                     <div class="armour-row">
                         <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
                         <input name="system.shipArmor.prow.armor.value" type="text" value="{{system.shipArmor.prow.armor.value}}"
-                               data-dtype="Number"/>
-                        <label>/</label>
-                        <input name="system.shipArmor.prow.armor.max" type="text" value="{{system.shipArmor.prow.armor.max}}"
                                data-dtype="Number"/>
                     </div>
                     <div class="armour-row">
@@ -89,9 +90,6 @@
                         <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
                         <input name="system.shipArmor.port.armor.value" type="text" value="{{system.shipArmor.port.armor.value}}"
                                data-dtype="Number"/>
-                        <label>/</label>
-                        <input name="system.shipArmor.port.armor.max" type="text" value="{{system.shipArmor.port.armor.max}}"
-                               data-dtype="Number"/>
                     </div>
                     <div class="armour-row">
                         <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
@@ -108,9 +106,6 @@
                     <div class="armour-row">
                         <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
                         <input name="system.shipArmor.starboard.armor.value" type="text" value="{{system.shipArmor.starboard.armor.value}}"
-                               data-dtype="Number"/>
-                        <label>/</label>
-                        <input name="system.shipArmor.starboard.armor.max" type="text" value="{{system.shipArmor.starboard.armor.max}}"
                                data-dtype="Number"/>
                     </div>
                     <div class="armour-row">
@@ -133,9 +128,6 @@
                         <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
                         <input name="system.shipArmor.main.armor.value" type="text" value="{{system.shipArmor.main.armor.value}}"
                                data-dtype="Number"/>
-                        <label>/</label>
-                        <input name="system.shipArmor.main.armor.max" type="text" value="{{system.shipArmor.main.armor.max}}"
-                               data-dtype="Number"/>
                     </div>
                     <div class="armour-row">
                         <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
@@ -153,9 +145,6 @@
                         <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
                         <input name="system.shipArmor.bridge.armor.value" type="text" value="{{system.shipArmor.bridge.armor.value}}"
                                data-dtype="Number"/>
-                        <label>/</label>
-                        <input name="system.shipArmor.bridge.armor.max" type="text" value="{{system.shipArmor.bridge.armor.max}}"
-                               data-dtype="Number"/>
                     </div>
                     <div class="armour-row">
                         <label>{{localize "SHIP_ARMOUR.STRUCTURE_POINTS"}}</label>
@@ -171,14 +160,10 @@
         </div>
         <div class="armour-row">
             <div class="part">
-                <div class="name">{{localize "SHIP_ARMOUR.AFT"}}</div>
                 <div class="information">
                     <div class="armour-row">
                         <label>{{localize "SHIP_ARMOUR.ARMOR_POINTS"}}</label>
                         <input name="system.shipArmor.aft.armor.value" type="text" value="{{system.shipArmor.aft.armor.value}}"
-                               data-dtype="Number"/>
-                        <label>/</label>
-                        <input name="system.shipArmor.aft.armor.max" type="text" value="{{system.shipArmor.aft.armor.max}}"
                                data-dtype="Number"/>
                     </div>
                     <div class="armour-row">
@@ -190,6 +175,11 @@
                                data-dtype="Number"/>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="armour-row">
+            <div class="part">
+                <div class="name">{{localize "SHIP_ARMOUR.AFT"}}</div>
             </div>
         </div>
     </div>

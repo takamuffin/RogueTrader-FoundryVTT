@@ -122,6 +122,12 @@
   "BIO.OFFICERS": "Officers",
   "BIO.MORALE": "Morale",
 
+  "SHIP_CREW.INCOMPETENT": "Incompetent",
+  "SHIP_CREW.COMPETENT": "Competent",
+  "SHIP_CREW.CRACK": "Crack",
+  "SHIP_CREW.VETERAN": "Veteran",
+  "SHIP_CREW.ELITE": "Elite",
+
   "BUTTON.POST_ITEM": "Post Item",
   "BUTTON.ROLL": "Roll",
   "BUTTON.CANCEL": "Cancel",
@@ -560,9 +566,12 @@
   "SHIP_WEAPON.ARC_DORSAL": "Dorsal",
   "SHIP_WEAPON.ARC_KEEL": "Keel",
 
-  "SHIP_CLASS.BIG_SHIP": "Big Ship",
-  "SHIP_CLASS.SMALL_SHIP": "Small Ship",
-  "SHIP_CLASS.SPECIAL": "Special",
+  "SHIP_CLASS.TRANSPORT": "Transport",
+  "SHIP_CLASS.RAIDER": "Raider",
+  "SHIP_CLASS.FRIGATE": "Frigate",
+  "SHIP_CLASS.LIGHT_CRUISER": "Light Cruiser",
+  "SHIP_CLASS.CRUISER": "Cruiser",
+
 
   "SHIELDS.SHIELD1": "Shield 1",
   "SHIELDS.SHIELD2": "Shield 2",
