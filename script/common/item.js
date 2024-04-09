@@ -34,11 +34,7 @@ export class DarkHeresyItem extends Item {
     }
 
     get ShipWeaponRange() {
-        let swr = this.shipWeaponRange;
-        let short = swr.short > 0 ? `${swr.short}` : "-";
-        let medium = swr.medium > 0 ? `${swr.medium}` : "-";
-        let long = swr.long > 0 ? `${swr.long}` : "-";
-        return `${short}/${medium}/${long}`;
+        return this.shipWeaponRange;
     }
 
     get SystemStatus() {

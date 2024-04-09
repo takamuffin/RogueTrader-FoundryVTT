@@ -215,7 +215,7 @@ export async function prepareShipCombatRoll(rollData, actorRef) {
                         name : sideOfAttack?.value,
                         text : sideOfAttack?.options[sideOfAttack.selectedIndex].text
                     };
-                    rollData.damageFormula = parseInt(html.find("#damageFormula")[0].value, 10);
+                    rollData.damageFormula = html.find("#damageFormula")[0].value.replace(" ", "");
                     rollData.damageBonus = parseInt(html.find("#damageBonus")[0].value, 10);
                     rollData.isCombatTest = true;
                     await shipCombatRoll(rollData);
