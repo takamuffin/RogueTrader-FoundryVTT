@@ -600,7 +600,10 @@
   "HIT_SYSTEMS.AFT" : "Aft",
   "HIT_SYSTEMS.SHIELDS" : "Shields",
 
-  "ENERGY.CURRENT": "Cur",
+  "HULL.CURRENT": "Current",
+  "HULL.MAX": "Max",
+
+  "ENERGY.CURRENT": "Current",
   "ENERGY.MAX": "Max",
   "ENERGY.GENERATION": "Gen",
 

@@ -48,11 +48,22 @@
             <label>{{localize "ENERGY.GENERATION"}}</label>
         </div>
         <div class="energy">
-            <input name="system.shipCharge.cur" type="text" value="{{system.shipCharge.cur}}"
+            <input name="system.shipCharge.current" type="text" value="{{system.shipCharge.current}}"
                    data-dtype="Number"/>
             <input name="system.shipCharge.max" type="text" value="{{system.shipCharge.max}}"
                    data-dtype="Number"/>
             <input name="system.shipCharge.gen" type="text" value="{{system.shipCharge.gen}}"
+                   data-dtype="Number"/>
+        </div>
+        <h1 style="margin-top: 5px">{{localize "TITLE.HULL"}}</h1>
+        <div class="hull">
+            <label>{{localize "HULL.CURRENT"}}</label>
+            <label>{{localize "HULL.MAX"}}</label>
+        </div>
+        <div class="hull">
+            <input name="system.hull.current" type="text" value="{{system.hull.current}}"
+                   data-dtype="Number"/>
+            <input name="system.hull.max" type="text" value="{{system.hull.max}}"
                    data-dtype="Number"/>
         </div>
     </div>
@@ -206,11 +217,11 @@
             <input name="system.shipMovement.maneuverBonus" type="text" value="{{system.shipMovement.maneuverBonus}}" data-dtype="Number"/>
         </div>
         <h1 style="margin-top: 5px">{{localize "TITLE.OTHER"}}</h1>
-        <div class="information initiative">
+        <div class="information">
             <label>{{localize "INITIATIVE"}}</label>
-            <input name="system.initiative.base" type="text" value="{{system.initiative.base}} + {{system.detection.bonus}}"/>
+            <input name="system.initiative.base" type="text" style="flex-basis:40%" value="{{system.initiative.base}} + {{system.detection.bonus}}"/>
         </div>
-        <div class="information initiative">
+        <div class="information">
             <label>{{localize "DETECTION"}}</label>
             <input name="system.detection.modifier" type="text" value="{{system.detection.modifier}}" data-dtype="Number"/>
         </div>

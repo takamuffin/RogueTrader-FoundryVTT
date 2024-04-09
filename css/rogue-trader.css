@@ -1192,7 +1192,7 @@ li.folder.collapsed > .folder-header {
     width: 70%;
 }
 .rogue-trader .spaceship .header .ship-class select,
-.rogue-trader .spaceship .header .ship-crew-rate input {
+.rogue-trader .spaceship .header .ship-crew-rate select {
     width: 50%;
 }
 .rogue-trader .spaceship .header .ship-hull-type input {
@@ -1855,18 +1855,22 @@ li.folder.collapsed > .folder-header {
 .rogue-trader .spaceship-combat .wounds .information input {
     flex-basis: 35%;
 }
+.rogue-trader .spaceship-combat .wounds .hull,
 .rogue-trader .spaceship-combat .wounds .energy {
     display: flex;
     margin-top: 5px;
 }
-.rogue-trader .spaceship-combat .wounds .energy label{
+.rogue-trader .spaceship-combat .wounds .hull label,
+.rogue-trader .spaceship-combat .wounds .energy label {
     flex-basis: 33%;
     flex-shrink: 1;
 }
-.rogue-trader .spaceship-combat .wounds .energy input{
+.rogue-trader .spaceship-combat .wounds .hull input,
+.rogue-trader .spaceship-combat .wounds .energy input {
     flex-basis: 33%;
     margin: 3px;
 }
+
 .rogue-trader .spaceship-combat .armour {
     display: flex;
     flex-direction: row;
