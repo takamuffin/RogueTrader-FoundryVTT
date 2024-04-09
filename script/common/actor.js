@@ -221,6 +221,7 @@ export class DarkHeresyActor extends Actor {
 
     _computeSpace() {
         let space = 0;
+        let spaceMain = 0;
         this.items
             .filter(item => item.isSystem)
             .forEach(shipSystem => {space += +shipSystem.system.spaceMax});
