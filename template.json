@@ -1747,7 +1747,7 @@
         "equipment"
       ],
       "shipWeaponClass": "Macro",
-      "shipWeaponSize": "Medium",
+      "shipWeaponSpace": 45,
       "shipWeaponEnergy": 0,
       "shipWeaponRange": 0,
       "shipWeaponStrength": 0,

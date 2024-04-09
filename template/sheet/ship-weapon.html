@@ -37,16 +37,9 @@
                         </select>
                     </div>
                     <div class="stat size">
-                        <label>{{localize "SHIP_WEAPON.SIZE"}}</label>
-                        <select name="system.shipWeaponSize">
-                            {{#select system.shipWeaponSize}}
-                            <option value="SL">{{localize "SHIP_WEAPON.SUPER_LIGHT"}}</option>
-                            <option value="L">{{localize "SHIP_WEAPON.LIGHT"}}</option>
-                            <option value="M">{{localize "SHIP_WEAPON.MEDIUM"}}</option>
-                            <option value="H">{{localize "SHIP_WEAPON.HEAVY"}}</option>
-                            <option value="SH">{{localize "SHIP_WEAPON.SUPER_HEAVY"}}</option>
-                            {{/select}}
-                        </select>
+                        <label>{{localize "SHIP_WEAPON.SPACE"}}</label>
+                        <input name="system.shipWeaponSpace" type="number" value="{{system.shipWeaponSpace}}"
+                               data-dtype="Number"/>
                     </div>
                     <div class="stat energy">
                         <label>{{localize "SHIP_WEAPON.ENERGY"}}</label>

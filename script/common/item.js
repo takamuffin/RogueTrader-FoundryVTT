@@ -553,8 +553,8 @@ export class DarkHeresyItem extends Item {
         return this.system.shipWeaponDamage;
     }
 
-    get shipWeaponSize() {
-        return this.system.shipWeaponSize;
+    get shipWeaponSpace() {
+        return this.system.shipWeaponSpace;
     }
 
     get shipWeaponEnergy() {
