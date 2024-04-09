@@ -226,10 +226,10 @@ export class DarkHeresyActor extends Actor {
             .forEach(shipSystem => {space += +shipSystem.system.spaceMax});
         // this.items.forEach(shipSystem => {spaceMain += +shipSystem.system.spaceMax});
         this.items
-            .filter(item => item.isSystem)
             .filter(item => item.system.location === "main")
             .forEach(shipSystem => {spaceMain += +shipSystem.system.spaceMax});
         console.log(this);
+        console.log(spaceMain);
         this.system.shipArmor.main.structure.max = spaceMain;
         this.system.shipSpace.value = space;
     }
