@@ -214,7 +214,7 @@ export class DarkHeresyActor extends Actor {
     _computeEnergy() {
         let energy = 0;
         this.items
-            .filter(item => item.isSystem)
+            .filter(item => item.isSystem && ! item.isUnPowered)
             .forEach(shipSystem => {energy += +shipSystem.system.energy});
         this.system.shipEnergy.value = energy;
     }
