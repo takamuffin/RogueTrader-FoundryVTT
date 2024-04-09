@@ -208,11 +208,9 @@
         <h1 style="margin-top: 5px">{{localize "TITLE.OTHER"}}</h1>
         <div class="information initiative">
             <label>{{localize "INITIATIVE"}}</label>
-            <input name="system.initiative.base" type="text" value="{{system.initiative.base}}"/>
-            +
-            <input type="text" value="{{system.detection.bonus}}" data-dtype="Number" disabled />
+            <input name="system.initiative.base" type="text" value="{{system.initiative.base}} + {{system.detection.bonus}}"/>
         </div>
-        <div class="information">
+        <div class="information initiative">
             <label>{{localize "DETECTION"}}</label>
             <input name="system.detection.modifier" type="text" value="{{system.detection.modifier}}" data-dtype="Number"/>
         </div>
